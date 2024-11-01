@@ -9,11 +9,11 @@ const RegisterPatient = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/register", {
+      const response = await axios.post("http://localhost:3001/register", {
         name,
         symptoms,
       });
-      setMessage(response.data);
+      setMessage(response.data.result); // Extract the result property
     } catch (error) {
       console.error(
         "Error registering patient:",
@@ -28,7 +28,7 @@ const RegisterPatient = () => {
       <h2>Register Patient</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label>Full Name: </label>
           <input
             type="text"
             value={name}
@@ -37,7 +37,7 @@ const RegisterPatient = () => {
           />
         </div>
         <div>
-          <label>Symptoms:</label>
+          <label>Symptoms: </label>
           <input
             type="text"
             value={symptoms}

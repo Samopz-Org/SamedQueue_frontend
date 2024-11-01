@@ -10,12 +10,20 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <div>
           <h1>MedQueue</h1>
-          <RegisterPatient />
-          <Queue />
-          <UpdatePatient />
-        </p>
+          <div class="container">
+            <div className="Register">
+              <RegisterPatient />
+            </div>
+            <div className="Queue">
+              <Queue />
+            </div>
+            <div className="Update">
+              <UpdatePatient />
+            </div>
+          </div>
+        </div>
         <a
           className="App-link"
           href="https://reactjs.org"

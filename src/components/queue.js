@@ -7,7 +7,7 @@ const Queue = () => {
   useEffect(() => {
     const fetchQueue = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/current-queue");
+        const response = await axios.get("http://localhost:3001/current-queue");
         setQueue(response.data);
       } catch (error) {
         console.error("Error fetching queue", error);
@@ -18,15 +18,17 @@ const Queue = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Current Queue</h2>
-      <ul>
-        {queue.map((patient) => (
-          <li key={patient._id}>
-            {patient.name} - {patient.symptoms}
-          </li>
-        ))}
-      </ul>
+    <div className="Queue">
+      <h2 className="Current_Queue">Current Queue</h2>
+      <div class="queue-box">
+        <ul>
+          {queue.map((patient) => (
+            <li key={patient._id}>
+              {patient.name} - {patient.symptoms}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

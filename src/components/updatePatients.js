@@ -10,7 +10,7 @@ const UpdatePatient = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:3000/update-symptoms/${patientId}`,
+        `http://localhost:3001/update-symptoms/${patientId}`,
         { symptoms }
       );
       setMessage(response.data);
@@ -24,7 +24,7 @@ const UpdatePatient = () => {
       <h2>Update Patient Symptoms</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Patient ID:</label>
+          <label>Patient ID: </label>
           <input
             type="text"
             value={patientId}
@@ -33,7 +33,7 @@ const UpdatePatient = () => {
           />
         </div>
         <div>
-          <label>New Symptoms:</label>
+          <label>New Symptoms: </label>
           <input
             type="text"
             value={symptoms}
