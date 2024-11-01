@@ -9,7 +9,7 @@ const RegisterPatient = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/register", {
+      const response = await axios.post("https://samedqueue-frontend.vercel.app/register", {
         name,
         symptoms,
       });

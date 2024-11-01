@@ -7,7 +7,7 @@ const Queue = () => {
   useEffect(() => {
     const fetchQueue = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/current-queue");
+        const response = await axios.get("https://samedqueue-frontend.vercel.app/current-queue");
         setQueue(response.data);
       } catch (error) {
         console.error("Error fetching queue", error);
