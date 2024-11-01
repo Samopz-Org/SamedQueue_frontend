@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <div>
-          <h1>MedQueue</h1>
+          <h1>Samedical_Queue_Site</h1>
           <div class="container">
             <div className="Register">
               <RegisterPatient />
@@ -30,7 +30,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Power By Samopz
         </a>
       </header>
     </div>
