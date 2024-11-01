@@ -24,7 +24,7 @@ h2 {
   color: rgb(35, 218, 11);
 }
 
-ol li {
+li {
   margin-bottom: 15px;
 }
 
@@ -35,7 +35,6 @@ label {
 button {
   color: black;
 }
-
 
 /* .Current_Queue {
   margin-left: 100px;
@@ -87,7 +86,7 @@ button {
 }
 
 .App-link {
-  color: #fbc561;
+  color: #ffa806;
 }
 
 @keyframes App-logo-spin {

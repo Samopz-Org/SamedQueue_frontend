@@ -10,6 +10,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <a
+          className="App-link"
+          href="https://github.com/samopz"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3>Power By Samopz</h3>
+        </a>
         <div>
           <h1>Samedical_Queue_Site</h1>
           <div class="container">
