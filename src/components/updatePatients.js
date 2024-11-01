@@ -10,7 +10,7 @@ const UpdatePatient = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:3001/update-symptoms/${patientId}`,
+        `https://samedqueue.onrender.com/update-symptoms/${patientId}`,
         { symptoms }
       );
       setMessage(response.data);
