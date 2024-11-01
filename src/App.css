@@ -24,6 +24,10 @@ h2 {
   color: rgb(35, 218, 11);
 }
 
+ol li {
+  margin-bottom: 15px;
+}
+
 label {
   color: aquamarine;
 }
@@ -46,7 +50,7 @@ button {
   width: 400px;
   height: 100px;
   overflow-y: scroll;
-  background-color: #df1edf;
+  background-color: #d8bfe9;
   /* border-radius: 5px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -74,9 +78,12 @@ button {
 } */
 
 .Queue {
+
   position:flex; 
   top: 10px;
   left: 350px;
+  color: #000;
+  background-color: #084417;
 }
 
 .App-link {

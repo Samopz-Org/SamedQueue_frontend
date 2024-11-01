@@ -9,10 +9,14 @@ const RegisterPatient = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://samedqueue-frontend.vercel.app/register", {
-        name,
-        symptoms,
-      });
+      const response = await axios.post(
+        // "http://localhost:3001/register",
+        "https://samedqueue.onrender.com/register",
+        {
+          name,
+          symptoms,
+        }
+      );
       setMessage(response.data.result); // Extract the result property
     } catch (error) {
       console.error(

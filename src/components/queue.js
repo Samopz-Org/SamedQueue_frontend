@@ -7,7 +7,10 @@ const Queue = () => {
   useEffect(() => {
     const fetchQueue = async () => {
       try {
-        const response = await axios.get("https://samedqueue-frontend.vercel.app/current-queue");
+        const response = await axios.get(
+          // "http://localhost:3001/current-queue"
+          "https://samedqueue.onrender.com/current-queue"
+        );
         setQueue(response.data);
       } catch (error) {
         console.error("Error fetching queue", error);
@@ -21,13 +24,13 @@ const Queue = () => {
     <div className="Queue">
       <h2 className="Current_Queue">Current Queue</h2>
       <div class="queue-box">
-        <ul>
+        <ol>
           {queue.map((patient) => (
             <li key={patient._id}>
               {patient.name} - {patient.symptoms}
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </div>
   );

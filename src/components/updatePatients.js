@@ -10,7 +10,8 @@ const UpdatePatient = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://samedqueue-frontend.vercel.app/update-symptoms/${patientId}`,
+        // `http://localhost:3001/update-symptoms/${patientId}`,
+        `https://samedqueue.onrender.com/update-symptoms/${patientId}`,
         { symptoms }
       );
       setMessage(response.data);
