@@ -7,8 +7,7 @@ import "./App.css";
 
 function App() {
   return (
- <a
-          className="App-link"
+ <a className="App-link"
           href="https://github.com/samopz"
           target="_blank"
           rel="noopener noreferrer"
