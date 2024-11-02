@@ -21,7 +21,7 @@ const UpdatePatient = () => {
   };
 
   return (
-    <div>
+    <div className="Update-Patient">
       <h2>Update Patient Symptoms</h2>
       <form onSubmit={handleSubmit}>
         <div>

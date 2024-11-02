@@ -82,11 +82,30 @@ button {
   top: 10px;
   left: 350px;
   color: #000;
-  background-color: #084417;
+  background-color: #dadfdb;
+}
+
+.Update-Patient {
+  position:flex; 
+  height: 200px;
+  padding-top:1%;
+  /* left: 350px; */
+  color: #000;
+  background-color: #2f265a;
 }
 
 .App-link {
   color: #ffa806;
+}
+
+.animated-text {
+  animation: float 2s infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+  100% {transform: translateY(0);}
 }
 
 @keyframes App-logo-spin {

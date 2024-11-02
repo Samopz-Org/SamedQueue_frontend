@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import NextPatient from "./next-patient";
 
 const Queue = () => {
   const [queue, setQueue] = useState([]);
@@ -8,8 +9,8 @@ const Queue = () => {
     const fetchQueue = async () => {
       try {
         const response = await axios.get(
-          // "http://localhost:3001/current-queue"
-          "https://samedqueue.onrender.com/current-queue"
+          // "http://localhost:3001/current-queue",
+          "https://samedqueue.onrender.com/current-queue",
         );
         setQueue(response.data);
       } catch (error) {
@@ -22,8 +23,11 @@ const Queue = () => {
 
   return (
     <div className="Queue">
+      <div>
+        <NextPatient queue={queue} setQueue={setQueue} />
+      </div>
       <h2 className="Current_Queue">Current Queue</h2>
-      <div class="queue-box">
+      <div className="queue-box">
         <ol>
           {queue.map((patient) => (
             <li key={patient._id}>
