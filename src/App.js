@@ -7,19 +7,20 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
+ <a
           className="App-link"
           href="https://github.com/samopz"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h3 className="animated-text">Power By Samopz</h3>
+          <h3 className="animated-text">Power By Samopz' Clinic</h3>
         </a>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+    
         <div>
-          <h1 className="animated-text">Prioritize Your Health. (Book Your Next Appointment Now!)</h1>
+          <h1 className="animated-text">Prioritize Your Health. (Book Your Appointment With Us!)</h1>
           <div className="container">
             <div className="Register">
               <RegisterPatient />
