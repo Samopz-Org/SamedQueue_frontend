@@ -19,7 +19,7 @@ function App() {
           <h3 className="animated-text">Power By Samopz</h3>
         </a>
         <div>
-          <h1 className="animated-text">Prioritize Your Health (Book Your Next Appointment!)</h1>
+          <h1 className="animated-text">Prioritize Your Health. (Book Your Next Appointment Now!)</h1>
           <div className="container">
             <div className="Register">
               <RegisterPatient />
