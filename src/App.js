@@ -16,10 +16,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h3 className="animated-text">Power By Samopz' Clinic</h3>
+          <h4 className="animated-text">Power By Samopz' Clinic</h4>
         </a>
         <div>
-          <h1 className="animated-text">We Prioritize Your Health! (Book Your Appointment With Us!)</h1>
+          <h4 className="animated-text">We Prioritize Your Health! (Book Your Appointment With Us!)</h4>
           <div className="container">
             <div className="Register">
               <RegisterPatient />
