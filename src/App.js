@@ -24,7 +24,13 @@ function App() {
         </a>
         <div>
           <h4 className="animated-text">We Prioritize Your Health! (Book Your Appointment With Us!)</h4>
-          <div className="container">
+            <div className="container">
+            <div className="Register">
+                <Register />
+              </div>
+              <div className="Login">
+                <Login />
+              </div>
             <div className="Register">
               <RegisterPatient />
             </div>
