@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Register from "./components/auth.js/register";
 import Login from "./components/auth.js/login";
+import Register from "./components/auth.js/register";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
@@ -23,7 +23,7 @@ function App() {
           <h4 className="animated-text">Power By Samopz' Clinic</h4>
         </a>
         <div>
-          <h1 className="animated-text">Samedical_Queue_Site</h1>
+          <h4 className="animated-text">We Prioritize Your Health! (Book Your Appointment With Us!)</h4>
           <div className="container">
             <div className="Register">
               <RegisterPatient />
@@ -44,15 +44,15 @@ function App() {
         >
           Power By Samopz
         </a>
-        </header>
-         <Routes>
-          <Route path="/register" element={Register} />
-          <Route path="/login" element={Login} />
-          <Route path="/register-patient" element={RegisterPatient} />
-          <Route path="/queue" element={Queue} />
-          <Route path="/update-patient" element={UpdatePatient} />
+      </header>
+       <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register-patient" element={<RegisterPatient />} />
+          <Route path="/queue" element={<Queue />} />
+          <Route path="/update-patient" element={<UpdatePatient />} />
         </Routes>
-      </div>
+    </div>
     </Router>
   );
 }
