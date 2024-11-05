@@ -28,6 +28,10 @@ li {
   margin-bottom: 15px;
 }
 
+h4 {
+  color:rgb(232, 248, 7);
+}
+
 label {
   color: aquamarine;
 }
@@ -78,6 +82,14 @@ button {
 
 .Queue {
 
+  position:flex; 
+  top: 10px;
+  left: 350px;
+  color: #000;
+  background-color: #dadfdb;
+}
+
+.Next {
   position:flex; 
   top: 10px;
   left: 350px;

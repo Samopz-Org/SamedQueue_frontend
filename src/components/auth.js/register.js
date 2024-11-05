@@ -10,8 +10,8 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        // "http://localhost:3001/register",
-        "https://samedqueue.onrender.com/register",
+        // "http://localhost:3001/api/users/register",
+        "https://samedqueue.onrender.com/api/users/register",
 
         {
           username,

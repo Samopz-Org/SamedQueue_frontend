@@ -1,9 +1,8 @@
-// FILE: next-patient.js
 import React from "react";
 import axios from "axios";
 
 const NextPatient = ({ queue, setQueue }) => {
-  if (queue.length === 0) {
+  if (!queue || queue.length === 0) {
     return <div>No patients in the queue</div>;
   }
 
