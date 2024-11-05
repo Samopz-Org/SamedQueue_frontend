@@ -5,7 +5,6 @@ import Register from "./components/auth.js/register";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
-import NextPatient from "./components/next-patient";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -37,9 +36,6 @@ function App() {
               <div className="Register">
                 <RegisterPatient />
               </div>
-              <div className="Next">
-                <NextPatient />
-              </div>
               <div className="Queue">
                 <Queue />
               </div>
@@ -61,7 +57,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register-patient" element={<RegisterPatient />} />
-          <Route path="/next-patient" element={<NextPatient />} />
           <Route path="/queue" element={<Queue />} />
           <Route path="/update-patient" element={<UpdatePatient />} />
         </Routes>
