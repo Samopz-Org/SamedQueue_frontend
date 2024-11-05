@@ -1,4 +1,7 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Register from "./components/auth.js/register";
+import Login from "./components/auth.js/login";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
@@ -7,6 +10,7 @@ import "./App.css";
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,7 +24,13 @@ function App() {
         </a>
         <div>
           <h1 className="animated-text">Samedical_Queue_Site</h1>
-          <div className="container">
+            <div className="container">
+              <div className="Reg">
+                <Register />
+              </div>
+              <div className="Log">
+                <Login />
+              </div>
             <div className="Register">
               <RegisterPatient />
             </div>
@@ -40,8 +50,16 @@ function App() {
         >
           Power By Samopz
         </a>
-      </header>
-    </div>
+        </header>
+         <Routes>
+          <Route path="/register" element={Register} />
+          <Route path="/login" element={Login} />
+          <Route path="/register-patient" element={RegisterPatient} />
+          <Route path="/queue" element={Queue} />
+          <Route path="/update-patient" element={UpdatePatient} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

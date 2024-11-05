@@ -4,6 +4,7 @@ import axios from "axios";
 const RegisterPatient = () => {
   const [name, setName] = useState("");
   const [symptoms, setSymptoms] = useState("");
+  const [age, setAge] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -15,6 +16,7 @@ const RegisterPatient = () => {
         {
           name,
           symptoms,
+          age,
         }
       );
       setMessage(response.data.result); // Extract the result property
@@ -46,6 +48,15 @@ const RegisterPatient = () => {
             type="text"
             value={symptoms}
             onChange={(e) => setSymptoms(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Age: </label>
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
             required
           />
         </div>
