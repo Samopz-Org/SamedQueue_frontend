@@ -56,7 +56,7 @@ function App() {
           </a>
         </header>
         <Routes>
-          <Route path="/" element={<Navigate to="/signup" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
           {/* <Route path="/home" element={<Register />} /> */}
           {/* <Route path="/about" element={<Register />} /> */}
           {/* <Route path="/contact" element={<Register />} /> */}
