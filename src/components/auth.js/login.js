@@ -1,11 +1,13 @@
 // FILE: Login.js
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,8 +21,15 @@ const Login = ({ setAuthenticated }) => {
           password,
         }
       );
-      if (response.data.success) {
+      console.log("Login successfully", response.data);
+
+      // Check user role and navigate to the appropriate dashboard
+      if (response.data.role === "admin") {
+        navigate("/admin-dashboard");
         setAuthenticated(true);
+      } else if (response.data.role === "patient") {
+        navigate("/patient-dashboard");
+        setError("Invalid credentialss");
       } else {
         setError("Invalid credentials");
       }

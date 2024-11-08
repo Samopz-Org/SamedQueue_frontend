@@ -1,10 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/auth.js/login";
-import Register from "./components/auth.js/register";
+import Signup from "./components/auth.js/register";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
+import AdminDashboard from "./components/adminDashboard";
+import PatientDashboard from "./components/patientDashboard";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -28,12 +30,12 @@ function App() {
             </h4>
             <div className="container">
               <div className="auth">
-                <Register />
+                <Signup />
               </div>
               <div className="auth">
                 <Login />
               </div>
-              <div className="Register">
+              {/* <div className="Register">
                 <RegisterPatient />
               </div>
               <div className="Queue">
@@ -41,7 +43,7 @@ function App() {
               </div>
               <div className="Update">
                 <UpdatePatient />
-              </div>
+              </div> */}
             </div>
           </div>
           <a
@@ -54,11 +56,17 @@ function App() {
           </a>
         </header>
         <Routes>
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Navigate to="/signup" />} />
+          {/* <Route path="/home" element={<Register />} /> */}
+          {/* <Route path="/about" element={<Register />} /> */}
+          {/* <Route path="/contact" element={<Register />} /> */}
+          <Route path="/register" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register-patient" element={<RegisterPatient />} />
           <Route path="/queue" element={<Queue />} />
           <Route path="/update-patient" element={<UpdatePatient />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard/>} />
+          <Route path="/patient-dashboard" element={<PatientDashboard/>} />
         </Routes>
       </div>
     </Router>
