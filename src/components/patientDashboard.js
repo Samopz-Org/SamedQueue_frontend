@@ -3,15 +3,13 @@ import RegisterPatient from "./registerPatients";
 
 const PatientDashboard = () => {
   return (
-    <div>
-      <h1>Patient Dashboard</h1>
-      <p>Welcome, Patient!</p>
-      <div className="container">
-      <div className="Register">
+    <div className="patdash1">
+      <h1 className="patdash">Patient Dashboard</h1>
+      <h3>Welcome, Patient!</h3>
+      <div>
         <RegisterPatient />
       </div>
-        {/* Add patient-specific content here */}
-        </div>
+      {/* Add patient-specific content here */}
     </div>
   );
 };
