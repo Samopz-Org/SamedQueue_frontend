@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/auth.js/login";
-import Signup from "./components/auth.js/register";
+import Signup from "./components/auth.js/signup";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
@@ -60,7 +60,7 @@ function App() {
           {/* <Route path="/home" element={<Register />} /> */}
           {/* <Route path="/about" element={<Register />} /> */}
           {/* <Route path="/contact" element={<Register />} /> */}
-          <Route path="/register" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register-patient" element={<RegisterPatient />} />
           <Route path="/queue" element={<Queue />} />

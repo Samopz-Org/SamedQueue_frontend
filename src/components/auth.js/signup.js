@@ -1,4 +1,3 @@
-// FILE: src/components/Register.js
 import React, { useState } from "react";
 import axios from "axios";
 

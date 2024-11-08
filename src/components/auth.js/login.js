@@ -1,4 +1,3 @@
-// FILE: Login.js
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +28,7 @@ const Login = ({ setAuthenticated }) => {
         setAuthenticated(true);
       } else if (response.data.role === "patient") {
         navigate("/patient-dashboard");
-        setError("Invalid credentialss");
+        setAuthenticated(true);
       } else {
         setError("Invalid credentials");
       }
@@ -59,9 +58,9 @@ const Login = ({ setAuthenticated }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
         <button type="submit">Login</button>
       </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };
