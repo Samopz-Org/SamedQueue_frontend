@@ -20,13 +20,13 @@ const Login = ({ setAuthenticated }) => {
           password,
         }
       );
-      console.log("Login successfully", response.data);
+      console.log("Login successfully", response.data.user);
 
       // Check user role and navigate to the appropriate dashboard
-      if (response.data.role === "admin") {
+      if (response.data.user.role === "admin") {
         navigate("/admin-dashboard");
         setAuthenticated(true);
-      } else if (response.data.role === "patient") {
+      } else if (response.data.user.role === "patient") {
         navigate("/patient-dashboard");
         setAuthenticated(true);
       } else {
