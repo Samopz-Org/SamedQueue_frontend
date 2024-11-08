@@ -6,10 +6,10 @@ import UpdatePatient from "./updatePatients";
 const AdminDashboard = () => {
   return (
     <div>
-      <h2>Admin Dashboard</h2>
-      <p>Welcome, Admin!</p>
-      <div className="container">
-        <div className="Register">
+      <div className="admdash1">
+        <h2 className="admdash">Admin Dashboard</h2>
+        <h3>Welcome, Admin!</h3>
+        <div>
           <RegisterPatient />
         </div>
         <div className="Queue">

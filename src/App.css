@@ -29,7 +29,7 @@ li {
 }
 
 h4 {
-  color:rgb(232, 248, 7);
+  color: rgb(232, 248, 7);
 }
 
 label {
@@ -65,7 +65,7 @@ button {
 }
 
 .container {
-  position:absolute;
+  position: absolute;
   background-color: #490505;
   width: 100%;
   height: 80%;
@@ -73,16 +73,26 @@ button {
 }
 
 .patdash {
-  color: #ffa5a5;
+  color: #fdcae2;
 }
 
 .patdash1 {
-  position:absolute;
+  position: absolute;
   background-color: hsl(0, 10%, 57%);
   width: 100%;
   height: 77%;
   /* left: 30%; */
+}
 
+.admdash {
+  color: #300202;
+}
+.admdash1 {
+  position: absolute;
+  background-color: hsl(0, 32%, 61%);
+  width: 100%;
+  height: 77%;
+  /* left: 30%; */
 }
 
 /* .Register,
@@ -93,8 +103,7 @@ button {
 } */
 
 .Queue {
-
-  position:flex; 
+  position: flex;
   top: 10px;
   left: 350px;
   color: #000;
@@ -102,7 +111,7 @@ button {
 }
 
 .Next {
-  position:flex; 
+  position: flex;
   top: 10px;
   left: 350px;
   color: #000;
@@ -110,9 +119,9 @@ button {
 }
 
 .Update-Patient {
-  position:flex; 
+  position: flex;
   height: 200px;
-  padding-top:1%;
+  padding-top: 1%;
   /* left: 350px; */
   color: #000;
   background-color: #2f265a;
@@ -122,14 +131,20 @@ button {
   color: #ffa806;
 }
 
-.animated-text {
+.animated-text, .admdash, .patdash {
   animation: float 2s infinite;
 }
 
 @keyframes float {
-  0% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
-  100% {transform: translateY(0);}
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes App-logo-spin {
