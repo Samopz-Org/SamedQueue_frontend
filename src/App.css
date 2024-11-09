@@ -9,7 +9,7 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-  sizes: 200×200;
+  sizes: "50×50";
 }
 
 @media (prefers-reduced-motion: no-preference) {
