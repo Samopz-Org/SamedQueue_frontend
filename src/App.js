@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/auth.js/login";
 import Signup from "./components/auth.js/signup";
 import RegisterPatient from "./components/registerPatients";
@@ -65,8 +65,8 @@ function App() {
           <Route path="/register-patient" element={<RegisterPatient />} />
           <Route path="/queue" element={<Queue />} />
           <Route path="/update-patient" element={<UpdatePatient />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard/>} />
-          <Route path="/patient-dashboard" element={<PatientDashboard/>} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/patient-dashboard" element={<PatientDashboard />} />
         </Routes>
       </div>
     </Router>
