@@ -30,7 +30,7 @@ const RegisterPatient = () => {
   };
 
   return (
-    <div>
+    <div className="Register">
       <h2>Register Patient</h2>
       <form onSubmit={handleSubmit}>
         <div>

@@ -84,12 +84,13 @@ button {
   /* left: 30%; */
 }
 
-/* .Register,
-.Queue,
-.Update {
-  width: 700px;
-  height: 200px;
-} */
+.Register {
+  background-color: #a0834e;
+  position: flex;
+  height: 168px;
+  padding-top: 1%;
+  /* left: 350px; */
+}
 
 .Queue {
   position: flex;
@@ -100,8 +101,8 @@ button {
 }
 
 .queue-box {
-  margin: auto;
-  border: 1px solid #ccc;
+  /* margin: auto; */
+  border: 1px solid rgb(196, 147, 196);
   /* padding: 10px; */
   /* width: 400px; */
   height: 100px;
@@ -110,6 +111,17 @@ button {
   /* border-radius: 5px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+/* .component-group {
+  display: flex;
+  align-items:flex-start;
+  justify-content: space-between;
+} */
+
+/* .component {
+  flex-basis: 30%;
+  margin: 10px;
+} */
 
 .Next {
   position: flex;
