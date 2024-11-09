@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-        <a className="App-link" navigate="https://samedicqueue.onrender.com"
+        <a className="App-link" href="https://samedicqueue.onrender.com"
             target="_blank"
             rel="noopener noreferrer"
           >
