@@ -43,7 +43,10 @@ label {
 
 button {
 display:flex;
-width: 700px
+height: 15px;
+border: 1px solid;
+radius: 3px;
+width: 700px;
 background-color: blue;
   color: white;
 font-size: bold;
