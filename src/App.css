@@ -6,6 +6,10 @@
   /* background-color: #26c52e; */
 }
 
+.AppM {
+background-color: yellow;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
