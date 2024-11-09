@@ -52,7 +52,7 @@ const Login = ({ setAuthenticated }) => {
         <div>
           <label>Password:</label>
           <input
-            type="password"
+            type="password"Password
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
