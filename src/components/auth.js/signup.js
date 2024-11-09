@@ -26,7 +26,7 @@ const Signup = () => {
 
   return (
     <div>
-      <h2>Signup</h2>
+      <h2>Sign up</h2>
       <form onSubmit={handleRegister}>
         <div>
           <label>Username:</label>
@@ -44,7 +44,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Signup</button>
+        <button type="submit">Sign up</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
