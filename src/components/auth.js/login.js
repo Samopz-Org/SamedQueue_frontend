@@ -58,7 +58,7 @@ const Login = ({ setAuthenticated }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="button" type="submit">Log in</button>
+        <button type="submit">Log in</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
