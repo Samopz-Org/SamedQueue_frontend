@@ -12,7 +12,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
+    <Router className="AppM">
       <div className="App">
         <header className="App-header">
         <a className="App-link" href="/" target="_self">
