@@ -40,7 +40,6 @@ const Login = ({ setAuthenticated }) => {
 
   return (
     <div>
-      <h2>Log in</h2>
       <form onSubmit={handleLogin}>
         <div>
           <label>Username:</label>
