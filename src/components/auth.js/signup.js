@@ -28,7 +28,7 @@ const Signup = () => {
     <div>
       <form onSubmit={handleRegister}>
         <div>
-          <label for="Username" >Username:</label>
+          <label for="Username" ></label>
           <input
             type="text"
             value={username}
@@ -36,7 +36,7 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label for="Password" >Password:</label>
+          <label for="Password" ></label>
           <input
             type="password"
             value={password}
