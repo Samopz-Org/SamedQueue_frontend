@@ -48,7 +48,7 @@ function App() {
           </div>
           <a
             className="App-link"
-            href="https://reactjs.org"
+            href="https://github.com/samopz"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  /* width: 100%; */
+  width: 100%;
+  padding: 0%;
   /* height: 100%; */
   /* background-color: #26c52e; */
 }
@@ -46,18 +47,6 @@ button {
   top: 100px;
 } */
 
-.queue-box {
-  margin: auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 400px;
-  height: 100px;
-  overflow-y: scroll;
-  background-color: #d8bfe9;
-  /* border-radius: 5px; */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .App-header {
   background-color: #13419c;
   /* font-size: calc(10px + 2vmin); */
@@ -68,7 +57,7 @@ button {
   position: absolute;
   background-color: #490505;
   width: 100%;
-  height: 80%;
+  /* height: 54%; */
   /* left: 30%; */
 }
 
@@ -80,7 +69,7 @@ button {
   position: absolute;
   background-color: hsl(0, 10%, 57%);
   width: 100%;
-  height: 77%;
+  height: 51%;
   /* left: 30%; */
 }
 
@@ -110,6 +99,18 @@ button {
   background-color: #dadfdb;
 }
 
+.queue-box {
+  margin: auto;
+  border: 1px solid #ccc;
+  /* padding: 10px; */
+  /* width: 400px; */
+  height: 100px;
+  overflow-y: scroll;
+  background-color: #d8bfe9;
+  /* border-radius: 5px; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .Next {
   position: flex;
   top: 10px;
@@ -120,7 +121,7 @@ button {
 
 .Update-Patient {
   position: flex;
-  height: 200px;
+  height: 155px;
   padding-top: 1%;
   /* left: 350px; */
   color: #000;
@@ -131,7 +132,9 @@ button {
   color: #ffa806;
 }
 
-.animated-text, .admdash, .patdash {
+.animated-text,
+.admdash,
+.patdash {
   animation: float 2s infinite;
 }
 
