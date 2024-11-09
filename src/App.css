@@ -42,6 +42,8 @@ label {
 }
 
 button {
+display:flex;
+width: 300px
 background-color: blue;
   color: white;
 font-size: bold;
