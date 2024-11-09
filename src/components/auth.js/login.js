@@ -42,7 +42,7 @@ const Login = ({ setAuthenticated }) => {
     <div>
       <form onSubmit={handleLogin}>
         <div>
-          <label for="username" >Username:</label>
+          <label for="Username" >Username:</label>
           <input
             type="text"
             value={username}
@@ -50,9 +50,9 @@ const Login = ({ setAuthenticated }) => {
           />
         </div>
         <div>
-          <label for="password" >Password:</label>
+          <label for="Password" >Password:</label>
           <input
-            type="password"Password
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
