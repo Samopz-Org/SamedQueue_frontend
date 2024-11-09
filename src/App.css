@@ -43,7 +43,8 @@ label {
 
 button {
 background-color: blue;
-  color: black;
+  color: white;
+font-size: bold;
 }
 
 /* .Current_Queue {
