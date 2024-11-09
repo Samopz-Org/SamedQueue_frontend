@@ -42,13 +42,12 @@ label {
 }
 
 button {
-display:flex;
+position:flex;
 height: 15px;
-border: 1px solid;
-radius: 3px;
-width: 700px;
+border-radius: 5px;
+width: 200px;
 background-color: blue;
-  color: white;
+color: white;
 font-size: bold;
 }
 
