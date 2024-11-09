@@ -19,7 +19,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-          <img src={logo} className="App-logo" alt="logo"/>
+          <div><img src={logo} className="App-logo" alt="logo"/></div>
 </a>
           <a
             className="App-link"
