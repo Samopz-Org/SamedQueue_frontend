@@ -26,23 +26,24 @@ const Signup = () => {
 
   return (
     <div>
+      <h3>Don't have an account? Create one 👇!
       <form onSubmit={handleRegister}>
         <div>
-          <label for="Username" ></label>
+          <label for="username" ></label>
           <input
             type="text"
-            id="Username"
-            name="Username"
+            id="username"
+            name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
-          <label for="Password" ></label>
+          <label for="password" ></label>
           <input
             type="password"
-            id="Password"
-            name="Password"
+            id="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
