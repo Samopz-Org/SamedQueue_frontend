@@ -26,7 +26,7 @@ const Signup = () => {
 
   return (
     <div>
-      <h3>Don't have an account? Create one 👇!
+      <h3>Don't have an account? Create one 👇!<h3>
       <form onSubmit={handleRegister}>
         <div>
           <label for="username" ></label>
