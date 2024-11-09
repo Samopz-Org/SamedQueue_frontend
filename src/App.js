@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo", "300×300"/>
           <a
             className="App-link"
             href="https://github.com/samopz"
