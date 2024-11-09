@@ -40,24 +40,24 @@ const Login = ({ setAuthenticated }) => {
 
   return (
     <div>
-      <h3>Already Registered? login in 👇!</h3>
+      <h3>Already Registered®️? Login in 👇!</h3>
       <form onSubmit={handleLogin}>
         <div>
-          <label for="Username" ></label>
+          <label for="username" ></label>
           <input
             type="text"
-            id="Username"
-            name="Username"
+            id="username"
+            name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
-          <label for="Password" ></label>
+          <label for="password" ></label>
           <input
             type="password"
-            id="Password"
-            name="Password"
+            id="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
