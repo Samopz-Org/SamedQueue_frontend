@@ -43,9 +43,8 @@ label {
 
 button {
 position:flex;
-height: 50px;
+height: 20px;
 top: 10px;
-border-radius: 5px;
 width: 200px;
 background-color: blue;
 color: white;
