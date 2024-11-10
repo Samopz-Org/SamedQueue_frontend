@@ -43,7 +43,7 @@ const Login = ({ setAuthenticated }) => {
       <h3>Already have an account?<br> Log in 👇!</h3>
       <form onSubmit={handleLogin}>
         <div>
-          <label for="username" ></label>
+          <label for="username" >Username: </label>
           <input
             type="text"
             id="username"
@@ -53,7 +53,7 @@ const Login = ({ setAuthenticated }) => {
           />
         </div>
         <div>
-          <label for="password" ></label>
+          <label for="password" >Password: </label>
           <input
             type="password"
             id="password"
