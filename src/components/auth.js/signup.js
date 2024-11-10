@@ -29,7 +29,7 @@ const Signup = () => {
       <h3>Don't have an account?<br> Create one 👇!</h3>
       <form onSubmit={handleRegister}>
         <div>
-          <label for="username" ></label>
+          <label for="username" >Username:</label>
           <input
             type="text"
             id="username"
@@ -39,7 +39,7 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label for="password" ></label>
+          <label for="password" >Password:</label>
           <input
             type="password"
             id="password"
