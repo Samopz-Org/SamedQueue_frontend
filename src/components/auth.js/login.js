@@ -40,7 +40,7 @@ const Login = ({ setAuthenticated }) => {
 
   return (
     <div>
-      <h3>Already have an account? Login in 👇!</h3>
+      <h3>Already have an account? Log in 👇!</h3>
       <form onSubmit={handleLogin}>
         <div>
           <label for="username" ></label>
