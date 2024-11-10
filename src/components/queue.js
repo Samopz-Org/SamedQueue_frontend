@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NextPatient from "./next-patient";
+import QueueSize from "./queueSize";
+import EstimateWaitTime from "./estimateWaitTime";
 
 const Queue = () => {
   const [queue, setQueue] = useState([]);
@@ -24,6 +26,8 @@ const Queue = () => {
   return (
     <div className="Queue">
       <div>
+        <QueueSize />
+        <EstimateWaitTime/>
         <NextPatient queue={queue} setQueue={setQueue} />
       </div>
       <h2 className="Current_Queue">Current Queue</h2>

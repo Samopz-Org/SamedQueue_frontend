@@ -6,10 +6,6 @@
   /* background-color: #26c52e; */
 }
 
-.AppM {
-background-color: yellow;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -43,11 +39,21 @@ label {
 
 button {
 position:flex;
-height: 40px;
-top: 10px;
-width: 200px;
+height: 30px;
+width: 150px;
+border-radius: 50%;
+margin-left: 70px;
 background-color: blue;
 color: white;
+}
+
+input {
+  /* position:flex; */
+height: 20px;
+/* width: 150px; */
+border-radius: 50%;
+text-align: center;
+/* background-color: blue; */
 }
 
 /* .Current_Queue {

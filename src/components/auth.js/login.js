@@ -25,7 +25,6 @@ const Login = ({ setAuthenticated }) => {
       // Check user role and navigate to the appropriate dashboard
       if (response.data.user.role === "admin") {
         navigate("/admin-dashboard");
-        setAuthenticated(true);
       } else if (response.data.user.role === "patient") {
         navigate("/patient-dashboard");
         setAuthenticated(true);
