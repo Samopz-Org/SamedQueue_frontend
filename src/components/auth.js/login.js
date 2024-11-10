@@ -1,4 +1,4 @@
-hiimport React, { useState } from "react";
+import React { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -43,7 +43,7 @@ const Login = ({ setAuthenticated }) => {
       <p>Already have an account? Log in 👇!</p>
       <form onSubmit={handleLogin}>
         <div>
-          <label for="username" >Username:</label>
+          <label for="username" >Username: </label>
           <input
             type="text"
             id="username"
@@ -53,7 +53,7 @@ const Login = ({ setAuthenticated }) => {
           />
         </div>
         <div>
-          <label for="password" >Password:</label>
+          <label for="password" >Password: </label>
           <input
             type="password"
             id="password"
