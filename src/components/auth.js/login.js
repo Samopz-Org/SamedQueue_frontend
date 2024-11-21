@@ -42,14 +42,10 @@ const Login = ({ setAuthenticated }) => {
       <p>Already have an account? Log in 👇!</p>
       <form onSubmit={handleLogin}>
         <div>
-          <label for="username" >Username: </label>
+          <label for="username">Username: </label>
           <input
             type="text"
-<<<<<<< HEAD
             placeholder="Enter Full Name"
-=======
-            placeholder="Samed Queue" 
->>>>>>> 1709d8c75c7dafebcd1808004edb4056d695fcdb
             id="username"
             name="username"
             value={username}
@@ -57,14 +53,10 @@ const Login = ({ setAuthenticated }) => {
           />
         </div>
         <div>
-          <label for="password" >Password: </label>
+          <label for="password">Password: </label>
           <input
             type="password"
-<<<<<<< HEAD
-            placeholder="Enter password"
-=======
-            placeholder="Enter Password" 
->>>>>>> 1709d8c75c7dafebcd1808004edb4056d695fcdb
+            placeholder="Enter Password"
             id="password"
             name="password"
             value={password}
