@@ -45,7 +45,11 @@ const Login = ({ setAuthenticated }) => {
           <label for="username" >Username: </label>
           <input
             type="text"
+<<<<<<< HEAD
             placeholder="Enter Full Name"
+=======
+            placeholder="Samed Queue" 
+>>>>>>> 1709d8c75c7dafebcd1808004edb4056d695fcdb
             id="username"
             name="username"
             value={username}
@@ -56,7 +60,11 @@ const Login = ({ setAuthenticated }) => {
           <label for="password" >Password: </label>
           <input
             type="password"
+<<<<<<< HEAD
             placeholder="Enter password"
+=======
+            placeholder="Enter Password" 
+>>>>>>> 1709d8c75c7dafebcd1808004edb4056d695fcdb
             id="password"
             name="password"
             value={password}
