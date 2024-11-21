@@ -37,6 +37,7 @@ const RegisterPatient = () => {
           <label>Full Name: </label>
           <input
             type="text"
+            placeholder="Enter Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -46,6 +47,7 @@ const RegisterPatient = () => {
           <label>Symptoms: </label>
           <input
             type="text"
+            placeholder="Enter Symptoms"
             value={symptoms}
             onChange={(e) => setSymptoms(e.target.value)}
             required
@@ -55,6 +57,7 @@ const RegisterPatient = () => {
           <label>Age: </label>
           <input
             type="number"
+            placeholder="Enter Age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
             required

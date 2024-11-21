@@ -12,7 +12,7 @@ const EstimateWaitTime = () => {
             // "http://localhost:3001/estimated-wait-time"
             "https://samedqueue.onrender.com/estimated-wait-time"
         );
-        setWaitTime(response.data.waitTime);
+        setWaitTime(response.data.patients.waitTime);
       } catch (error) {
         console.error("Error fetching estimated wait time", error);
       }

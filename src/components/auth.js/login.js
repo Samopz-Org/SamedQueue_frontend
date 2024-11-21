@@ -45,6 +45,7 @@ const Login = ({ setAuthenticated }) => {
           <label for="username" >Username: </label>
           <input
             type="text"
+            placeholder="Enter Full Name"
             id="username"
             name="username"
             value={username}
@@ -55,6 +56,7 @@ const Login = ({ setAuthenticated }) => {
           <label for="password" >Password: </label>
           <input
             type="password"
+            placeholder="Enter password"
             id="password"
             name="password"
             value={password}

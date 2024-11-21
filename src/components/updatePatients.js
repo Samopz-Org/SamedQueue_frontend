@@ -28,6 +28,7 @@ const UpdatePatient = () => {
           <label>Patient ID: </label>
           <input
             type="text"
+            placeholder="Enter Patient ID"
             value={patientId}
             onChange={(e) => setPatientId(e.target.value)}
             required
@@ -37,6 +38,7 @@ const UpdatePatient = () => {
           <label>New Symptoms: </label>
           <input
             type="text"
+            placeholder="Enter New Symptoms"
             value={symptoms}
             onChange={(e) => setSymptoms(e.target.value)}
             required
