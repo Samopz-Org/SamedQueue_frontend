@@ -9,15 +9,18 @@ import AdminDashboard from "./components/adminDashboard";
 import PatientDashboard from "./components/patientDashboard";
 import logo from "./logo.svg";
 import "./App.css";
+import media from "./components/media/patDoc2.jpeg";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <header className="App-header">
-        <a className="App-link" href="/" target="_self">
-          <div><img src={logo} className="App-logo" alt="logo"/></div>
-</a>
+          <a className="App-link" href="/" target="_self">
+            <div>
+              <img src={logo} className="App-logo" alt="logo" />
+            </div>
+          </a>
           <a
             className="App-link"
             href="https://github.com/samopz"
@@ -37,17 +40,16 @@ function App() {
               <div className="auth">
                 <Login />
               </div>
-              {/* <div className="Register">
-                <RegisterPatient />
-              </div>
-              <div className="Queue">
-                <Queue />
-              </div>
-              <div className="Update">
-                <UpdatePatient />
-              </div> */}
             </div>
           </div>
+          <div className="media">
+            <p>Our Doctors Are Ready To Serve You!</p>
+            <div>
+              <img className="img" src={media} alt="doctor" />
+              <p>Our Doctors Are Ready To Serve You!</p>
+            </div>
+          </div>
+
           <a
             className="App-link"
             href="https://github.com/samopz"
