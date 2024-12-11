@@ -7,7 +7,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -130,8 +130,8 @@ text-align: center;
 }
 
 .img {
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 200px;
   border-radius: 30%;
   margin-left: 30px;
   padding-top: 20px;

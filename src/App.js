@@ -9,7 +9,7 @@ import AdminDashboard from "./components/adminDashboard";
 import PatientDashboard from "./components/patientDashboard";
 import logo from "./logo.svg";
 import "./App.css";
-import media from "./components/media/patDoc2.jpeg";
+import media from "./components/media/patDocImage.jpeg";
 import media2 from "./components/media/docImage2.jpeg";
 import media3 from "./components/media/patImage.jpeg";
 import patImage from "./components/media/patImage2.jpeg";
@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-         <Routes>
+        <Routes>
           {/* <Route path="/admin-dashboard" element={<Navigate to="/admin-dashboard" />} /> */}
           {/* <Route path="/home" element={<Navigate to="/Homepage" />} /> */}
           {/* <Route path="/about" element={<Register />} /> */}
@@ -64,8 +64,10 @@ function App() {
 
                   <img className="img" src={media} alt="doctor" />
                   <img className="img" src={media2} alt="doctor" />
-                  <p>ggggggggggggggggggggggggggggggggkkkkkkkkkkkkkkkkk </p>
-                  <p>ggggggggggggggggggggggggggggggggkkkkkkkkkkkkkkkkk </p>
+                  <div className="blog-post">
+                      ggggggggggggggggggggggggggggggggkkkkkkkkk
+                      ggggggggggggggggggggggggggggggggkkkkkkkkk
+                  </div>
                   <p className="img-text">
                     Do Not Ignore Early Sign of Your Health Symptoms{" "}
                   </p>
@@ -90,7 +92,6 @@ function App() {
             Power By Samopz
           </a>
         </header>
-      
       </div>
     </Router>
   );
