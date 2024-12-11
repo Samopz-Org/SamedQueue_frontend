@@ -1,9 +1,15 @@
 import React from "react";
 import RegisterPatient from "./registerPatients";
+import logo from "../logo.svg"
 
 const PatientDashboard = () => {
   return (
     <div className="patdash1">
+      <a className="App-link" href="/" target="_self">
+        <div>
+          <img src={logo} className="App-logo" alt="logo" />
+        </div>
+      </a>
       <h1 className="patdash">Patient Dashboard</h1>
       <h3>Welcome, Patient!</h3>
       <div>

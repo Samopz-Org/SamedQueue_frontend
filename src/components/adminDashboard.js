@@ -2,11 +2,17 @@ import React from "react";
 import RegisterPatient from "./registerPatients";
 import Queue from "./queue";
 import UpdatePatient from "./updatePatients";
+import logo from "../logo.svg"
 
 const AdminDashboard = () => {
   return (
     <div>
       <div className="admdash1">
+        <a className="App-link" href="/" target="_self">
+          <div>
+            <img src={logo} className="App-logo" alt="logo" />
+          </div>
+        </a>
         <h2 className="admdash">Admin Dashboard</h2>
         <h3>Welcome, Admin!</h3>
         <div className="component-group">
@@ -14,10 +20,10 @@ const AdminDashboard = () => {
             <Queue />
           </div>
           <div className="component">
-            <RegisterPatient />
+            <UpdatePatient />
           </div>
           <div className="component">
-            <UpdatePatient />
+            <RegisterPatient />
           </div>
         </div>
       </div>

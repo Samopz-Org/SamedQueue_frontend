@@ -69,11 +69,8 @@ text-align: center;
 }
 
 .container {
-  position: absolute;
   background-color: #490505;
   width: 100%;
-  /* height: 54%; */
-  /* left: 30%; */
 }
 
 .patdash {
@@ -135,10 +132,15 @@ text-align: center;
 .img {
   width: 200px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 30%;
   margin-left: 30px;
-  padding-top: 300px;
-  padding-bottom: 200px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.img-text{
+  padding-top: 20px;
+  color: #000;
 }
 
 .Next {
@@ -168,7 +170,7 @@ text-align: center;
   animation: float 2s infinite;
 }
 
-@keyframes float {
+/* @keyframes float {
   0% {
     transform: translateY(0);
   }
@@ -178,13 +180,13 @@ text-align: center;
   100% {
     transform: translateY(0);
   }
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
