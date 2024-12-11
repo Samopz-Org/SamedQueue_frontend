@@ -65,8 +65,11 @@ function App() {
                   <img className="img" src={media} alt="doctor" />
                   <img className="img" src={media2} alt="doctor" />
                   <div className="blog-post">
-                      ggggggggggggggggggggggggggggggggkkkkkkkkk
-                      ggggggggggggggggggggggggggggggggkkkkkkkkk
+                    <p> ddddddddddddddhdbsdfvdugdjkiedydjjhdusdhjgh </p>
+                    <p> ddddddddddddddhdbsdfvdugdjkiedydjjhdusdhjgh </p>
+                    <p> ddddddddddddddhdbsdfvdugdjkiedydjjhdusdhjgh </p>
+                    <p> ddddddddddddddhdbsdfvdugdjkiedydjjhdusdhjgh </p>
+                    <p> ddddddddddddddhdbsdfvdugdjkiedydjjhdusdhjgh </p>
                   </div>
                   <p className="img-text">
                     Do Not Ignore Early Sign of Your Health Symptoms{" "}

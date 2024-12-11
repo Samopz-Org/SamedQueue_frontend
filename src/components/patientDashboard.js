@@ -1,6 +1,7 @@
 import React from "react";
 import RegisterPatient from "./registerPatients";
-import logo from "../logo.svg"
+import EstimateWaitTime from "./estimateWaitTime";
+import logo from "../logo.svg";
 
 const PatientDashboard = () => {
   return (
@@ -11,10 +12,12 @@ const PatientDashboard = () => {
         </div>
       </a>
       <h4>Click on the "SamedQueue-logo" to Sign-Out</h4>
-      
+
       <h1 className="patdash">Patient Dashboard</h1>
       <h3>Welcome, Patient!</h3>
       <div>
+        <EstimateWaitTime />
+
         <RegisterPatient />
       </div>
       {/* Add patient-specific content here */}

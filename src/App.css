@@ -82,6 +82,7 @@ text-align: center;
   background-color: hsl(0, 10%, 57%);
   width: 100%;
   height: 51%;
+  padding-bottom: 10%;
   /* left: 30%; */
 }
 
@@ -96,11 +97,22 @@ text-align: center;
   /* left: 30%; */
 }
 
+.Update-Patient {
+  position: flex;
+  height: 155px;
+  padding-top: 1%;
+  padding-bottom: 10%;
+  /* left: 350px; */
+  /* color: #000; */
+  background-color: #938bbb;
+}
+
 .Register {
   background-color: #a0834e;
   position: flex;
   height: 168px;
   padding-top: 1%;
+  padding-bottom: 10%;
   /* left: 350px; */
 }
 
@@ -144,8 +156,10 @@ text-align: center;
 }
 
 .blog-post {
-  background-color: #b6ac97;
+  /* background-color: #b6ac97; */
   color: #000;
+  text-align:center;
+  padding-bottom: 5%;
 }
 
 .Next {
@@ -154,15 +168,6 @@ text-align: center;
   left: 350px;
   color: #000;
   background-color: #dadfdb;
-}
-
-.Update-Patient {
-  position: flex;
-  height: 155px;
-  padding-top: 1%;
-  /* left: 350px; */
-  color: #000;
-  background-color: #2f265a;
 }
 
 .App-link {
