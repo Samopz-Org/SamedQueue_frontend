@@ -10,6 +10,8 @@ const PatientDashboard = () => {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
       </a>
+      <h4>Click on the "SamedQueue-logo" to Sign-Out</h4>
+      
       <h1 className="patdash">Patient Dashboard</h1>
       <h3>Welcome, Patient!</h3>
       <div>

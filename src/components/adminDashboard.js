@@ -2,7 +2,7 @@ import React from "react";
 import RegisterPatient from "./registerPatients";
 import Queue from "./queue";
 import UpdatePatient from "./updatePatients";
-import logo from "../logo.svg"
+import logo from "../logo.svg";
 
 const AdminDashboard = () => {
   return (
@@ -13,6 +13,8 @@ const AdminDashboard = () => {
             <img src={logo} className="App-logo" alt="logo" />
           </div>
         </a>
+        <h4>Click on the "SamedQueue-logo" to Sign-Out</h4>
+
         <h2 className="admdash">Admin Dashboard</h2>
         <h3>Welcome, Admin!</h3>
         <div className="component-group">

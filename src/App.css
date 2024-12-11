@@ -143,6 +143,11 @@ text-align: center;
   color: #000;
 }
 
+.blog-post {
+  background-color: #b6ac97;
+  color: #000;
+}
+
 .Next {
   position: flex;
   top: 10px;
