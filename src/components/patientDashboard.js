@@ -1,6 +1,7 @@
 import React from "react";
 import RegisterPatient from "./registerPatients";
 import EstimateWaitTime from "./estimateWaitTime";
+import QueueSize from "./queueSize";
 import logo from "../logo.svg";
 
 const PatientDashboard = () => {
@@ -16,6 +17,8 @@ const PatientDashboard = () => {
       <h1 className="patdash">Patient Dashboard</h1>
       <h3>Welcome, Patient!</h3>
       <div>
+        <QueueSize />
+        
         <EstimateWaitTime />
 
         <RegisterPatient />

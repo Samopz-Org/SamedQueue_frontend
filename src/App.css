@@ -1,8 +1,7 @@
 .App {
   text-align: center;
   width: 100%;
-  padding: 0%;
-  /* height: 100%; */
+  height: 100%;
   /* background-color: #26c52e; */
 }
 
@@ -15,6 +14,23 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.App-link {
+  color: #ffa806;
+}
+
+.App-header {
+  background-color: #13419c;
+  height: auto;
+  /* font-size: calc(10px + 2vmin); */
+  color: rgb(3, 3, 3);
+}
+
+.container {
+  background-color: #709da3;
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
@@ -34,7 +50,7 @@ h4 {
 }
 
 label {
-  color: aquamarine;
+  color: rgb(60, 255, 0);
 }
 
 button {
@@ -62,16 +78,6 @@ text-align: center;
   top: 100px;
 } */
 
-.App-header {
-  background-color: #13419c;
-  /* font-size: calc(10px + 2vmin); */
-  color: rgb(51, 197, 37);
-}
-
-.container {
-  background-color: #490505;
-  width: 100%;
-}
 
 .patdash {
   color: #fdcae2;
@@ -81,7 +87,7 @@ text-align: center;
   position: absolute;
   background-color: hsl(0, 10%, 57%);
   width: 100%;
-  height: 51%;
+  height: 100%;
   padding-bottom: 10%;
   /* left: 30%; */
 }
@@ -93,15 +99,15 @@ text-align: center;
   position: absolute;
   background-color: hsl(0, 32%, 61%);
   width: 100%;
-  height: 77%;
+  height: 100%;
   /* left: 30%; */
 }
 
 .Update-Patient {
   position: flex;
-  height: 155px;
+  height: 100%;
   padding-top: 1%;
-  padding-bottom: 10%;
+  /* padding-bottom: 10%; */
   /* left: 350px; */
   /* color: #000; */
   background-color: #938bbb;
@@ -110,9 +116,9 @@ text-align: center;
 .Register {
   background-color: #a0834e;
   position: flex;
-  height: 168px;
+  height: 100%;
   padding-top: 1%;
-  padding-bottom: 10%;
+  /* padding-bottom: 5%; */
   /* left: 350px; */
 }
 
@@ -142,10 +148,9 @@ text-align: center;
 }
 
 .img {
-  width: 300px;
+  /* width: 300px; */
   height: 200px;
   border-radius: 30%;
-  margin-left: 30px;
   padding-top: 20px;
   padding-bottom: 50px;
 }
@@ -155,12 +160,14 @@ text-align: center;
   color: #000;
 }
 
-.blog-post {
-  /* background-color: #b6ac97; */
+/* .blog-post {
+  width: 100%;
+  height: 100%;
+  background-color: #b6ac97;
   color: #000;
   text-align:center;
   padding-bottom: 5%;
-}
+} */
 
 .Next {
   position: flex;
@@ -168,10 +175,6 @@ text-align: center;
   left: 350px;
   color: #000;
   background-color: #dadfdb;
-}
-
-.App-link {
-  color: #ffa806;
 }
 
 .animated-text,
