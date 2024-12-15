@@ -3,7 +3,10 @@ import axios from "axios";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
   const [error, setError] = useState("");
 
   const handleRegister = async (e) => {
@@ -14,10 +17,11 @@ const Signup = () => {
         "https://samedqueue.onrender.com/api/users/signup",
         {
           username,
+          email,
           password,
         }
       );
-      console.log("Registration successful:", response.data);
+      setMessage("Registration successful. Go Ahead to 'Log in' with Your Newly 'Created Account Details'!", response);
     } catch (error) {
       console.error("Error registering user:", error.response.data);
       setError(error.response.data.message || "Registration failed");
@@ -29,7 +33,7 @@ const Signup = () => {
       <p>Don't have an account? Create one 👇!</p>
       <form onSubmit={handleRegister}>
         <div>
-          <label for="username">Username: </label>
+          <label for="username">Full Name: </label>
           <input
             type="text"
             placeholder="Enter Full Name"
@@ -37,6 +41,17 @@ const Signup = () => {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label for="Email">Email: </label>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
@@ -52,6 +67,7 @@ const Signup = () => {
         </div>
         <button type="submit">Sign up</button>
       </form>
+      {message && <p>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );

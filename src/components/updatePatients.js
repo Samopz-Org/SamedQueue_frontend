@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const UpdatePatient = () => {
-  const [patientId, setPatientId] = useState("");
+  const [email, setEmail] = useState("");
   const [symptoms, setSymptoms] = useState("");
   const [message, setMessage] = useState("");
 
@@ -10,8 +10,8 @@ const UpdatePatient = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        // `http://localhost:3001/update-symptoms/${patientId}`,
-        `https://samedqueue.onrender.com/update-symptoms/${patientId}`,
+        // `http://localhost:3001/update-symptoms/${email}`,
+        `https://samedqueue.onrender.com/update-symptoms/${email}`,
         { symptoms }
       );
       setMessage(response.data);
@@ -25,12 +25,12 @@ const UpdatePatient = () => {
       <h2>Update Patient Symptoms</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Patient ID: </label>
+          <label>Email: </label>
           <input
             type="text"
-            placeholder="Enter Patient ID"
-            value={patientId}
-            onChange={(e) => setPatientId(e.target.value)}
+            placeholder="Enter Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>

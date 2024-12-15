@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ setAuthenticated }) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Login = ({ setAuthenticated }) => {
         "https://samedqueue.onrender.com/api/users/login",
 
         {
-          username,
+          email,
           password,
         }
       );
@@ -42,14 +42,14 @@ const Login = ({ setAuthenticated }) => {
       <p>Already have an account? Log in 👇!</p>
       <form onSubmit={handleLogin}>
         <div>
-          <label for="username">Username: </label>
+          <label for="email">Email: </label>
           <input
             type="text"
-            placeholder="Enter Full Name"
-            id="username"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter Email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>

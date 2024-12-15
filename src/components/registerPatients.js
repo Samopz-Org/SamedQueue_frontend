@@ -3,6 +3,7 @@ import axios from "axios";
 
 const RegisterPatient = () => {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [symptoms, setSymptoms] = useState("");
   const [age, setAge] = useState("");
   const [message, setMessage] = useState("");
@@ -15,6 +16,7 @@ const RegisterPatient = () => {
         "https://samedqueue.onrender.com/register",
         {
           name,
+          email,
           symptoms,
           age,
         }
@@ -40,6 +42,16 @@ const RegisterPatient = () => {
             placeholder="Enter Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Email: </label>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>

@@ -43,11 +43,12 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h4 className="animated-text">Power By Samopz' Clinic</h4>
+            <h4 className="animated-text">Powered By Samopz' Clinic</h4>
           </a>
           <div>
             <h4 className="animated-text">
               We Prioritize Your Health! (Book Your Appointment With Us!)
+              Your Sound Health is Our Pride @ Samopz' Clinic!
             </h4>
             <div className="container">
               <div className="auth">
@@ -92,7 +93,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Power By Samopz
+            Powered By Samopz
           </a>
         </header>
       </div>
