@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./components/auth.js/login";
-import Signup from "./components/auth.js/signup";
+import Login from "./components/auth/login";
+import Signup from "./components/auth/signup";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
@@ -13,6 +13,9 @@ import media from "./components/media/patDocImage.jpeg";
 import media2 from "./components/media/docImage2.jpeg";
 import media3 from "./components/media/patImage.jpeg";
 import patImage from "./components/media/patImage2.jpeg";
+import ADHDAssessment from "./components/ADHDAssessmt";
+import ADHDResults from "./components/ADHDResults";
+
 
 function App() {
   return (
@@ -30,6 +33,8 @@ function App() {
           <Route path="/register-patient" element={<RegisterPatient />} />
           <Route path="/queue" element={<Queue />} />
           <Route path="/update-patient" element={<UpdatePatient />} />
+          <Route path="/adhd-assessment" element={<ADHDAssessment />} />
+          <Route path="/adhd-results" element={<ADHDResults />} />
         </Routes>
         <header className="App-header">
           <a className="App-link" href="/" target="_self">
@@ -57,6 +62,9 @@ function App() {
               <div className="auth">
                 <Login />
               </div>
+              {/* <div className="auth">
+                <ADHDAssessment />
+              </div> */}
               <div className="media">
                 <div>
                   <p className="img-text">

@@ -118,9 +118,71 @@ text-align: center;
   position: flex;
   height: 100%;
   padding-top: 1%;
-  /* padding-bottom: 5%; */
+  /* padding-bottom: 13%; */
   /* left: 350px; */
 }
+
+.ADHDAssmt {
+  background-color: #6b5c3f;
+  border: 1px solid rgb(196, 147, 196);
+  overflow-y: scroll;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100px;
+  padding-top: 1%;
+  padding-bottom: 5%;
+}
+
+.ADHDCheck {
+  padding-top: 5%;
+  color: hsl(6, 12%, 84%);
+}
+
+/* .ADHDResults {
+  background-color: #7c7870;
+  /* position: fixed; */
+  /* display: var(2s); */
+  /* height: 100%; */
+  /* padding-top: 1%; */
+  /* padding-bottom: 5%; */
+  /* left: 350px; */
+
+
+.ADHDResults{
+  background-color: #ee9f0d;
+  position: fixed;
+  animation: blink 1s infinite;
+  /* transition: opacity 1s; */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 5;
+  }
+}
+
+.ADHDResults2 {
+  padding-top: 5%;
+  animation: float 2s infinite;
+} 
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 
 .Queue {
   position: flex;
@@ -177,11 +239,11 @@ text-align: center;
   background-color: #dadfdb;
 }
 
-.animated-text,
+/* .animated-text,
 .admdash,
 .patdash {
   animation: float 2s infinite;
-}
+} */
 
 /* @keyframes float {
   0% {

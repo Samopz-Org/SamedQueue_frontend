@@ -2,6 +2,7 @@ import React from "react";
 import RegisterPatient from "./registerPatients";
 import EstimateWaitTime from "./estimateWaitTime";
 import QueueSize from "./queueSize";
+import ADHDAssessment from "./ADHDAssessmt";
 import logo from "../logo.svg";
 
 const PatientDashboard = () => {
@@ -12,7 +13,7 @@ const PatientDashboard = () => {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
       </a>
-      <h4>Click on the "SamedQueue-logo" to Sign-Out</h4>
+      <h4>Click on the "logo" to Sign-Out</h4>
 
       <h1 className="patdash">Patient Dashboard</h1>
       <h3>Welcome, Patient!</h3>
@@ -22,6 +23,8 @@ const PatientDashboard = () => {
         <EstimateWaitTime />
 
         <RegisterPatient />
+
+        <ADHDAssessment />
       </div>
       {/* Add patient-specific content here */}
     </div>

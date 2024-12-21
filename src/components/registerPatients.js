@@ -33,7 +33,7 @@ const RegisterPatient = () => {
 
   return (
     <div className="Register">
-      <h2>Register Patient</h2>
+      <h2>Book Appointment</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Full Name: </label>
@@ -78,6 +78,8 @@ const RegisterPatient = () => {
         <button type="submit">Register</button>
       </form>
       {message && <p>{message}</p>}
+      <div className="ADHDCheck">You Think You Might Have Attention Deficit Hyperactivity Disorder?</div>
+      <div className="ADHDCheck">See Symptoms Checklist for Adult ADHD Below!</div>
     </div>
   );
 };
