@@ -1,14 +1,18 @@
-// FILE: src/components/ADHDAssessment.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const questions = [
-  "Do you often have trouble wrapping up the final details of a project, once the challenging parts have been done?",
-  "Do you often have difficulty getting things in order when you have to do a task that requires organization?",
-  "Do you often have problems remembering appointments or obligations?",
-  "When you have a task that requires a lot of thought, do you avoid or delay getting started?",
-  "Do you often fidget or squirm with your hands or feet when you have to sit down for a long time?",
-  "Do you feel overly active and compelled to do things, like you were driven by a motor?",
+  "Do you often have trouble wrapping up the final details of a project, once the challenging parts have been done?\n",
+
+  "Do you often have difficulty getting things in order when you have to do a task that requires organization?\n",
+
+  "Do you often have problems remembering appointments or obligations?\n",
+
+  "When you have a task that requires a lot of thought, do you avoid or delay getting started?\n",
+
+  "Do you often fidget or squirm with your hands or feet when you have to sit down for a long time?\n",
+
+  "Do you feel overly active and compelled to do things, like you were driven by a motor?\n",
 ];
 
 const ADHDAssessment = () => {
@@ -27,7 +31,6 @@ const ADHDAssessment = () => {
   };
 
   return (
-    
     <div className="ADHDAssmt">
       <h2>ADHD Assessment (Checklist)</h2>
       <form onSubmit={handleSubmit}>

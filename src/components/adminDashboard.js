@@ -13,7 +13,7 @@ const AdminDashboard = () => {
             <img src={logo} className="App-logo" alt="logo" />
           </div>
         </a>
-        <h4>Click on the "SamedQueue-logo" to Sign-Out</h4>
+        <h4>Click on the "logo" to Sign-Out</h4>
 
         <h2 className="admdash">Admin Dashboard</h2>
         <h3>Welcome, Admin!</h3>
