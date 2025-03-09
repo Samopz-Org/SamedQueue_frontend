@@ -28,7 +28,7 @@ const ADHDResults = () => {
       <p>{result}</p>
       <div className="ADHDResults2">
         <p>Log in Back To Book An Appointment With Our Doctor</p>
-        <p>For one-on-one Assessment and Diagnosis of other Ailments!</p>
+        <p>For one-on-one Assessment and Diagnosis of other Conditions!</p>
       </div>
     </div>
   );
