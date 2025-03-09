@@ -14,7 +14,8 @@ const Signup = () => {
     try {
       const response = await axios.post(
         // "http://localhost:3001/api/users/signup",
-        "https://samedqueue.onrender.com/api/users/signup",
+        "http://localhost:5000/api/auth/signup",
+        // "https://samedqueue.onrender.com/api/users/signup",
         {
           username,
           email,
@@ -33,7 +34,7 @@ const Signup = () => {
       <p>Don't have an account? Create one 👇!</p>
       <form onSubmit={handleRegister}>
         <div>
-          <label for="username">Full Name: </label>
+          <label htmlFor="username">Full Name: </label>
           <input
             type="text"
             placeholder="Enter Full Name"
@@ -44,7 +45,7 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label for="Email">Email: </label>
+          <label htmlFor="Email">Email: </label>
           <input
             type="text"
             placeholder="Enter Email"
@@ -55,7 +56,7 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label for="password">Password: </label>
+          <label htmlFor="password">Password: </label>
           <input
             type="password"
             placeholder="Enter password"

@@ -1,25 +1,36 @@
-// FILE: src/components/EstimateWaitTime.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const EstimateWaitTime = () => {
   const [waitTime, setWaitTime] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchWaitTime = async () => {
       try {
         const response = await axios.get(
-            // "http://localhost:3001/estimated-wait-time"
-            "https://samedqueue.onrender.com/estimated-wait-time"
+          "http://localhost:5000/api/queue/estimate-wait-time"
         );
-        setWaitTime(response.data.patients.waitTime);
+        setWaitTime(response.data.waitTime);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching estimated wait time", error);
+        setError("Failed to fetch estimated wait time");
+        setLoading(false);
       }
     };
 
     fetchWaitTime();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>

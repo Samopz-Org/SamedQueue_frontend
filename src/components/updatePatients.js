@@ -10,13 +10,12 @@ const UpdatePatient = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        // `http://localhost:3001/update-symptoms/${email}`,
-        `https://samedqueue.onrender.com/update-symptoms/${email}`,
+        `http://localhost:5000/api/patients/${email}`,
         { symptoms }
       );
       setMessage(response.data);
     } catch (error) {
-      setMessage("Error updating patient");
+      setMessage("Error updating patient: " + error.message);
     }
   };
 
@@ -27,7 +26,7 @@ const UpdatePatient = () => {
         <div>
           <label>Email: </label>
           <input
-            type="text"
+            type="email"
             placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

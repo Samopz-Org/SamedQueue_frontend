@@ -4,30 +4,34 @@ import axios from "axios";
 const RegisterPatient = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [symptoms, setSymptoms] = useState("");
   const [age, setAge] = useState("");
+  const [symptoms, setSymptoms] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (age <= 0) {
+      setMessage("Age must be a positive number");
+      return;
+    }
+    setLoading(true);
     try {
-      const response = await axios.post(
-        // "http://localhost:3001/register",
-        "https://samedqueue.onrender.com/register",
-        {
-          name,
-          email,
-          symptoms,
-          age,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/api/patients", {
+        name,
+        email,
+        age,
+        symptoms,
+      });
       setMessage(response.data.result); // Extract the result property
     } catch (error) {
       console.error(
         "Error registering patient:",
         error.response || error.message
       );
-      setMessage("Error registering patient");
+      setMessage(error.response?.data?.message || "Error registering patient");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,7 +40,7 @@ const RegisterPatient = () => {
       <h2>Book Appointment</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Full Name: </label>
+          <label htmlFor="name">Full Name: </label>
           <input
             type="text"
             placeholder="Enter Full Name"
@@ -46,9 +50,9 @@ const RegisterPatient = () => {
           />
         </div>
         <div>
-          <label>Email: </label>
+          <label htmlFor="email">Email: </label>
           <input
-            type="text"
+            type="email"
             placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -56,17 +60,7 @@ const RegisterPatient = () => {
           />
         </div>
         <div>
-          <label>Symptoms: </label>
-          <input
-            type="text"
-            placeholder="Enter Symptoms"
-            value={symptoms}
-            onChange={(e) => setSymptoms(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Age: </label>
+          <label htmlFor="age">Age: </label>
           <input
             type="number"
             placeholder="Enter Age"
@@ -75,11 +69,27 @@ const RegisterPatient = () => {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <div>
+          <label htmlFor="symptoms">Symptoms: </label>
+          <input
+            type="text"
+            placeholder="Enter Symptoms"
+            value={symptoms}
+            onChange={(e) => setSymptoms(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
       </form>
       {message && <p>{message}</p>}
-      <div className="ADHDCheck">You Think You Might Have Attention Deficit Hyperactivity Disorder?</div>
-      <div className="ADHDCheck">See Symptoms Checklist for Adult ADHD Below!</div>
+      <div className="ADHDCheck">
+        You Think You Might Have Attention Deficit Hyperactivity Disorder?
+      </div>
+      <div className="ADHDCheck">
+        See Symptoms Checklist for Adult ADHD Below!
+      </div>
     </div>
   );
 };

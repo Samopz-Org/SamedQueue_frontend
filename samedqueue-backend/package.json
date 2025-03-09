@@ -1,0 +1,26 @@
+{
+  "name": "samedqueue-backend",
+  "version": "1.0.0",
+  "description": "Backend API for SamedQueue application, providing functionalities for patient management and queue handling.",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "author": "Samopz",
+  "license": "ISC",
+  "keywords": []
+}

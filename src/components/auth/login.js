@@ -13,7 +13,8 @@ const Login = ({ setAuthenticated }) => {
     try {
       const response = await axios.post(
         // "http://localhost:3001/api/users/login",
-        "https://samedqueue.onrender.com/api/users/login",
+        "http://localhost:5000/api/auth/login",
+        // "https://samedqueue.onrender.com/api/users/login",
 
         {
           email,
@@ -42,7 +43,7 @@ const Login = ({ setAuthenticated }) => {
       <p>Already have an account? Log in 👇!</p>
       <form onSubmit={handleLogin}>
         <div>
-          <label for="email">Email: </label>
+          <label htmlFor="email">Email: </label>
           <input
             type="text"
             placeholder="Enter Email"
@@ -53,7 +54,7 @@ const Login = ({ setAuthenticated }) => {
           />
         </div>
         <div>
-          <label for="password">Password: </label>
+          <label htmlFor="password">Password: </label>
           <input
             type="password"
             placeholder="Enter Password"
