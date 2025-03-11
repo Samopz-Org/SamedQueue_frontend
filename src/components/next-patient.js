@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
 
 const NextPatient = ({ queue, setQueue }) => {
+    const [loading, setLoading] = useState(false);
   if (!queue || queue.length === 0) {
     return <div>No patients in the queue</div>;
   }
@@ -10,6 +11,7 @@ const NextPatient = ({ queue, setQueue }) => {
 
   const handleNextPatient = async () => {
     console.log("Next Patient button clicked");
+    setLoading(true);
     try {
       // Make an API call to remove the current patient from the queue
       const response = await axios.post(
@@ -22,6 +24,8 @@ const NextPatient = ({ queue, setQueue }) => {
       setQueue(queue.slice(1));
     } catch (error) {
       console.error("Error updating queue", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,7 +35,9 @@ const NextPatient = ({ queue, setQueue }) => {
       <p>Name: {nextPatient.name}</p>
       <p>Age: {nextPatient.age}</p>
       <p>Condition: {nextPatient.symptoms}</p>
-      <button onClick={handleNextPatient}>Next Patient</button>
+      <button onClick={handleNextPatient} disabled={loading}>
+        {loading ? "Fetching..." : "Next patient"}
+      </button>
     </div>
   );
 };

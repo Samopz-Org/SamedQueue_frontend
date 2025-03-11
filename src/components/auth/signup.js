@@ -6,11 +6,14 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
   const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+  
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const response = await axios.post(
         // "http://localhost:3001/api/users/signup",
@@ -22,10 +25,15 @@ const Signup = () => {
           password,
         }
       );
-      setMessage("Registration successful. Go Ahead to 'Log in' with Your Newly 'Created Account Details'!", response);
+      setMessage(
+        "Registration successful. Go Ahead to 'Log in' with Your Newly 'Created Account Details'!",
+        response
+      );
     } catch (error) {
       console.error("Error registering user:", error.response.data);
       setError(error.response.data.message || "Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,6 +50,7 @@ const Signup = () => {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -53,6 +62,7 @@ const Signup = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -64,9 +74,12 @@ const Signup = () => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
-        <button type="submit">Sign up</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing up..." : "Sign up"}
+        </button>
       </form>
       {message && <p>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}

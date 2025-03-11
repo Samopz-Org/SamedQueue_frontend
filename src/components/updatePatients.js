@@ -5,9 +5,13 @@ const UpdatePatient = () => {
   const [email, setEmail] = useState("");
   const [symptoms, setSymptoms] = useState("");
   const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const response = await axios.put(
         `http://localhost:5000/api/patients/${email}`,
@@ -16,6 +20,8 @@ const UpdatePatient = () => {
       setMessage(response.data);
     } catch (error) {
       setMessage("Error updating patient: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -43,7 +49,9 @@ const UpdatePatient = () => {
             required
           />
         </div>
-        <button type="submit">Update</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Updating..." : "Update"}
+        </button>
       </form>
       {message && <p>{message}</p>}
     </div>

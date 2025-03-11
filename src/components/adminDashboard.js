@@ -15,8 +15,8 @@ const AdminDashboard = () => {
         </a>
         <h4>Click on the "logo" to Sign-Out</h4>
 
-        <h2 className="admdash">Admin Dashboard</h2>
-        <h3>Welcome, Admin!</h3>
+        <h2 className="admdash">Doctor Dashboard</h2>
+        <h3>Welcome, Doctor!</h3>
         <div className="component-group">
           <div className="component">
             <Queue />

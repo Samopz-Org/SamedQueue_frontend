@@ -6,10 +6,14 @@ const Login = ({ setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const response = await axios.post(
         // "http://localhost:3001/api/users/login",
@@ -35,6 +39,8 @@ const Login = ({ setAuthenticated }) => {
     } catch (error) {
       setError("Error logging in");
       console.error("Error logging in", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,6 +57,7 @@ const Login = ({ setAuthenticated }) => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -62,9 +69,12 @@ const Login = ({ setAuthenticated }) => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
-        <button type="submit">Log in</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Log in"}
+        </button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
