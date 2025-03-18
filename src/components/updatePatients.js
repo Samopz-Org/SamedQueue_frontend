@@ -15,7 +15,7 @@ const UpdatePatient = () => {
     try {
       const response = await axios.put(
         // `http://localhost:5000/api/patients/${email}`,
-        `https://samedqueue-app.onrender.com/api/patients/${email}`,
+        `https://samedqueue-app.onrender.com/api/patients/:${email}`,
         { symptoms }
       );
       setMessage(response.data);
