@@ -13,7 +13,8 @@ const Queue = () => {
     const fetchQueue = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/queue/current-queue"
+          // "http://localhost:5000/api/queue/current-queue"
+          "https://samedqueue-app.onrender.com/api/queue/current-queue"
         );
         setQueue(response.data);
         setLoading(false);

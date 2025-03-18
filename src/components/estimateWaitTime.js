@@ -10,7 +10,8 @@ const EstimateWaitTime = () => {
     const fetchWaitTime = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/queue/estimate-wait-time"
+          // "http://localhost:5000/api/queue/estimate-wait-time"
+          "https://samedqueue-app.onrender.com/api/queue/estimate-wait-time",
         );
         setWaitTime(response.data.waitTime);
         setLoading(false);

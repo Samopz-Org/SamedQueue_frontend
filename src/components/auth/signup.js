@@ -16,9 +16,9 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        // "http://localhost:3001/api/users/signup",
-        "http://localhost:5000/api/auth/signup",
-        // "https://samedqueue.onrender.com/api/users/signup",
+        // "http://localhost:5000/api/auth/signup",
+        "https://samedqueue-app.onrender.com/api/auth/signup",
+        
         {
           username,
           email,

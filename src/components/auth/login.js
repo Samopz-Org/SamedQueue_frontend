@@ -16,9 +16,8 @@ const Login = ({ setAuthenticated }) => {
 
     try {
       const response = await axios.post(
-        // "http://localhost:3001/api/users/login",
-        "http://localhost:5000/api/auth/login",
-        // "https://samedqueue.onrender.com/api/users/login",
+        // "http://localhost:5000/api/auth/login",
+        "https://samedqueue-app.onrender.com/api/auth/login",
 
         {
           email,

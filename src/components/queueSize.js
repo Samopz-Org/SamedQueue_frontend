@@ -10,7 +10,8 @@ const QueueSize = () => {
     const fetchQueueSize = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/queue/queue-size"
+          // "http://localhost:5000/api/queue/queue-size"
+          "https://samedqueue-app.onrender.com/api/queue/queue-size",
         );
         setQueueSize(response.data.size);
         setLoading(false);

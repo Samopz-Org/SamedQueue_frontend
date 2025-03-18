@@ -102,7 +102,7 @@ function App() {
                       their individual needs and preferences. - Collaboration:
                       We believe that healthcare is a team effort, and we work
                       closely with our patients, their families, and other
-                      healthcare professionals to ensure seamless care.<br></br>{" "}
+                      healthcare professionals to ensure seamless care.<br></br>
                       What to Expect: When you visit our medical facility, you
                       can expect: - Prompt and courteous service: Our staff is
                       dedicated to ensuring that you receive prompt attention
@@ -127,7 +127,7 @@ function App() {
                     </p>
                   </div>
                   <p className="img-text">
-                    Do Not Ignore Early Sign of Your Health Symptoms{" "}
+                    Do Not Ignore Early Sign of Your Health Symptoms
                   </p>
                   <img className="img" src={patImage} alt="doctor" />
 

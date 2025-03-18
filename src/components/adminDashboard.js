@@ -7,7 +7,7 @@ import logo from "../logo.svg";
 const AdminDashboard = () => {
   return (
     <div>
-      <div className="admdash1">
+      <div className="admdash">
         <a className="App-link" href="/" target="_self">
           <div>
             <img src={logo} className="App-logo" alt="logo" />
@@ -15,7 +15,7 @@ const AdminDashboard = () => {
         </a>
         <h4>Click on the "logo" to Sign-Out</h4>
 
-        <h2 className="admdash">Doctor Dashboard</h2>
+        <h2 className="admdash1">Doctor Dashboard</h2>
         <h3>Welcome, Doctor!</h3>
         <div className="component-group">
           <div className="component">

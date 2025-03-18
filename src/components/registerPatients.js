@@ -17,7 +17,10 @@ const RegisterPatient = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/patients", {
+      const response = await axios.post(
+        // "http://localhost:5000/api/patients",
+        "https://samedqueue-app.onrender.com/api/patients",
+        {
         name,
         email,
         age,
