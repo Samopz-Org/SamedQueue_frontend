@@ -149,8 +149,7 @@ function App() {
                   </p>
                   {/* <img className="img" src={patImage} alt="doctor" /> */}
                   <p className="img-text">
-                    Book Your Appointment with Your Doctor To Address Your
-                    Symptoms Early!
+                    Book Appointment with us To Address Your Symptoms Early!
                   </p>
                   {/* <img className="img" src={media3} alt="doctor" /> */}
                 </div>
