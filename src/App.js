@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
@@ -10,32 +10,39 @@ import PatientDashboard from "./components/patientDashboard";
 import ADHDAssessment from "./components/ADHDAssessmt";
 import ADHDResults from "./components/ADHDResults";
 import logo from "./logo.svg";
-import media from "./components/media/patDocImage.jpeg";
-import media2 from "./components/media/docImage2.jpeg";
-import media3 from "./components/media/patImage.jpeg";
-import patImage from "./components/media/patImage2.jpeg";
+// import media from "./components/media/patDocImage.jpeg";
+// import media2 from "./components/media/docImage2.jpeg";
+// import media3 from "./components/media/patImage.jpeg";
+// import patImage from "./components/media/patImage2.jpeg";
 import "./App.css";
 
 function App() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   return (
     <Router>
       <div className="App">
         <nav className="navbar">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-          <Link to="/signup" className="nav-link">
-            Signup
-          </Link>
-          <Link to="/login" className="nav-link">
-            Login
-          </Link>
-          <Link to="/register-patient" className="nav-link">
-            Register Patient
-          </Link>
-          <Link to="/queue" className="nav-link">
-            Queue
-          </Link>
+          <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
+            <Link to="/" className="nav-link" onClick={toggleNav}>
+              Home
+            </Link>
+            <Link to="/signup" className="nav-link" onClick={toggleNav}>
+              Signup
+            </Link>
+            <Link to="/login" className="nav-link" onClick={toggleNav}>
+              Login
+            </Link>
+          </div>
+          <div className="nav-toggle" onClick={toggleNav}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
         </nav>
         <Routes>
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
@@ -68,20 +75,20 @@ function App() {
               Sound Health is Our Pride @ Samopz' Clinic!
             </h4>
             <div className="container">
-              <div className="auth">
+              {/* <div className="auth">
                 <Signup />
               </div>
               <div className="auth">
                 <Login />
-              </div>
+              </div> */}
               <div className="media">
                 <div>
                   <p className="img-text">
                     Welcome to Our Medical Family, Our Doctors Are Ready To
                     Serve You Better
                   </p>
-                  <img className="img" src={media} alt="Doctor with patient" />
-                  <img className="img" src={media2} alt="Doctor" />
+                  {/* <img className="img" src={media} alt="Doctor with patient" /> */}
+                  {/* <img className="img" src={media2} alt="Doctor" /> */}
                   <div className="blog-post">
                     <p>
                       As we open our doors to welcome you to our medical
@@ -140,12 +147,12 @@ function App() {
                   <p className="img-text">
                     Do Not Ignore Early Sign of Your Health Symptoms
                   </p>
-                  <img className="img" src={patImage} alt="doctor" />
+                  {/* <img className="img" src={patImage} alt="doctor" /> */}
                   <p className="img-text">
                     Book Your Appointment with Your Doctor To Address Your
                     Symptoms Early!
                   </p>
-                  <img className="img" src={media3} alt="doctor" />
+                  {/* <img className="img" src={media3} alt="doctor" /> */}
                 </div>
               </div>
             </div>
