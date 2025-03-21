@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
 import RegisterPatient from "./components/registerPatients";
@@ -20,6 +20,23 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <nav className="navbar">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+          <Link to="/signup" className="nav-link">
+            Signup
+          </Link>
+          <Link to="/login" className="nav-link">
+            Login
+          </Link>
+          <Link to="/register-patient" className="nav-link">
+            Register Patient
+          </Link>
+          <Link to="/queue" className="nav-link">
+            Queue
+          </Link>
+        </nav>
         <Routes>
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
@@ -45,7 +62,7 @@ function App() {
           >
             <h4 className="animated-text">Powered By Samopz' Clinic</h4>
           </a>
-          <div>
+          <div className="content">
             <h4 className="animated-text">
               We Prioritize Your Health! (Book Your Appointment With Us!) Your
               Sound Health is Our Pride @ Samopz' Clinic!
@@ -124,7 +141,6 @@ function App() {
                     Do Not Ignore Early Sign of Your Health Symptoms
                   </p>
                   <img className="img" src={patImage} alt="doctor" />
-
                   <p className="img-text">
                     Book Your Appointment with Your Doctor To Address Your
                     Symptoms Early!
@@ -134,16 +150,21 @@ function App() {
               </div>
             </div>
           </div>
-
-          <a
-            className="App-link"
-            href="https://github.com/samopz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered By Samopz
-          </a>
         </header>
+        <footer className="App-footer">
+          <p>&copy; 2025 Samopz' Clinic. All rights reserved.</p>
+          <div className="footer-links">
+            <a href="/privacy-policy" className="footer-link">
+              Privacy Policy
+            </a>
+            <a href="/terms-of-service" className="footer-link">
+              Terms of Service
+            </a>
+            <a href="/contact-us" className="footer-link">
+              Contact Us
+            </a>
+          </div>
+        </footer>
       </div>
     </Router>
   );

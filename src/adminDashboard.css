@@ -1,0 +1,48 @@
+.admin-dashboard {
+  text-align: center;
+  padding: 20px;
+}
+
+.admin-header {
+  background-color: #13419c;
+  padding: 20px;
+  color: #fff;
+}
+
+.App-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.dashboard-title {
+  color: #333;
+  margin-top: 20px;
+}
+
+.component-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.component {
+  background-color: #f0f4f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+h3 {
+  color: #333;
+}
+
+.App-link {
+  color: #ffa806;
+  text-decoration: none;
+}
+
+.App-link:hover {
+  text-decoration: underline;
+}
