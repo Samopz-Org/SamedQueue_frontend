@@ -7,24 +7,20 @@ import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
 import AdminDashboard from "./components/adminDashboard";
 import PatientDashboard from "./components/patientDashboard";
+import ADHDAssessment from "./components/ADHDAssessmt";
+import ADHDResults from "./components/ADHDResults";
 import logo from "./logo.svg";
-import "./App.css";
 import media from "./components/media/patDocImage.jpeg";
 import media2 from "./components/media/docImage2.jpeg";
 import media3 from "./components/media/patImage.jpeg";
 import patImage from "./components/media/patImage2.jpeg";
-import ADHDAssessment from "./components/ADHDAssessmt";
-import ADHDResults from "./components/ADHDResults";
+import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          {/* <Route path="/admin-dashboard" element={<Navigate to="/admin-dashboard" />} /> */}
-          {/* <Route path="/home" element={<Navigate to="/Homepage" />} /> */}
-          {/* <Route path="/about" element={<Register />} /> */}
-          {/* <Route path="/contact" element={<Register />} /> */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/signup" element={<Signup />} />
@@ -38,7 +34,7 @@ function App() {
         <header className="App-header">
           <a className="App-link" href="/" target="_self">
             <div>
-              <img src={logo} className="App-logo" alt="logo" />
+              <img src={logo} className="App-logo" alt="Samopz Clinic Logo" />
             </div>
           </a>
           <a
@@ -61,18 +57,14 @@ function App() {
               <div className="auth">
                 <Login />
               </div>
-              {/* <div className="auth">
-                <ADHDAssessment />
-              </div> */}
               <div className="media">
                 <div>
                   <p className="img-text">
                     Welcome to Our Medical Family, Our Doctors Are Ready To
                     Serve You Better
                   </p>
-
-                  <img className="img" src={media} alt="doctor" />
-                  <img className="img" src={media2} alt="doctor" />
+                  <img className="img" src={media} alt="Doctor with patient" />
+                  <img className="img" src={media2} alt="Doctor" />
                   <div className="blog-post">
                     <p>
                       As we open our doors to welcome you to our medical
@@ -83,26 +75,28 @@ function App() {
                       medical services that cater to your unique needs. In this
                       blog, we'll introduce you to our team of experts and
                       highlight the values that drive our commitment to
-                      excellence. <br></br>Meet Our Team of Experts: Our team of
-                      doctors and healthcare professionals are highly trained
-                      and experienced in their respective fields. They are
+                      excellence. <br />
+                      Meet Our Team of Experts: Our team of doctors and
+                      healthcare professionals are highly trained and
+                      experienced in their respective fields. They are
                       passionate about delivering exceptional patient care and
                       are dedicated to staying up-to-date with the latest
                       medical advancements. From routine check-ups to complex
                       surgeries, our team is equipped to handle a wide range of
-                      medical needs.<br></br> Our Values: At our medical
-                      facility, we are guided by a set of core values that shape
-                      our approach to patient care. These values include: -
-                      Compassion: We believe that every patient deserves to be
-                      treated with kindness, empathy, and respect. - Innovation:
-                      We are committed to staying at the forefront of medical
-                      advancements and using the latest technologies to improve
-                      patient outcomes. - Personalization: We understand that
-                      every patient is unique, and we tailor our care to meet
-                      their individual needs and preferences. - Collaboration:
-                      We believe that healthcare is a team effort, and we work
-                      closely with our patients, their families, and other
-                      healthcare professionals to ensure seamless care.<br></br>
+                      medical needs. <br />
+                      Our Values: At our medical facility, we are guided by a
+                      set of core values that shape our approach to patient
+                      care. These values include: - Compassion: We believe that
+                      every patient deserves to be treated with kindness,
+                      empathy, and respect. - Innovation: We are committed to
+                      staying at the forefront of medical advancements and using
+                      the latest technologies to improve patient outcomes. -
+                      Personalization: We understand that every patient is
+                      unique, and we tailor our care to meet their individual
+                      needs and preferences. - Collaboration: We believe that
+                      healthcare is a team effort, and we work closely with our
+                      patients, their families, and other healthcare
+                      professionals to ensure seamless care. <br />
                       What to Expect: When you visit our medical facility, you
                       can expect: - Prompt and courteous service: Our staff is
                       dedicated to ensuring that you receive prompt attention

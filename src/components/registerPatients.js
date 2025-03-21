@@ -26,7 +26,7 @@ const RegisterPatient = () => {
         age,
         symptoms,
       });
-      setMessage(response.data.result); // Extract the result property
+      setMessage(response.data.message); // Extract the result property
     } catch (error) {
       console.error(
         "Error registering patient:",

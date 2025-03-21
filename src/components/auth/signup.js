@@ -26,7 +26,7 @@ const Signup = () => {
         }
       );
       setMessage(
-        "Registration successful. Go Ahead to 'Log in' with Your Newly 'Created Account Details'!",
+        "Registration successful. Go Ahead to 'Log in' with Your 'Email & Password'!",
         response
       );
     } catch (error) {

@@ -13,7 +13,7 @@ const QueueSize = () => {
           // "http://localhost:5000/api/queue/queue-size"
           "https://samedqueue-app.onrender.com/api/queue/queue-size",
         );
-        setQueueSize(response.data.size);
+        setQueueSize(response.data.queueSize);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching queue size", error);
