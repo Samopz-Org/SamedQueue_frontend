@@ -3,7 +3,7 @@ import RegisterPatient from "./registerPatients";
 import Queue from "./queue";
 import UpdatePatient from "./updatePatients";
 // import logo from "../logo.svg";
-import "../adminDashboard.css";
+import "../styling/adminDashboard.css";
 
 const AdminDashboard = () => {
   return (

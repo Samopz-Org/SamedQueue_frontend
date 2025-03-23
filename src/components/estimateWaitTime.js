@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../styling/estimateWaitTime.css";
 
 const EstimateWaitTime = () => {
-  const [waitTime, setWaitTime] = useState(0);
+  const [waitTime, setWaitTime] = useState({ hours: 0, minutes: 0 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -34,9 +35,11 @@ const EstimateWaitTime = () => {
   }
 
   return (
-    <div>
+    <div className="estimate-wait-time">
       <h3>Estimated Wait Time</h3>
-      <p>{waitTime} minutes</p>
+      <p>
+        {waitTime.hours} hours, {waitTime.minutes} minutes
+      </p>
     </div>
   );
 };

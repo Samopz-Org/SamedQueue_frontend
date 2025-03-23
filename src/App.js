@@ -14,7 +14,7 @@ import logo from "./logo.svg";
 // import media2 from "./components/media/docImage2.jpeg";
 // import media3 from "./components/media/patImage.jpeg";
 // import patImage from "./components/media/patImage2.jpeg";
-import "./App.css";
+import "./styling/App.css";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);

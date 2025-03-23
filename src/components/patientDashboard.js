@@ -4,7 +4,7 @@ import EstimateWaitTime from "./estimateWaitTime";
 import QueueSize from "./queueSize";
 import ADHDAssessment from "./ADHDAssessmt";
 // import logo from "../logo.svg";
-import "../patientDashboard.css";
+import "../styling/patientDashboard.css";
 
 const PatientDashboard = () => {
   return (
