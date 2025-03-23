@@ -19,7 +19,7 @@ import ADHDResults from "./components/ADHDResults";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [userName, setUserName] = useState(""); // Updated to be dynamic
+  const [username, setUserName] = useState(""); // Updated to be dynamic
   const [authenticated, setAuthenticated] = useState(false);
 
   const toggleNav = () => {
@@ -44,24 +44,6 @@ function App() {
                 </Link>
               </>
             )}
-            {/* {authenticated && (
-              <>
-                <Link
-                  to="/admin-dashboard"
-                  className="nav-link"
-                  onClick={toggleNav}
-                >
-                  Admin Dashboard
-                </Link>
-                <Link
-                  to="/patient-dashboard"
-                  className="nav-link"
-                  onClick={toggleNav}
-                >
-                  Patient Dashboard
-                </Link>
-              </>
-            )} */}
           </div>
           <div className="nav-toggle" onClick={toggleNav}>
             <span className="bar"></span>
@@ -93,7 +75,7 @@ function App() {
             element={
               authenticated ? (
                 <AdminDashboard
-                  userName={userName}
+                  username={username}
                   setAuthenticated={setAuthenticated}
                 />
               ) : (
@@ -106,7 +88,7 @@ function App() {
             element={
               authenticated ? (
                 <PatientDashboard
-                  userName={userName}
+                  username={username}
                   setAuthenticated={setAuthenticated}
                 />
               ) : (

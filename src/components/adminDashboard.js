@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RegisterPatient from "./registerPatients";
 import Queue from "./queue";
 import UpdatePatient from "./updatePatients";
@@ -6,6 +6,10 @@ import logo from "../logo.svg";
 import "../styling/adminDashboard.css";
 
 const AdminDashboard = ({ username, setAuthenticated }) => {
+  useEffect(() => {
+    console.log("AdminDashboard username:", username);
+  }, [username]);
+
   const handleSignOut = () => {
     if (window.confirm("Are you sure you want to sign out?")) {
       setAuthenticated(false);
@@ -30,7 +34,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
       </header>
       <main className="admin-main">
         <h2 className="dashboard-title">Doctor Dashboard</h2>
-        <h3>Welcome, {username}!</h3>
+        <h3>Welcome, Doctor {username}!</h3>
         <div className="component-group">
           <div className="component">
             <Queue />
