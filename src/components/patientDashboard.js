@@ -3,23 +3,28 @@ import RegisterPatient from "./registerPatients";
 import EstimateWaitTime from "./estimateWaitTime";
 import QueueSize from "./queueSize";
 import ADHDAssessment from "./ADHDAssessmt";
-// import logo from "../logo.svg";
+import logo from "../logo.svg";
 import "../styling/patientDashboard.css";
 
-const PatientDashboard = () => {
+const PatientDashboard = ({ userName, setAuthenticated }) => {
+  const handleSignOut = () => {
+    setAuthenticated(false);
+    // Additional sign-out logic if needed
+  };
+
   return (
     <div className="patient-dashboard">
-      {/* <header className="patient-header">
-        <a className="App-link" href="/" target="_self">
+      <header className="patient-header">
+        <a className="App-link" href="/" onClick={handleSignOut}>
           <div>
             <img src={logo} className="App-logo" alt="Samopz Clinic Logo" />
           </div>
         </a>
         <h4>Click on the "logo" to Sign-Out</h4>
-      </header> */}
+      </header>
       <main className="patient-main">
         <h1 className="dashboard-title">Patient Dashboard</h1>
-        <h3>Welcome, Patient!</h3>
+        <h3>Welcome, {userName}!</h3>
         <div className="component-group">
           <div className="component">
             <QueueSize />

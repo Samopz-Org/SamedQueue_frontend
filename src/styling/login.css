@@ -1,0 +1,36 @@
+.login-container {
+  text-align: center;
+  padding: 20px;
+}
+
+label {
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  display: inline-block;
+  height: 40px;
+  width: 150px;
+  border-radius: 20px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

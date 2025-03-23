@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  Navigate,
+} from "react-router-dom";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
+import Home from "./components/auth/home";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
@@ -10,14 +17,12 @@ import PatientDashboard from "./components/patientDashboard";
 import ADHDAssessment from "./components/ADHDAssessmt";
 import ADHDResults from "./components/ADHDResults";
 import logo from "./logo.svg";
-// import media from "./components/media/patDocImage.jpeg";
-// import media2 from "./components/media/docImage2.jpeg";
-// import media3 from "./components/media/patImage.jpeg";
-// import patImage from "./components/media/patImage2.jpeg";
 import "./styling/App.css";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [userName, setUserName] = useState(""); // Updated to be dynamic
+  const [authenticated, setAuthenticated] = useState(false);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -31,12 +36,34 @@ function App() {
             <Link to="/" className="nav-link" onClick={toggleNav}>
               Home
             </Link>
-            <Link to="/signup" className="nav-link" onClick={toggleNav}>
-              Signup
-            </Link>
-            <Link to="/login" className="nav-link" onClick={toggleNav}>
-              Login
-            </Link>
+            {!authenticated && (
+              <>
+                <Link to="/signup" className="nav-link" onClick={toggleNav}>
+                  Signup
+                </Link>
+                <Link to="/login" className="nav-link" onClick={toggleNav}>
+                  Login
+                </Link>
+              </>
+            )}
+            {authenticated && (
+              <>
+                <Link
+                  to="/admin-dashboard"
+                  className="nav-link"
+                  onClick={toggleNav}
+                >
+                  Admin Dashboard
+                </Link>
+                <Link
+                  to="/patient-dashboard"
+                  className="nav-link"
+                  onClick={toggleNav}
+                >
+                  Patient Dashboard
+                </Link>
+              </>
+            )}
           </div>
           <div className="nav-toggle" onClick={toggleNav}>
             <span className="bar"></span>
@@ -45,15 +72,76 @@ function App() {
           </div>
         </nav>
         <Routes>
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/patient-dashboard" element={<PatientDashboard />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register-patient" element={<RegisterPatient />} />
-          <Route path="/queue" element={<Queue />} />
-          <Route path="/update-patient" element={<UpdatePatient />} />
-          <Route path="/adhd-assessment" element={<ADHDAssessment />} />
-          <Route path="/adhd-results" element={<ADHDResults />} />
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/signup"
+            element={!authenticated ? <Signup /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/login"
+            element={
+              !authenticated ? (
+                <Login
+                  setAuthenticated={setAuthenticated}
+                  setUserName={setUserName}
+                />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+          <Route
+            path="/admin-dashboard"
+            element={
+              authenticated ? (
+                <AdminDashboard
+                  userName={userName}
+                  setAuthenticated={setAuthenticated}
+                />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/patient-dashboard"
+            element={
+              authenticated ? (
+                <PatientDashboard
+                  userName={userName}
+                  setAuthenticated={setAuthenticated}
+                />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/register-patient"
+            element={
+              authenticated ? <RegisterPatient /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/queue"
+            element={authenticated ? <Queue /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/update-patient"
+            element={
+              authenticated ? <UpdatePatient /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/adhd-assessment"
+            element={
+              authenticated ? <ADHDAssessment /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/adhd-results"
+            element={authenticated ? <ADHDResults /> : <Navigate to="/login" />}
+          />
         </Routes>
         <header className="App-header">
           <a className="App-link" href="/" target="_self">
@@ -149,7 +237,8 @@ function App() {
                   </p>
                   {/* <img className="img" src={patImage} alt="doctor" /> */}
                   <p className="img-text">
-                    Book Appointment with us To Address Your Symptoms Early!
+                    Book Your Appointment with Your Doctor To Address Your
+                    Symptoms Early!
                   </p>
                   {/* <img className="img" src={media3} alt="doctor" /> */}
                 </div>
