@@ -44,7 +44,7 @@ function App() {
                 </Link>
               </>
             )}
-            {authenticated && (
+            {/* {authenticated && (
               <>
                 <Link
                   to="/admin-dashboard"
@@ -61,7 +61,7 @@ function App() {
                   Patient Dashboard
                 </Link>
               </>
-            )}
+            )} */}
           </div>
           <div className="nav-toggle" onClick={toggleNav}>
             <span className="bar"></span>
