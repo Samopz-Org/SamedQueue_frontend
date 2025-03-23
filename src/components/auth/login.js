@@ -19,6 +19,7 @@ const Login = ({ setAuthenticated, setUserName }) => {
       const response = await axios.post(
         // "http://localhost:5000/api/auth/login",
         "https://samedqueue-app.onrender.com/api/auth/login",
+
         {
           email,
           password,
@@ -28,11 +29,11 @@ const Login = ({ setAuthenticated, setUserName }) => {
 
       // Check user role and navigate to the appropriate dashboard
       if (response.data.user.role === "admin") {
-        setUserName(response.data.user.name);
+        setUserName(response.data.user.username);
         setAuthenticated(true);
         navigate("/admin-dashboard");
       } else if (response.data.user.role === "patient") {
-        setUserName(response.data.user.name);
+        setUserName(response.data.user.username);
         setAuthenticated(true);
         navigate("/patient-dashboard");
       } else {
@@ -80,7 +81,11 @@ const Login = ({ setAuthenticated, setUserName }) => {
           {loading ? "Logging in..." : "Log in"}
         </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && (
+        <p style={{ color: "red" }} aria-live="polite">
+          {error}
+        </p>
+      )}
     </div>
   );
 };

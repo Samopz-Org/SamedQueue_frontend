@@ -6,16 +6,23 @@ import ADHDAssessment from "./ADHDAssessmt";
 import logo from "../logo.svg";
 import "../styling/patientDashboard.css";
 
-const PatientDashboard = ({ userName, setAuthenticated }) => {
+const PatientDashboard = ({ username, setAuthenticated }) => {
   const handleSignOut = () => {
-    setAuthenticated(false);
-    // Additional sign-out logic if needed
+    if (window.confirm("Are you sure you want to sign out?")) {
+      setAuthenticated(false);
+      // Additional sign-out logic if needed
+    }
   };
 
   return (
     <div className="patient-dashboard">
       <header className="patient-header">
-        <a className="App-link" href="/" onClick={handleSignOut}>
+        <a
+          className="App-link"
+          href="/"
+          onClick={handleSignOut}
+          aria-label="Sign out"
+        >
           <div>
             <img src={logo} className="App-logo" alt="Samopz Clinic Logo" />
           </div>
@@ -24,7 +31,7 @@ const PatientDashboard = ({ userName, setAuthenticated }) => {
       </header>
       <main className="patient-main">
         <h1 className="dashboard-title">Patient Dashboard</h1>
-        <h3>Welcome, {userName}!</h3>
+        <h3>Welcome, {username}!</h3>
         <div className="component-group">
           <div className="component">
             <QueueSize />

@@ -5,16 +5,23 @@ import UpdatePatient from "./updatePatients";
 import logo from "../logo.svg";
 import "../styling/adminDashboard.css";
 
-const AdminDashboard = ({ userName, setAuthenticated }) => {
+const AdminDashboard = ({ username, setAuthenticated }) => {
   const handleSignOut = () => {
-    setAuthenticated(false);
-    // Additional sign-out logic if needed
+    if (window.confirm("Are you sure you want to sign out?")) {
+      setAuthenticated(false);
+      // Additional sign-out logic if needed
+    }
   };
 
   return (
     <div className="admin-dashboard">
       <header className="admin-header">
-        <a className="App-link" href="/" onClick={handleSignOut}>
+        <a
+          className="App-link"
+          href="/"
+          onClick={handleSignOut}
+          aria-label="Sign out"
+        >
           <div>
             <img src={logo} className="App-logo" alt="Samopz Clinic Logo" />
           </div>
@@ -23,7 +30,7 @@ const AdminDashboard = ({ userName, setAuthenticated }) => {
       </header>
       <main className="admin-main">
         <h2 className="dashboard-title">Doctor Dashboard</h2>
-        <h3>Welcome, {userName}!</h3>
+        <h3>Welcome, {username}!</h3>
         <div className="component-group">
           <div className="component">
             <Queue />
