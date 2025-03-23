@@ -31,7 +31,7 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
       </header>
       <main className="patient-main">
         <h1 className="dashboard-title">Patient Dashboard</h1>
-        <h3>Welcome, {username}!</h3>
+        <h4>Welcome, {username}!</h4>
         <div className="component-group">
           <div className="component">
             <QueueSize />

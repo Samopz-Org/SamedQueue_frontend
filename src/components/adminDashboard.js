@@ -34,7 +34,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
       </header>
       <main className="admin-main">
         <h2 className="dashboard-title">Doctor Dashboard</h2>
-        <h3>Welcome, Doctor {username}!</h3>
+        <h4>Welcome, Doctor {username}!</h4>
         <div className="component-group">
           <div className="component">
             <Queue />
