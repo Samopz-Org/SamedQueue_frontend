@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,23 +6,29 @@ import {
   Link,
   Navigate,
 } from "react-router-dom";
-import Login from "./components/auth/login";
-import Signup from "./components/auth/signup";
-import Home from "./components/auth/home";
-import RegisterPatient from "./components/registerPatients";
-import Queue from "./components/queue";
-import UpdatePatient from "./components/updatePatients";
-import AdminDashboard from "./components/adminDashboard";
-import PatientDashboard from "./components/patientDashboard";
-import ADHDAssessment from "./components/ADHDAssessmt";
-import ADHDResults from "./components/ADHDResults";
-import PrivacyPolicy from "./components/ptc/privacypolicy";
-import TermsOfService from "./components/ptc/terms";
-import ContactUs from "./components/ptc/contactUs";
+
+// Lazy-loaded components
+const Login = lazy(() => import("./components/auth/login"));
+const Signup = lazy(() => import("./components/auth/signup"));
+const Home = lazy(() => import("./components/auth/home"));
+const RegisterPatient = lazy(() => import("./components/registerPatients"));
+const Queue = lazy(() => import("./components/queue"));
+const UpdatePatient = lazy(() => import("./components/updatePatients"));
+const AdminDashboard = lazy(() => import("./components/adminDashboard"));
+const PatientDashboard = lazy(() => import("./components/patientDashboard"));
+const ADHDAssessment = lazy(() => import("./components/ADHDAssessmt"));
+const ADHDResults = lazy(() => import("./components/ADHDResults"));
+const PrivacyPolicy = lazy(() => import("./components/ptc/privacypolicy"));
+const TermsOfService = lazy(() => import("./components/ptc/terms"));
+const ContactUs = lazy(() => import("./components/ptc/contactUs"));
+
+const ProtectedRoute = ({ authenticated, children }) => {
+  return authenticated ? children : <Navigate to="/login" />;
+};
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [username, setUserName] = useState(""); // Updated to be dynamic
+  const [username, setUserName] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
 
   const toggleNav = () => {
@@ -32,6 +38,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        {/* Navigation Bar */}
         <nav className="navbar">
           <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
             <Link to="/" className="nav-link" onClick={toggleNav}>
@@ -67,81 +74,96 @@ function App() {
             <span className="bar"></span>
           </div>
         </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/signup"
-            element={!authenticated ? <Signup /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/login"
-            element={
-              !authenticated ? (
-                <Login
-                  setAuthenticated={setAuthenticated}
-                  setUserName={setUserName}
-                />
-              ) : (
-                <Navigate to="/" />
-              )
-            }
-          />
-          <Route
-            path="/admin-dashboard"
-            element={
-              authenticated ? (
-                <AdminDashboard
-                  username={username}
-                  setAuthenticated={setAuthenticated}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-          <Route
-            path="/patient-dashboard"
-            element={
-              authenticated ? (
-                <PatientDashboard
-                  username={username}
-                  setAuthenticated={setAuthenticated}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-          <Route
-            path="/register-patient"
-            element={
-              authenticated ? <RegisterPatient /> : <Navigate to="/login" />
-            }
-          />
-          <Route
-            path="/queue"
-            element={authenticated ? <Queue /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/update-patient"
-            element={
-              authenticated ? <UpdatePatient /> : <Navigate to="/login" />
-            }
-          />
-          <Route
-            path="/adhd-assessment"
-            element={
-              authenticated ? <ADHDAssessment /> : <Navigate to="/login" />
-            }
-          />
-          <Route
-            path="/adhd-results"
-            element={authenticated ? <ADHDResults /> : <Navigate to="/login" />}
-          />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-        </Routes>
+
+        {/* Routes */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/signup"
+              element={!authenticated ? <Signup /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/login"
+              element={
+                !authenticated ? (
+                  <Login
+                    setAuthenticated={setAuthenticated}
+                    setUserName={setUserName}
+                  />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
+            <Route
+              path="/admin-dashboard"
+              element={
+                <ProtectedRoute authenticated={authenticated}>
+                  <AdminDashboard
+                    username={username}
+                    setAuthenticated={setAuthenticated}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/patient-dashboard"
+              element={
+                <ProtectedRoute authenticated={authenticated}>
+                  <PatientDashboard
+                    username={username}
+                    setAuthenticated={setAuthenticated}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/register-patient"
+              element={
+                <ProtectedRoute authenticated={authenticated}>
+                  <RegisterPatient />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/queue"
+              element={
+                <ProtectedRoute authenticated={authenticated}>
+                  <Queue />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/update-patient"
+              element={
+                <ProtectedRoute authenticated={authenticated}>
+                  <UpdatePatient />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/adhd-assessment"
+              element={
+                <ProtectedRoute authenticated={authenticated}>
+                  <ADHDAssessment />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/adhd-results"
+              element={
+                <ProtectedRoute authenticated={authenticated}>
+                  <ADHDResults />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+          </Routes>
+        </Suspense>
       </div>
     </Router>
   );
