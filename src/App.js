@@ -16,6 +16,9 @@ import AdminDashboard from "./components/adminDashboard";
 import PatientDashboard from "./components/patientDashboard";
 import ADHDAssessment from "./components/ADHDAssessmt";
 import ADHDResults from "./components/ADHDResults";
+import PrivacyPolicy from "./components/ptc/privacypolicy";
+import TermsOfService from "./components/ptc/terms";
+import ContactUs from "./components/ptc/contactUs";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -44,6 +47,19 @@ function App() {
                 </Link>
               </>
             )}
+            <Link to="/privacy-policy" className="nav-link" onClick={toggleNav}>
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms-of-service"
+              className="nav-link"
+              onClick={toggleNav}
+            >
+              Terms of Service
+            </Link>
+            <Link to="/contact-us" className="nav-link" onClick={toggleNav}>
+              Contact Us
+            </Link>
           </div>
           <div className="nav-toggle" onClick={toggleNav}>
             <span className="bar"></span>
@@ -122,6 +138,9 @@ function App() {
             path="/adhd-results"
             element={authenticated ? <ADHDResults /> : <Navigate to="/login" />}
           />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
       </div>
     </Router>
