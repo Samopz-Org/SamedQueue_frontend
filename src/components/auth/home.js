@@ -8,7 +8,11 @@ const Home = () => {
       {/* Hero Section */}
       <header className="hero-section">
         <div className="hero-content">
-          <img src={logo} className="hero-logo" alt="Samopz Clinic Logo" />
+          <img
+            src={logo}
+            className="hero-logo"
+            alt="Samopz Clinic Logo - Your Health, Our Priority"
+          />
           <h1>Welcome to Samopz' Clinic</h1>
           <p>Your Health, Our Priority. Book Your Appointment Today!</p>
           <a href="/contact-us" className="cta-button">
@@ -67,11 +71,10 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="App-footer">
+      <footer className="home-footer">
         <p>
           &copy; {new Date().getFullYear()} Samopz' Clinic. All rights reserved.
         </p>
-        
         <div className="social-media">
           <a
             href="https://facebook.com"

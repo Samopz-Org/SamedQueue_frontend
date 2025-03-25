@@ -7,10 +7,10 @@
 .admin-header {
   background-color: #c1e7ec;
   padding: 20px;
-  color: #fff;
+  color: #333; /* Improved contrast */
 }
 
-.App-logo {
+.admin-logo {
   height: 10vmin;
   pointer-events: none;
 }
@@ -36,16 +36,12 @@
   width: 300px;
 }
 
-h3 {
-  color: #333;
-}
-
-.App-link {
+.admin-link {
   color: #ffa806;
   text-decoration: none;
 }
 
-.App-link:hover {
+.admin-link:hover {
   text-decoration: underline;
 }
 
@@ -54,5 +50,13 @@ h3 {
   .component {
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+
+  .admin-header {
+    padding: 15px; /* Reduce padding for smaller screens */
   }
 }

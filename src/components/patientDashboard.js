@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import RegisterPatient from "./registerPatients";
 import EstimateWaitTime from "./estimateWaitTime";
 import QueueSize from "./queueSize";
@@ -17,17 +18,17 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
   return (
     <div className="patient-dashboard">
       <header className="patient-header">
-        <a
-          className="App-link"
-          href="/"
-          onClick={handleSignOut}
-          aria-label="Sign out"
-        >
-          <div>
-            <img src={logo} className="App-logo" alt="Samopz Clinic Logo" />
-          </div>
-        </a>
-        <h4>Click on the "logo" to Sign-Out</h4>
+        <div>
+          <img
+            src={logo}
+            className="patient-logo"
+            alt="Samopz Clinic Logo - Click to Sign Out"
+            onClick={handleSignOut}
+          />
+        </div>
+        <button onClick={handleSignOut} className="sign-out-button">
+          Sign Out
+        </button>
       </header>
       <main className="patient-main">
         <h1 className="dashboard-title">Patient Dashboard</h1>
@@ -49,6 +50,11 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
       </main>
     </div>
   );
+};
+
+PatientDashboard.propTypes = {
+  username: PropTypes.string.isRequired,
+  setAuthenticated: PropTypes.func.isRequired,
 };
 
 export default PatientDashboard;

@@ -7,10 +7,10 @@
 .patient-header {
   background-color: #e0b8e0;
   padding: 20px;
-  color: #fff;
+  color: #333; /* Improved contrast */
 }
 
-.App-logo {
+.patient-logo {
   height: 10vmin;
   pointer-events: none;
 }
@@ -36,16 +36,12 @@
   width: 300px;
 }
 
-h3 {
-  color: #333;
-}
-
-.App-link {
+.patient-link {
   color: #ffa806;
   text-decoration: none;
 }
 
-.App-link:hover {
+.patient-link:hover {
   text-decoration: underline;
 }
 
@@ -54,5 +50,13 @@ h3 {
   .component {
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+
+  .patient-header {
+    padding: 15px; /* Reduce padding for smaller screens */
   }
 }

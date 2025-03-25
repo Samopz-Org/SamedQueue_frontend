@@ -20,13 +20,9 @@ import PrivacyPolicy from "./components/ptc/privacypolicy";
 import TermsOfService from "./components/ptc/terms";
 import ContactUs from "./components/ptc/contactUs";
 
-const ProtectedRoute = ({ authenticated, children }) => {
-  return authenticated ? children : <Navigate to="/login" />;
-};
-
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [username, setUserName] = useState("");
+  const [username, setUserName] = useState(""); // Updated to be dynamic
   const [authenticated, setAuthenticated] = useState(false);
 
   const toggleNav = () => {
@@ -36,7 +32,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Navigation Bar */}
         <nav className="navbar">
           <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
             <Link to="/" className="nav-link" onClick={toggleNav}>
@@ -72,8 +67,6 @@ function App() {
             <span className="bar"></span>
           </div>
         </nav>
-
-        {/* Routes */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -96,69 +89,58 @@ function App() {
           <Route
             path="/admin-dashboard"
             element={
-              <ProtectedRoute authenticated={authenticated}>
+              authenticated ? (
                 <AdminDashboard
                   username={username}
                   setAuthenticated={setAuthenticated}
                 />
-              </ProtectedRoute>
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route
             path="/patient-dashboard"
             element={
-              <ProtectedRoute authenticated={authenticated}>
+              authenticated ? (
                 <PatientDashboard
                   username={username}
                   setAuthenticated={setAuthenticated}
                 />
-              </ProtectedRoute>
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route
             path="/register-patient"
             element={
-              <ProtectedRoute authenticated={authenticated}>
-                <RegisterPatient />
-              </ProtectedRoute>
+              authenticated ? <RegisterPatient /> : <Navigate to="/login" />
             }
           />
           <Route
             path="/queue"
-            element={
-              <ProtectedRoute authenticated={authenticated}>
-                <Queue />
-              </ProtectedRoute>
-            }
+            element={authenticated ? <Queue /> : <Navigate to="/login" />}
           />
           <Route
             path="/update-patient"
             element={
-              <ProtectedRoute authenticated={authenticated}>
-                <UpdatePatient />
-              </ProtectedRoute>
+              authenticated ? <UpdatePatient /> : <Navigate to="/login" />
             }
           />
           <Route
             path="/adhd-assessment"
             element={
-              <ProtectedRoute authenticated={authenticated}>
-                <ADHDAssessment />
-              </ProtectedRoute>
+              authenticated ? <ADHDAssessment /> : <Navigate to="/login" />
             }
           />
           <Route
             path="/adhd-results"
-            element={
-              <ProtectedRoute authenticated={authenticated}>
-                <ADHDResults />
-              </ProtectedRoute>
-            }
+            element={authenticated ? <ADHDResults /> : <Navigate to="/login" />}
           />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="*" element={<h1>404 - Page Not Found</h1>} />
         </Routes>
       </div>
     </Router>

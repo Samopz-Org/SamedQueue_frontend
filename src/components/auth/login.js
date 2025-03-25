@@ -14,6 +14,21 @@ const Login = ({ setAuthenticated, setUserName }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
+
+    // Basic validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
+
+    if (password.trim().length < 6) {
+      setError("Password must be at least 6 characters long.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -25,7 +40,8 @@ const Login = ({ setAuthenticated, setUserName }) => {
           password,
         }
       );
-      console.log("Login successfully", response.data.user);
+
+      console.log("Login successful", response.data.user);
 
       // Check user role and navigate to the appropriate dashboard
       if (response.data.user.role === "admin") {
@@ -37,13 +53,13 @@ const Login = ({ setAuthenticated, setUserName }) => {
         setAuthenticated(true);
         navigate("/patient-dashboard");
       } else {
-        setError("Invalid credentials");
+        setError("Invalid credentials.");
       }
     } catch (error) {
       setError(
-        "Error logging in: " + (error.response?.data?.message || error.message)
+        error.response?.data?.message || "An error occurred. Please try again."
       );
-      console.error("Error logging in", error);
+      console.error("Error logging in:", error);
     } finally {
       setLoading(false);
     }
@@ -51,29 +67,32 @@ const Login = ({ setAuthenticated, setUserName }) => {
 
   return (
     <div className="container">
+      <h2>Log In</h2>
       <p>Already have an account? Log in 👇!</p>
       <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="email">Email: </label>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
           <input
-            type="text"
-            placeholder="Enter Email"
+            type="email"
             id="email"
             name="email"
+            placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={loading}
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password: </label>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
-            placeholder="Enter Password"
             id="password"
             name="password"
+            placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            disabled={loading}
             required
           />
         </div>
@@ -82,7 +101,7 @@ const Login = ({ setAuthenticated, setUserName }) => {
         </button>
       </form>
       {error && (
-        <p style={{ color: "red" }} aria-live="polite">
+        <p className="error-message" aria-live="polite">
           {error}
         </p>
       )}
