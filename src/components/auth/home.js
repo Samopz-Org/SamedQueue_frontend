@@ -71,25 +71,7 @@ const Home = () => {
         <p>
           &copy; {new Date().getFullYear()} Samopz' Clinic. All rights reserved.
         </p>
-        <div className="footer-links">
-          <a
-            href="/privacy-policy"
-            className="footer-link"
-            aria-label="Privacy Policy"
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="/terms-of-service"
-            className="footer-link"
-            aria-label="Terms of Service"
-          >
-            Terms of Service
-          </a>
-          <a href="/contact-us" className="footer-link" aria-label="Contact Us">
-            Contact Us
-          </a>
-        </div>
+        
         <div className="social-media">
           <a
             href="https://facebook.com"
