@@ -50,7 +50,7 @@ const Login = ({ setAuthenticated, setUserName }) => {
   };
 
   return (
-    <div className="login-container">
+    <div className="container">
       <p>Already have an account? Log in 👇!</p>
       <form onSubmit={handleLogin}>
         <div>

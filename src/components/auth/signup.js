@@ -38,7 +38,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <p>Don't have an account? Create one 👇!</p>
       <form onSubmit={handleRegister}>
         <div>
