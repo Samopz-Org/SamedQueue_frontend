@@ -29,7 +29,7 @@
 /* Hero Section */
 .hero-section {
   background: url("../../assets/patDoc.jpeg") no-repeat center center/cover;
-  color: #fff;
+  color: #faf4e9;
   text-align: center;
   padding: 100px 20px;
 }
@@ -235,7 +235,8 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
+    background-color: #faf4e9;
+
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
