@@ -17,10 +17,8 @@ const RegisterPatient = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post(
-        // "http://localhost:5000/api/patients",
-        "https://samedqueue-app.onrender.com/api/patients",
-        {
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      const response = await axios.post(`${API_URL}/api/patients`, {
         name,
         email,
         age,
@@ -87,12 +85,6 @@ const RegisterPatient = () => {
         </button>
       </form>
       {message && <p>{message}</p>}
-      <div className="ADHDCheck">
-        You Think You Might Have Attention Deficit Hyperactivity Disorder?
-      </div>
-      <div className="ADHDCheck">
-        See Symptoms Checklist for Adult ADHD Below!
-      </div>
     </div>
   );
 };

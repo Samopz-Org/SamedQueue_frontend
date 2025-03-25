@@ -13,11 +13,10 @@ const UpdatePatient = () => {
     setLoading(true);
 
     try {
-      const response = await axios.put(
-        // `http://localhost:5000/api/patients/:${email}`,
-        `https://samedqueue-app.onrender.com/api/patients/:${email}`,
-        { symptoms }
-      );
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      const response = await axios.put(`${API_URL}/api/patients/:${email}`, {
+        symptoms,
+      });
       setMessage(response.data.message);
     } catch (error) {
       setMessage("Error updating patient: " + error.message);

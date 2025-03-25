@@ -12,9 +12,10 @@ const Queue = () => {
   useEffect(() => {
     const fetchQueue = async () => {
       try {
+        const API_URL =
+          process.env.REACT_APP_API_URL || "http://localhost:5000";
         const response = await axios.get(
-          // "http://localhost:5000/api/queue/current-queue"
-          "https://samedqueue-app.onrender.com/api/queue/current-queue"
+          `${API_URL}/api/queue/current-queue`
         );
         setQueue(response.data);
         setLoading(false);

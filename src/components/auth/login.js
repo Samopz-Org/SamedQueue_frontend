@@ -31,35 +31,32 @@ const Login = ({ setAuthenticated, setUserName }) => {
     }
 
     try {
-      const response = await axios.post(
-        // "http://localhost:5000/api/auth/login",
-        "https://samedqueue-app.onrender.com/api/auth/login",
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
+        email,
+        password,
+      });
 
-        {
-          email,
-          password,
-        }
-      );
+      // Extract user data
+      const { role, username } = response.data.user;
+      setUserName(username);
+      setAuthenticated(true);
 
-      console.log("Login successful", response.data.user);
-
-      // Check user role and navigate to the appropriate dashboard
-      if (response.data.user.role === "admin") {
-        setUserName(response.data.user.username);
-        setAuthenticated(true);
+      // Navigate based on role
+      if (role === "admin") {
         navigate("/admin-dashboard");
-      } else if (response.data.user.role === "patient") {
-        setUserName(response.data.user.username);
-        setAuthenticated(true);
+      } else if (role === "patient") {
         navigate("/patient-dashboard");
       } else {
-        setError("Invalid credentials.");
+        setError("Invalid user role.");
       }
     } catch (error) {
       setError(
-        error.response?.data?.message || "An error occurred. Please try again."
+        error.response?.data?.message ||
+          (error.request
+            ? "Network error. Please try again."
+            : "An unexpected error occurred.")
       );
-      console.error("Error logging in:", error);
     } finally {
       setLoading(false);
     }

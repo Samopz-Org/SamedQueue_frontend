@@ -12,11 +12,11 @@ const NextPatient = ({ queue, setQueue }) => {
   const handleNextPatient = async () => {
     console.log("Next Patient button clicked");
     setLoading(true);
-    try {
-      // Make an API call to remove the current patient from the queue
-      const response = await axios.post(
-        // "http://localhost:5000/api/queue/next-patient",
-        "https://samedqueue-app.onrender.com/api/queue/next-patient",
+   try {
+        const API_URL =
+          process.env.REACT_APP_API_URL || "http://localhost:5000";
+        const response = await axios.post(
+          `${API_URL}/api/queue/next-patient`,
         { id: nextPatient.id }
       );
       console.log("API response:", response);

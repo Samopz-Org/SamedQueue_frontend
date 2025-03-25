@@ -7,18 +7,17 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-  
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
       const response = await axios.post(
-        // "http://localhost:5000/api/auth/signup",
-        "https://samedqueue-app.onrender.com/api/auth/signup",
-        
+        `${API_URL}/api/auth/signup`,
+
         {
           username,
           email,

@@ -36,9 +36,8 @@ const ContactUs = () => {
     }
 
     try {
-      const response = await axios.post(
-        // "http://localhost:5000/api/contact",
-        "https://samedqueue-app.onrender.com/api/contact",
+          const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+          const response = await axios.post(`${API_URL}/api/contact`,
 
         {
           name,

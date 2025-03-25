@@ -10,9 +10,10 @@ const EstimateWaitTime = () => {
   useEffect(() => {
     const fetchWaitTime = async () => {
       try {
+        const API_URL =
+          process.env.REACT_APP_API_URL || "http://localhost:5000";
         const response = await axios.get(
-          // "http://localhost:5000/api/queue/estimate-wait-time"
-          "https://samedqueue-app.onrender.com/api/queue/estimate-wait-time",
+          `${API_URL}/api/queue/estimate-wait-time`
         );
         setWaitTime(response.data.waitTime);
         setLoading(false);
