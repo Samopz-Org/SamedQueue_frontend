@@ -9,6 +9,7 @@ import {
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
 import Home from "./components/auth/home";
+import StaffAttendance from "./components/staffAttendance";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
@@ -48,6 +49,13 @@ function App() {
                 </Link>
                 <Link to="/login" className="nav-link" onClick={toggleNav}>
                   Login
+                </Link>
+                <Link
+                  to="/staff-attendance"
+                  className="nav-link"
+                  onClick={toggleNav}
+                >
+                  Staff Attendance
                 </Link>
               </>
             )}
@@ -119,6 +127,10 @@ function App() {
                 }
               />
             }
+          />
+          <Route
+            path="/staff-attendance"
+            element={<ProtectedRoute element={<StaffAttendance />} />}
           />
           <Route
             path="/register-patient"

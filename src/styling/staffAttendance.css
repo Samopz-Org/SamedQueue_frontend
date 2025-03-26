@@ -1,0 +1,89 @@
+.staff-attendance {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.add-record,
+.filter-records {
+  margin-bottom: 20px;
+}
+
+.add-record input,
+.filter-records input,
+.add-record select {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.add-record button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-record button:hover {
+  background-color: #0056b3;
+}
+
+.add-record button:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+.attendance-records table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attendance-records th,
+.attendance-records td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.attendance-records th {
+  background-color: #f4f4f4;
+}
+
+.attendance-records tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.attendance-records td:nth-child(3),
+.attendance-records td:nth-child(4) {
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .attendance-records table {
+    font-size: 14px;
+  }
+
+  .add-record,
+  .filter-records {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .add-record input,
+  .filter-records input,
+  .add-record select {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .attendance-records th,
+  .attendance-records td {
+    font-size: 12px;
+  }
+}

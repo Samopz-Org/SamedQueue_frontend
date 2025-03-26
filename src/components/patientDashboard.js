@@ -40,7 +40,7 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
               Queue Size
             </Link>
           </div>
-          <div className="component">
+          {/* <div className="component">
             <Link
               to="/estimate-wait-time"
               className="nav-link"
@@ -48,14 +48,14 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
             >
               Estimate Wait Time
             </Link>
-          </div>
+          </div> */}
           <div className="component">
             <Link
               to="/register-patient"
               className="nav-link"
               onClick={toggleNav}
             >
-              Register Patient
+              Book Appointment
             </Link>
           </div>
           <div className="component">
