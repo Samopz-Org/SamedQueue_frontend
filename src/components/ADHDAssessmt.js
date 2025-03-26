@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styling/ADHDAssmt.css";
 
 const questions = [
   "Do you often have trouble wrapping up the final details of a project, once the challenging parts have been done?",
