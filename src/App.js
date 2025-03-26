@@ -22,11 +22,15 @@ import ContactUs from "./components/ptc/contactUs";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [username, setUserName] = useState(""); // Updated to be dynamic
+  const [username, setUserName] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
+  };
+
+  const ProtectedRoute = ({ element }) => {
+    return authenticated ? element : <Navigate to="/login" />;
   };
 
   return (
@@ -61,11 +65,15 @@ function App() {
               Contact Us
             </Link>
           </div>
-          <div className="nav-toggle" onClick={toggleNav}>
+          <button
+            className="nav-toggle"
+            onClick={toggleNav}
+            aria-label="Toggle Navigation"
+          >
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
-          </div>
+          </button>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -89,58 +97,53 @@ function App() {
           <Route
             path="/admin-dashboard"
             element={
-              authenticated ? (
-                <AdminDashboard
-                  username={username}
-                  setAuthenticated={setAuthenticated}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
+              <ProtectedRoute
+                element={
+                  <AdminDashboard
+                    username={username}
+                    setAuthenticated={setAuthenticated}
+                  />
+                }
+              />
             }
           />
           <Route
             path="/patient-dashboard"
             element={
-              authenticated ? (
-                <PatientDashboard
-                  username={username}
-                  setAuthenticated={setAuthenticated}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
+              <ProtectedRoute
+                element={
+                  <PatientDashboard
+                    username={username}
+                    setAuthenticated={setAuthenticated}
+                  />
+                }
+              />
             }
           />
           <Route
             path="/register-patient"
-            element={
-              authenticated ? <RegisterPatient /> : <Navigate to="/login" />
-            }
+            element={<ProtectedRoute element={<RegisterPatient />} />}
           />
           <Route
             path="/queue"
-            element={authenticated ? <Queue /> : <Navigate to="/login" />}
+            element={<ProtectedRoute element={<Queue />} />}
           />
           <Route
             path="/update-patient"
-            element={
-              authenticated ? <UpdatePatient /> : <Navigate to="/login" />
-            }
+            element={<ProtectedRoute element={<UpdatePatient />} />}
           />
           <Route
             path="/adhd-assessment"
-            element={
-              authenticated ? <ADHDAssessment /> : <Navigate to="/login" />
-            }
+            element={<ProtectedRoute element={<ADHDAssessment />} />}
           />
           <Route
             path="/adhd-results"
-            element={authenticated ? <ADHDResults /> : <Navigate to="/login" />}
+            element={<ProtectedRoute element={<ADHDResults />} />}
           />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="*" element={<h1>404 - Page Not Found</h1>} />
         </Routes>
       </div>
     </Router>
