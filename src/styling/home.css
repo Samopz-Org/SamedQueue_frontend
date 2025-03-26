@@ -392,3 +392,101 @@ textarea {
     height: auto;
   }
 }
+
+/* Patient Dashboard Styles */
+.patient-dashboard {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for the dashboard */
+}
+
+.patient-header {
+  background-color: #005a9e; /* Medium blue for the header */
+  padding: 20px;
+  color: #ffffff; /* White text for contrast */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patient-logo {
+  height: 10vmin;
+  pointer-events: none;
+  align-items: center;
+}
+
+.sign-out-button {
+  background-color: #e63946; /* Red for sign-out button */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.sign-out-button:hover {
+  background-color: #d62828; /* Darker red on hover */
+}
+
+.patient-main {
+  padding: 20px;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  color: #333333; /* Dark gray for the title */
+  margin-bottom: 20px;
+}
+
+.component-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.component {
+  background-color: #ffffff; /* White background for components */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.component:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+  color: #0078d7; /* Blue for navigation links */
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design for Patient Dashboard */
+@media (max-width: 768px) {
+  .patient-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .component-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .component {
+    width: 100%;
+  }
+}

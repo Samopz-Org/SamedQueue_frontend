@@ -1,11 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import RegisterPatient from "./registerPatients";
-import EstimateWaitTime from "./estimateWaitTime";
-import QueueSize from "./queueSize";
-import ADHDAssessment from "./ADHDAssessmt";
+import { Link } from "react-router-dom";
 import logo from "../logo.svg";
-import "../styling/patientDashboard.css";
 
 const PatientDashboard = ({ username, setAuthenticated }) => {
   const handleSignOut = () => {
@@ -13,6 +9,11 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
       setAuthenticated(false);
       // Additional sign-out logic if needed
     }
+  };
+
+  const toggleNav = () => {
+    // Logic to toggle navigation (if applicable)
+    console.log("Navigation toggled");
   };
 
   return (
@@ -35,16 +36,36 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
         <h4>Welcome, {username}!</h4>
         <div className="component-group">
           <div className="component">
-            <QueueSize />
+            <Link to="/queue" className="nav-link" onClick={toggleNav}>
+              Queue Size
+            </Link>
           </div>
           <div className="component">
-            <EstimateWaitTime />
+            <Link
+              to="/estimate-wait-time"
+              className="nav-link"
+              onClick={toggleNav}
+            >
+              Estimate Wait Time
+            </Link>
           </div>
           <div className="component">
-            <RegisterPatient />
+            <Link
+              to="/register-patient"
+              className="nav-link"
+              onClick={toggleNav}
+            >
+              Register Patient
+            </Link>
           </div>
           <div className="component">
-            <ADHDAssessment />
+            <Link
+              to="/adhd-assessment"
+              className="nav-link"
+              onClick={toggleNav}
+            >
+              ADHD Assessment
+            </Link>
           </div>
         </div>
       </main>
