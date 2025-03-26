@@ -8,15 +8,16 @@ const EstimateWaitTime = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
     const fetchWaitTime = async () => {
       try {
-        const API_URL =
-          process.env.REACT_APP_API_URL || "http://localhost:5000";
         const response = await axios.get(
           `${API_URL}/api/queue/estimate-wait-time`
         );
         setWaitTime(response.data.waitTime);
         setLoading(false);
+        setError(null); // Clear any previous errors
       } catch (error) {
         console.error("Error fetching estimated wait time", error);
         setError("Failed to fetch estimated wait time");
@@ -24,7 +25,14 @@ const EstimateWaitTime = () => {
       }
     };
 
+    // Fetch wait time immediately
     fetchWaitTime();
+
+    // Fetch wait time every 3 minutes
+    const intervalId = setInterval(fetchWaitTime, 180000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   if (loading) {
