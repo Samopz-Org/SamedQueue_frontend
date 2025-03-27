@@ -17,7 +17,7 @@ a {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(248, 219, 168); /* Medium blue for navbar */
-  padding: 25px;
+  padding: 5px;
   flex-wrap: wrap;
 }
 
@@ -46,7 +46,7 @@ a {
 }
 
 .nav-toggle .bar {
-  height: 2px;
+  height: 5px;
   width: 15px;
   margin: 4px 0;
   transition: 0.4s;
