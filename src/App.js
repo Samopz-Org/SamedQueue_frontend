@@ -22,6 +22,7 @@ import ADHDResults from "./components/ADHDResults";
 import PrivacyPolicy from "./components/ptc/privacypolicy";
 import TermsOfService from "./components/ptc/terms";
 import ContactUs from "./components/ptc/contactUs";
+import "./styling/home.css";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
