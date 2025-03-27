@@ -16,6 +16,7 @@ const Home = ({ authenticated }) => {
 
   return (
     <div>
+      <div className="img-container">
       {/* Navigation */}
       <nav className="navbar">
         <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
@@ -82,7 +83,8 @@ const Home = ({ authenticated }) => {
             Get Started
           </a>
         </div>
-      </header>
+        </header>
+        </div>
 
       {/* Features Section */}
       <section className="features-section">

@@ -16,7 +16,6 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #005a9e; /* Medium blue for navbar */
   padding: 5px;
   flex-wrap: wrap;
 }
@@ -58,10 +57,14 @@ a {
   max-height: 300px;
 }
 
+.img-container {
+  background: url("../../assets/patDoc.jpeg") no-repeat center center/cover;
+}
+
+
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: url("../../assets/patDoc.jpeg") no-repeat center center/cover;
   color: #faf4e9;
   text-align: center;
   padding: 100px 20px;
