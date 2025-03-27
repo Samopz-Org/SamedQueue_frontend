@@ -16,8 +16,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #005a9e; /* Medium blue for navbar */
-  padding: 10px;
+  background-color: rgb(248, 219, 168); /* Medium blue for navbar */
+  padding: 5px;
   flex-wrap: wrap;
 }
 
@@ -30,10 +30,9 @@ a {
 }
 
 .nav-link {
-  color: #ffffff; /* White text for navbar links */
   text-decoration: none;
   margin: 0 15px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .nav-link:hover {
@@ -84,7 +83,7 @@ a {
 }
 
 .hero-logo {
-  height: 100px;
+  height: 70px;
   margin-bottom: 20px;
   animation: app-logo-spin infinite 5s linear; /* Apply rotation animation */
 }
