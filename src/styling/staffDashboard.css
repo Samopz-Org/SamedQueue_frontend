@@ -9,21 +9,9 @@
   margin-bottom: 20px;
 }
 
-/* .nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-} */
-
 .nav-links {
   display: flex;
   gap: 15px;
-}
-
-.nav-links.show {
-  display: block;
 }
 
 .nav-link {
@@ -35,6 +23,11 @@
 .nav-link:hover {
   text-decoration: underline;
   color: #0056b3;
+}
+
+.nav-link:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
 }
 
 .tasks-section {
@@ -56,17 +49,13 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  /* .nav-toggle {
-    display: block;
-  } */
-
-  .nav-links {
-    display: none;
+  .dashboard-nav {
     flex-direction: column;
-    gap: 10px;
+    align-items: flex-start;
   }
 
-  .nav-links.show {
-    display: flex;
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
   }
 }

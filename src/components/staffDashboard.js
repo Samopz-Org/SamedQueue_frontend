@@ -7,12 +7,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
   const [tasks, setTasks] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false); // Loading state
-  const [isNavOpen, setIsNavOpen] = useState(false); // Navigation toggle state
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
 
   const handleLogout = () => {
     setAuthenticated(false);
@@ -25,18 +20,15 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
       {loading && <p className="loading-message">Loading...</p>}
 
       {/* Navigation Links */}
-      <nav className={`dashboard-nav ${isNavOpen ? "open" : ""}`}>
-        <button className="nav-toggle" onClick={toggleNav} aria-label="Toggle Navigation">
-          ☰
-        </button>
-        <div className={`nav-links ${isNavOpen ? "show" : ""}`}>
-          <Link to="/add-attendance" className="nav-link" onClick={toggleNav}>
+      <nav className="dashboard-nav">
+        <div className="nav-links">
+          <Link to="/add-attendance" className="nav-link">
             Add Attendance
           </Link>
-          <Link to="/staff-attendance" className="nav-link" onClick={toggleNav}>
+          <Link to="/staff-attendance" className="nav-link">
             View Attendance
           </Link>
-          <Link to="/tasks" className="nav-link" onClick={toggleNav}>
+          <Link to="/tasks" className="nav-link">
             Manage Tasks
           </Link>
         </div>
@@ -64,7 +56,10 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
                         setErrorMessage(""); // Clear any previous error messages
                       })
                       .catch((error) => {
-                        console.error("Error marking task as completed:", error);
+                        console.error(
+                          "Error marking task as completed:",
+                          error
+                        );
                         setErrorMessage("Failed to mark task as completed.");
                       })
                       .finally(() => setLoading(false));
