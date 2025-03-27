@@ -16,7 +16,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px;
+  padding: 5px;
   flex-wrap: wrap;
 }
 
@@ -60,7 +60,6 @@ a {
 .img-container {
   background: url("../../assets/patDoc.jpeg") no-repeat center center/cover;
 }
-
 
 /* Hero Section */
 .hero-section {
