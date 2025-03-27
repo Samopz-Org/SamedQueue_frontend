@@ -56,9 +56,9 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav-toggle {
+  /* .nav-toggle {
     display: block;
-  }
+  } */
 
   .nav-links {
     display: none;
