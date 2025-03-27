@@ -16,7 +16,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 3px;
   flex-wrap: wrap;
 }
 
@@ -29,10 +29,10 @@ a {
 }
 
 .nav-link {
-  color: #ffffff; /* White text for navbar links */
+  color:  #e6ba2a;
   text-decoration: none;
   margin: 0 15px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .nav-link:hover {
@@ -48,7 +48,7 @@ a {
 .nav-toggle .bar {
   height: 3px;
   width: 25px;
-  background-color: #ffffff; /* White for toggle bars */
+  background-color:  #e6ba2a;
   margin: 4px 0;
   transition: 0.4s;
 }
