@@ -9,13 +9,13 @@
   margin-bottom: 20px;
 }
 
-.nav-toggle {
+/* .nav-toggle {
   display: none;
   background: none;
   border: none;
   font-size: 24px;
   cursor: pointer;
-}
+} */
 
 .nav-links {
   display: flex;
