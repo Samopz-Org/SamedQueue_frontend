@@ -196,15 +196,17 @@ a {
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
-    display: none;
-  }
-
-  .nav-links.open {
-    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
   }
 
   .nav-toggle {
     display: flex;
+  }
+
+  .nav-link {
+    margin: 10px 0;
   }
 
   .features-grid {
