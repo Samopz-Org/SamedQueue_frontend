@@ -99,30 +99,44 @@
   }
 
   .nav-link {
-    padding: 10px;
-    background-color: #f4f4f4;
+    padding: 12px 15px;
+    width: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
     border-radius: 5px;
   }
 
   .nav-link:hover {
-    background-color: #e0e0e0;
+    background-color: #e6e6e6;
   }
 
   .staff-dashboard h1 {
-    font-size: 24px;
+    font-size: 1.5em;
   }
 
   .tasks-section h2 {
-    font-size: 20px;
+    font-size: 1.2em;
+  }
+
+  .tasks-section ul li {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .tasks-section ul li span {
-    font-size: 16px;
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+
+  .tasks-section ul li button {
+    width: 100%;
+    text-align: center;
   }
 
   .logout-button {
-    width: 100%;
-    text-align: center;
-    font-size: 16px;
+    margin-top: 30px;
+    padding: 12px 20px;
+    font-size: 18px;
   }
 }
