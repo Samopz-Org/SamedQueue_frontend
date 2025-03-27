@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
   Link,
+  Routes,
   Navigate,
 } from "react-router-dom";
 import Login from "./components/auth/login";
@@ -22,65 +22,28 @@ import ADHDResults from "./components/ADHDResults";
 import PrivacyPolicy from "./components/ptc/privacypolicy";
 import TermsOfService from "./components/ptc/terms";
 import ContactUs from "./components/ptc/contactUs";
-import "./styling/home.css";
+
+const NotFound = () => (
+  <div>
+    <h1>404 - Page Not Found</h1>
+    <Link to="/">Go Back to Home</Link>
+  </div>
+);
+
+const ProtectedRoute = ({ element, authenticated }) => {
+  return authenticated ? element : <Navigate to="/login" />;
+};
 
 function App() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
   const [username, setUserName] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
-  const ProtectedRoute = ({ element }) => {
-    return authenticated ? element : <Navigate to="/login" />;
-  };
-
   return (
     <Router>
-      <div className="App">
-        <nav className="navbar">
-          <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
-            <Link to="/" className="nav-link" onClick={toggleNav}>
-              Home
-            </Link>
-            {!authenticated && (
-              <>
-                <Link to="/signup" className="nav-link" onClick={toggleNav}>
-                  Signup
-                </Link>
-                <Link to="/login" className="nav-link" onClick={toggleNav}>
-                  Login
-                </Link>
-              </>
-            )}
-            <Link to="/privacy-policy" className="nav-link" onClick={toggleNav}>
-              Privacy Policy
-            </Link>
-            <Link
-              to="/terms-of-service"
-              className="nav-link"
-              onClick={toggleNav}
-            >
-              Terms of Service
-            </Link>
-            <Link to="/contact-us" className="nav-link" onClick={toggleNav}>
-              Contact Us
-            </Link>
-          </div>
-          <button
-            className="nav-toggle"
-            onClick={toggleNav}
-            aria-label="Toggle Navigation"
-          >
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </button>
-        </nav>
+      <div>
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route
             path="/signup"
@@ -99,10 +62,16 @@ function App() {
               )
             }
           />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+
+          {/* Admin Routes */}
           <Route
             path="/admin-dashboard"
             element={
               <ProtectedRoute
+                authenticated={authenticated}
                 element={
                   <AdminDashboard
                     username={username}
@@ -112,10 +81,13 @@ function App() {
               />
             }
           />
+
+          {/* Staff Routes */}
           <Route
             path="/staff-dashboard"
             element={
               <ProtectedRoute
+                authenticated={authenticated}
                 element={
                   <StaffDashboard
                     username={username}
@@ -126,9 +98,30 @@ function App() {
             }
           />
           <Route
+            path="/staff-attendance"
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<StaffAttendance />}
+              />
+            }
+          />
+          <Route
+            path="/add-attendance"
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<AddAttendance API_URL={API_URL} />}
+              />
+            }
+          />
+
+          {/* Patient Routes */}
+          <Route
             path="/patient-dashboard"
             element={
               <ProtectedRoute
+                authenticated={authenticated}
                 element={
                   <PatientDashboard
                     username={username}
@@ -138,36 +131,54 @@ function App() {
               />
             }
           />
-          <Route path="/staff-attendance" element={<StaffAttendance />} />
-          <Route
-            path="/add-attendance"
-            element={<AddAttendance API_URL={API_URL} />}
-          />
-
           <Route
             path="/register-patient"
-            element={<ProtectedRoute element={<RegisterPatient />} />}
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<RegisterPatient />}
+              />
+            }
           />
           <Route
             path="/queue"
-            element={<ProtectedRoute element={<Queue />} />}
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<Queue />}
+              />
+            }
           />
           <Route
             path="/update-patient"
-            element={<ProtectedRoute element={<UpdatePatient />} />}
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<UpdatePatient />}
+              />
+            }
           />
           <Route
             path="/adhd-assessment"
-            element={<ProtectedRoute element={<ADHDAssessment />} />}
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<ADHDAssessment />}
+              />
+            }
           />
           <Route
             path="/adhd-results"
-            element={<ProtectedRoute element={<ADHDResults />} />}
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<ADHDResults />}
+              />
+            }
           />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+
+          {/* Fallback Route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
