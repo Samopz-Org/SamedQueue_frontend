@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import "../styling/staffAttendance.css";
 
@@ -9,26 +9,7 @@ const StaffAttendance = () => {
   const [loading, setLoading] = useState(false); // Loading state
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
-  useEffect(() => {
-    // Fetch all attendance records on component mount
-    setLoading(true);
-    axios
-      .get(`${API_URL}/api/attendance`)
-      .then((response) => {
-        setAttendanceRecords(response.data);
-        setErrorMessage(""); // Clear any previous error messages
-      })
-      .catch((error) => {
-        console.error("Error fetching attendance:", error);
-        setErrorMessage(
-          "Failed to fetch attendance records. Please try again."
-        );
-      })
-      .finally(() => {
-        setLoading(false); // Stop loading
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array to run only once on mount
+  // Empty dependency array to run only once on mount
 
   const handleFilterByDate = () => {
     if (!filterDate) {
