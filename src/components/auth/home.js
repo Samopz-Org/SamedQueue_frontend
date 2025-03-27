@@ -76,7 +76,7 @@ const Home = ({ authenticated }) => {
           <h1>Welcome to Samopz' Clinic</h1>
           <p>Your Health, Our Priority. Book Your Appointment Today!</p>
           <a
-            href="https://samedicqueue.onrender.com/contact-us"
+            href="/contact-us"
             className="cta-button"
           >
             Get Started
