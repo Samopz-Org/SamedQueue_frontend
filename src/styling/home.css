@@ -46,7 +46,7 @@ a {
 }
 
 .nav-toggle .bar {
-  height: 5px;
+  height: 15px;
   width: 18px;
   margin: 4px 0;
   transition: 0.4s;
