@@ -3,19 +3,16 @@
   font-family: Arial, sans-serif;
 }
 
-.add-record,
 .filter-records {
   margin-bottom: 20px;
 }
 
-.add-record input,
-.filter-records input,
-.add-record select {
+.filter-records input {
   margin-right: 10px;
   padding: 5px;
 }
 
-.add-record button {
+.filter-records button {
   padding: 5px 10px;
   background-color: #007bff;
   color: white;
@@ -23,13 +20,18 @@
   cursor: pointer;
 }
 
-.add-record button:hover {
+.filter-records button:hover {
   background-color: #0056b3;
 }
 
-.add-record button:focus {
+.filter-records button:focus {
   outline: 2px solid #0056b3;
   outline-offset: 2px;
+}
+
+.filter-records input:focus {
+  border: 2px solid #007bff;
+  outline: none;
 }
 
 .attendance-records table {
@@ -63,27 +65,79 @@
   margin-bottom: 20px;
 }
 
+/* Navigation Styling */
+.dashboard-nav {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .attendance-records table {
     font-size: 14px;
   }
 
-  .add-record,
   .filter-records {
     display: flex;
     flex-direction: column;
   }
 
-  .add-record input,
   .filter-records input,
-  .add-record select {
+  .filter-records button {
     margin-bottom: 10px;
     width: 100%;
   }
 
   .attendance-records th,
   .attendance-records td {
-    font-size: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .attendance-records {
+    overflow-x: auto;
+  }
+
+  .attendance-records table {
+    width: 100%;
+    min-width: 600px;
+  }
+
+  .dashboard-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-link {
+    text-align: center;
+  }
+
+  .filter-records input,
+  .filter-records button {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .error-message {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .attendance-records td:nth-child(3),
+  .attendance-records td:nth-child(4) {
+    text-align: center;
   }
 }

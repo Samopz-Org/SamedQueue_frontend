@@ -47,6 +47,8 @@ const Login = ({ setAuthenticated, setUserName }) => {
         navigate("/admin-dashboard");
       } else if (role === "patient") {
         navigate("/patient-dashboard");
+      } else if (role === "staff") {
+        navigate("/staff-dashboard");
       } else {
         setError("Invalid user role.");
       }

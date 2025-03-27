@@ -15,6 +15,7 @@ import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
 import AdminDashboard from "./components/adminDashboard";
+import StaffDashboard from "./components/staffDashboard";
 import PatientDashboard from "./components/patientDashboard";
 import ADHDAssessment from "./components/ADHDAssessmt";
 import ADHDResults from "./components/ADHDResults";
@@ -103,6 +104,19 @@ function App() {
               <ProtectedRoute
                 element={
                   <AdminDashboard
+                    username={username}
+                    setAuthenticated={setAuthenticated}
+                  />
+                }
+              />
+            }
+          />
+          <Route
+            path="/staff-dashboard"
+            element={
+              <ProtectedRoute
+                element={
+                  <StaffDashboard
                     username={username}
                     setAuthenticated={setAuthenticated}
                   />
