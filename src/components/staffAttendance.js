@@ -4,13 +4,6 @@ import "../styling/staffAttendance.css";
 
 const StaffAttendance = () => {
   const [attendanceRecords, setAttendanceRecords] = useState([]);
-  const [newRecord, setNewRecord] = useState({
-    staffId: "",
-    status: "Present",
-    checkInTime: "",
-    checkOutTime: "",
-    remarks: "",
-  });
   const [filterDate, setFilterDate] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false); // Loading state
@@ -36,41 +29,6 @@ const StaffAttendance = () => {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array to run only once on mount
-
-  const handleAddRecord = () => {
-    // Validate the new record
-    if (!newRecord.staffId || !newRecord.status) {
-      setErrorMessage("Staff ID and status are required.");
-      return;
-    }
-    if (new Date(newRecord.checkInTime) >= new Date(newRecord.checkOutTime)) {
-      setErrorMessage("Check-In Time must be before Check-Out Time.");
-      return;
-    }
-
-    // Add a new attendance record using Axios
-    setLoading(true);
-    axios
-      .post(`${API_URL}/api/attendance`, newRecord)
-      .then((response) => {
-        setAttendanceRecords([...attendanceRecords, response.data.attendance]);
-        setNewRecord({
-          staffId: "",
-          status: "Present",
-          checkInTime: "",
-          checkOutTime: "",
-          remarks: "",
-        });
-        setErrorMessage(""); // Clear any previous error messages
-      })
-      .catch((error) => {
-        console.error("Error adding record:", error);
-        setErrorMessage("Failed to add the record. Please try again.");
-      })
-      .finally(() => {
-        setLoading(false); // Stop loading
-      });
-  };
 
   const handleFilterByDate = () => {
     if (!filterDate) {
@@ -135,59 +93,6 @@ const StaffAttendance = () => {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       {loading && <p className="loading-message">Loading...</p>}{" "}
       {/* Loading Indicator */}
-      <div className="add-record">
-        <h3>Add Attendance</h3>
-        <input
-          type="text"
-          placeholder="Staff ID"
-          value={newRecord.staffId}
-          onChange={(e) =>
-            setNewRecord({ ...newRecord, staffId: e.target.value })
-          }
-          aria-label="Staff ID"
-        />
-        <select
-          value={newRecord.status}
-          onChange={(e) =>
-            setNewRecord({ ...newRecord, status: e.target.value })
-          }
-          aria-label="Status"
-        >
-          <option value="Present">Present</option>
-          <option value="Absent">Absent</option>
-          <option value="On Leave">On Leave</option>
-        </select>
-        <input
-          type="datetime-local"
-          placeholder="Check-In Time"
-          value={newRecord.checkInTime}
-          onChange={(e) =>
-            setNewRecord({ ...newRecord, checkInTime: e.target.value })
-          }
-          aria-label="Check-In Time"
-        />
-        <input
-          type="datetime-local"
-          placeholder="Check-Out Time"
-          value={newRecord.checkOutTime}
-          onChange={(e) =>
-            setNewRecord({ ...newRecord, checkOutTime: e.target.value })
-          }
-          aria-label="Check-Out Time"
-        />
-        <input
-          type="text"
-          placeholder="Remarks"
-          value={newRecord.remarks}
-          onChange={(e) =>
-            setNewRecord({ ...newRecord, remarks: e.target.value })
-          }
-          aria-label="Remarks"
-        />
-        <button onClick={handleAddRecord} disabled={loading}>
-          {loading ? "Adding..." : "Add Record"}
-        </button>
-      </div>
       {/* Filter Attendance Records */}
       <div className="filter-records">
         <h3>Filter Records</h3>
@@ -198,7 +103,7 @@ const StaffAttendance = () => {
           aria-label="Filter by Date"
         />
         <button onClick={handleFilterByDate} disabled={loading}>
-         {loading ? "Filtering..." : "Filter"}
+          {loading ? "Filtering..." : "Filter"}
         </button>
       </div>
       {/* Display Attendance Records */}

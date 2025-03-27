@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import StaffAttendance from "./staffAttendance";
+import AddAttendance from "./addAttendance";
 import RegisterPatient from "./registerPatients";
 import Queue from "./queue";
 import UpdatePatient from "./updatePatients";
@@ -35,9 +36,12 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
         </button>
       </header>
       <main className="admin-main">
-        <h2 className="dashboard-title">Doctor Dashboard</h2>
-        <h4>Welcome, Doctor {username}!</h4>
+        <h2 className="dashboard-title">Admin Dashboard</h2>
+        <h4>Welcome, Admin! {username}!</h4>
         <div className="component-group">
+          <div className="component">
+            <AddAttendance />
+          </div>
           <div className="component">
             <StaffAttendance />
           </div>

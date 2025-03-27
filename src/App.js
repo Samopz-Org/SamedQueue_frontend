@@ -10,6 +10,7 @@ import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
 import Home from "./components/auth/home";
 import StaffAttendance from "./components/staffAttendance";
+import AddAttendance from "./components/addAttendance";
 import RegisterPatient from "./components/registerPatients";
 import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
@@ -25,6 +26,7 @@ function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [username, setUserName] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -49,13 +51,6 @@ function App() {
                 </Link>
                 <Link to="/login" className="nav-link" onClick={toggleNav}>
                   Login
-                </Link>
-                <Link
-                  to="/staff-attendance"
-                  className="nav-link"
-                  onClick={toggleNav}
-                >
-                  Staff Attendance
                 </Link>
               </>
             )}
@@ -128,10 +123,12 @@ function App() {
               />
             }
           />
+          <Route path="/staff-attendance" element={<StaffAttendance />} />
           <Route
-            path="/staff-attendance"
-            element={<ProtectedRoute element={<StaffAttendance />} />}
+            path="/add-attendance"
+            element={<AddAttendance API_URL={API_URL} />}
           />
+
           <Route
             path="/register-patient"
             element={<ProtectedRoute element={<RegisterPatient />} />}
