@@ -42,7 +42,7 @@ a {
 .nav-toggle {
   display: none;
   flex-direction: column;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .nav-toggle .bar {
