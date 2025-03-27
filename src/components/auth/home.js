@@ -60,6 +60,9 @@ const Home = ({ authenticated }) => {
           onClick={toggleNav}
           aria-label="Toggle Navigation"
         >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </button>
       </nav>
 

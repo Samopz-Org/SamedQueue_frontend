@@ -45,7 +45,7 @@ a {
   cursor: pointer;
 }
 
-.nav-toggle .bar {
+.nav-toggle.bar {
   height: 3px;
   width: 25px;
   background-color:  #e6ba2a;
