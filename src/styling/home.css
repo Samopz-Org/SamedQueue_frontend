@@ -17,7 +17,7 @@ a {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(248, 219, 168); /* Medium blue for navbar */
-  padding: 5px;
+  padding: 25px;
   flex-wrap: wrap;
 }
 
