@@ -46,15 +46,14 @@ a {
 }
 
 .nav-toggle .bar {
-  height: 3px;
-  width: 25px;
-  background-color: #ffffff; /* White for toggle bars */
+  height: 2px;
+  width: 15px;
   margin: 4px 0;
   transition: 0.4s;
 }
 
 .nav-links.open {
-  max-height: 300px;
+  max-height: 200px;
 }
 
 /* Hero Section */
