@@ -16,8 +16,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(248, 219, 168);
-  padding: 5px;
+  background-color: #005a9e; /* Medium blue for navbar */
+  padding: 10px;
   flex-wrap: wrap;
 }
 
@@ -30,9 +30,10 @@ a {
 }
 
 .nav-link {
+  color: #ffffff; /* White text for navbar links */
   text-decoration: none;
   margin: 0 15px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .nav-link:hover {
@@ -46,8 +47,9 @@ a {
 }
 
 .nav-toggle .bar {
-  height: 15px;
-  width: 18px;
+  height: 3px;
+  width: 25px;
+  background-color: #ffffff; /* White for toggle bars */
   margin: 4px 0;
   transition: 0.4s;
 }
