@@ -1,57 +1,70 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../logo.svg";
 import "../../styling/home.css";
 
-const Home = () => {
+const Home = ({ authenticated }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-    const [authenticated] = useState(false);
-  
-  
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
+
+  const handleNavClick = () => {
+    setIsNavOpen(false);
+  };
+
   return (
     <div>
-       <nav className="navbar">
-                <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
-                  <Link to="/" className="nav-link" onClick={toggleNav}>
-                    Home
-                  </Link>
-                  {!authenticated && (
-                    <>
-                      <Link to="/signup" className="nav-link" onClick={toggleNav}>
-                        Signup
-                      </Link>
-                      <Link to="/login" className="nav-link" onClick={toggleNav}>
-                        Login
-                      </Link>
-                    </>
-                  )}
-                  <Link to="/privacy-policy" className="nav-link" onClick={toggleNav}>
-                    Privacy Policy
-                  </Link>
-                  <Link
-                    to="/terms-of-service"
-                    className="nav-link"
-                    onClick={toggleNav}
-                  >
-                    Terms of Service
-                  </Link>
-                  <Link to="/contact-us" className="nav-link" onClick={toggleNav}>
-                    Contact Us
-                  </Link>
-                </div>
-                <button
-                  className="nav-toggle"
-                  onClick={toggleNav}
-                  aria-label="Toggle Navigation"
-                >
-                  <span className="bar"></span>
-                  <span className="bar"></span>
-                  <span className="bar"></span>
-                </button>
-              </nav>
+      {/* Navigation */}
+      <nav className="navbar">
+        <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
+          <Link to="/" className="nav-link" onClick={handleNavClick}>
+            Home
+          </Link>
+          {!authenticated ? (
+            <>
+              <Link to="/signup" className="nav-link" onClick={handleNavClick}>
+                Signup
+              </Link>
+              <Link to="/login" className="nav-link" onClick={handleNavClick}>
+                Login
+              </Link>
+            </>
+          ) : (
+            <Link to="/dashboard" className="nav-link" onClick={handleNavClick}>
+              Dashboard
+            </Link>
+          )}
+          <Link
+            to="/privacy-policy"
+            className="nav-link"
+            onClick={handleNavClick}
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            to="/terms-of-service"
+            className="nav-link"
+            onClick={handleNavClick}
+          >
+            Terms of Service
+          </Link>
+          <Link to="/contact-us" className="nav-link" onClick={handleNavClick}>
+            Contact Us
+          </Link>
+        </div>
+        <button
+          className="nav-toggle"
+          onClick={toggleNav}
+          aria-label="Toggle Navigation"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+      </nav>
+
       {/* Hero Section */}
       <header className="hero-section">
         <div className="hero-content">
