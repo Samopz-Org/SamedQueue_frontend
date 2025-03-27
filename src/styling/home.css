@@ -29,6 +29,7 @@ a {
 }
 
 .nav-link {
+  background-color:goldenrod;
   color:  #e6ba2a;
   text-decoration: none;
   margin: 0 15px;
