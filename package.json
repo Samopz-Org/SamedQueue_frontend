@@ -17,18 +17,19 @@
     "react-router-dom": "^6.27.0",
     "react-scripts": "^5.0.1",
     "redux": "^5.0.1",
+    "serve": "^14.2.4",
     "web-vitals": "^2.1.4"
   },
- "engines": {
-  "node": "20.10.0",
-  "npm": ">=6.0.0"
-},
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "engines": {
+    "node": "20.10.0",
+    "npm": ">=6.0.0"
   },
+  "scripts": {
+  "start": "serve -s build",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
