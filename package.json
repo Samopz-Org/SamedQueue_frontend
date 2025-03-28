@@ -19,6 +19,10 @@
     "redux": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
+ "engines": {
+  "node": "20.10.0",
+  "npm": ">=6.0.0"
+},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
