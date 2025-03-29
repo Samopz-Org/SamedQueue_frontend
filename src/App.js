@@ -17,6 +17,7 @@ import UpdatePatient from "./components/updatePatients";
 import AdminDashboard from "./components/adminDashboard";
 import StaffDashboard from "./components/staffDashboard";
 import PatientDashboard from "./components/patientDashboard";
+import TaskManager from "./components/task";
 import ADHDAssessment from "./components/ADHDAssessmt";
 import ADHDResults from "./components/ADHDResults";
 import PrivacyPolicy from "./components/ptc/privacypolicy";
@@ -155,6 +156,15 @@ function App() {
               <ProtectedRoute
                 authenticated={authenticated}
                 element={<UpdatePatient />}
+              />
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<TaskManager />}
               />
             }
           />
