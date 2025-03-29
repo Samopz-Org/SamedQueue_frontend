@@ -17,74 +17,69 @@ const Home = ({ authenticated }) => {
   return (
     <div>
       <div className="img-container">
-      {/* Navigation */}
-      <nav className="navbar">
-        <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
-          <Link to="/" className="nav-link" onClick={handleNavClick}>
-            Home
-          </Link>
-          {!authenticated ? (
-            <>
-              <Link to="/signup" className="nav-link" onClick={handleNavClick}>
-                Signup
-              </Link>
-              <Link to="/login" className="nav-link" onClick={handleNavClick}>
-                Login
-              </Link>
-            </>
-          ) : (
-            <Link to="/dashboard" className="nav-link" onClick={handleNavClick}>
-              Dashboard
+        {/* Navigation */}
+        <nav className="navbar">
+          <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
+            <Link to="/" className="nav-link" onClick={handleNavClick}>
+              Home
             </Link>
-          )}
-          <Link
-            to="/privacy-policy"
-            className="nav-link"
-            onClick={handleNavClick}
+            {!authenticated ? (
+              <>
+                <Link
+                  to="/signup"
+                  className="nav-link"
+                  onClick={handleNavClick}
+                >
+                  Signup
+                </Link>
+                <Link to="/login" className="nav-link" onClick={handleNavClick}>
+                  Login
+                </Link>
+              </>
+            ) : (
+              <Link
+                to="/dashboard"
+                className="nav-link"
+                onClick={handleNavClick}
+              >
+                Dashboard
+              </Link>
+            )}
+            <Link
+              to="/contact-us"
+              className="nav-link"
+              onClick={handleNavClick}
+            >
+              Contact Us
+            </Link>
+          </div>
+          <div
+            className="nav-toggle"
+            onClick={toggleNav}
+            aria-label="Toggle Navigation"
           >
-            Privacy Policy
-          </Link>
-          <Link
-            to="/terms-of-service"
-            className="nav-link"
-            onClick={handleNavClick}
-          >
-            Terms of Service
-          </Link>
-          <Link to="/contact-us" className="nav-link" onClick={handleNavClick}>
-            Contact Us
-          </Link>
-        </div>
-        <button
-          className="nav-toggle"
-          onClick={toggleNav}
-          aria-label="Toggle Navigation"
-        >
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
-      </nav>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+        </nav>
 
-      {/* Hero Section */}
-      <header className="hero-section">
-        <div className="hero-content">
-          <img
-            src={logo}
-            className="hero-logo"
-            alt="Samopz Clinic Logo - Your Health, Our Priority"
-          />
-          <h1>Welcome to Samopz' Clinic</h1>
-          <p>Your Health, Our Priority. Book Your Appointment Today!</p>
-          <a
-            href="/contact-us"
-            className="cta-button"
-          >
-            Get Started
-          </a>
-        </div>
+        {/* Hero Section */}
+        <header className="hero-section">
+          <div className="hero-content">
+            <img
+              src={logo}
+              className="hero-logo"
+              alt="Samopz Clinic Logo - Your Health, Our Priority"
+            />
+            <h1>Welcome to Samopz' Clinic</h1>
+            <p>Your Health, Our Priority. Book Your Appointment Today!</p>
+            <a href="/contact-us" className="cta-button">
+              Get Started
+            </a>
+          </div>
         </header>
-        </div>
+      </div>
 
       {/* Features Section */}
       <section className="features-section">
@@ -137,10 +132,26 @@ const Home = ({ authenticated }) => {
 
       {/* Footer */}
       <footer className="home-footer">
+        <div className="privacy-terms">
+        <Link
+          to="/privacy-policy"
+          // className="nav-link"
+          onClick={handleNavClick}
+        >
+          Privacy Policy .
+          </Link>
+        <Link
+          to="/terms-of-service"
+          // className="nav-link"
+          onClick={handleNavClick}
+        >
+          Terms of Service
+          </Link>
+          </div>
         <p>
           &copy; {new Date().getFullYear()} Samopz' Clinic. All rights reserved.
         </p>
-        <div className="social-media">
+        {/* <div className="social-media">
           <a
             href="https://facebook.com"
             target="_blank"
@@ -165,7 +176,7 @@ const Home = ({ authenticated }) => {
           >
             <i className="fab fa-instagram"></i>
           </a>
-        </div>
+        </div> */}
       </footer>
     </div>
   );

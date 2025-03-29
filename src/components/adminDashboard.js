@@ -83,7 +83,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
               Staff Attendance
             </Link>
           </div>
-          <button
+          <div
             className="nav-toggle"
             onClick={toggleNav}
             aria-label="Toggle Navigation"
@@ -91,7 +91,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
-          </button>
+          </div>
         </nav>
       </header>
       <main className="admin-main">
