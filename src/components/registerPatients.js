@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styling/patient.css";
 
 const RegisterPatient = () => {
   const [name, setName] = useState("");
@@ -37,8 +38,8 @@ const RegisterPatient = () => {
   };
 
   return (
-    <div className="Register">
-      <h2>Book Appointment</h2>
+    <div className="register">
+      <h3>Book Appointment</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Full Name: </label>

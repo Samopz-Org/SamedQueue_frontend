@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../styling/patient.css";
 
 const QueueSize = () => {
   const [queueSize, setQueueSize] = useState(0);
@@ -34,7 +35,7 @@ const QueueSize = () => {
   }
 
   return (
-    <div>
+    <div className="queue-size">
       <h3>Queue Size</h3>
       <p>{queueSize} patients in the queue</p>
     </div>

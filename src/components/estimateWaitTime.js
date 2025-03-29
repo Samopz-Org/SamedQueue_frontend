@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../styling/estimateWaitTime.css";
+import "../styling/patient.css";
 
 const EstimateWaitTime = () => {
   const [waitTime, setWaitTime] = useState({ hours: 0, minutes: 0 });

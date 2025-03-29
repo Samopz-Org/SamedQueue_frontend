@@ -1,33 +1,10 @@
 .staff-dashboard {
+  text-align: center;
+  height: 575px;
+  padding: 20px;
+  background-color: #faf4e9;
   padding: 20px;
   font-family: Arial, sans-serif;
-}
-
-.dashboard-nav {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-  color: #0056b3;
-}
-
-.nav-link:focus {
-  outline: 2px solid #0056b3;
-  outline-offset: 2px;
 }
 
 .tasks-section {
@@ -67,50 +44,8 @@
   background-color: #0056b3;
 }
 
-.logout-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.logout-button:hover {
-  background-color: #cc0000;
-}
-
-.logout-button:focus {
-  outline: 2px solid #cc0000;
-  outline-offset: 2px;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-  .dashboard-nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav-link {
-    padding: 12px 15px;
-    width: 100%;
-    text-align: center;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-
-  .nav-link:hover {
-    background-color: #e6e6e6;
-  }
-
   .staff-dashboard h1 {
     font-size: 1.5em;
   }
@@ -134,9 +69,4 @@
     text-align: center;
   }
 
-  .logout-button {
-    margin-top: 30px;
-    padding: 12px 20px;
-    font-size: 18px;
-  }
 }

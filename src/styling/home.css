@@ -29,8 +29,6 @@ a {
 }
 
 .nav-link {
-  background-color:goldenrod;
-  color:  #e6ba2a;
   text-decoration: none;
   margin: 0 15px;
   font-size: 15px;
@@ -236,18 +234,18 @@ a {
 
 /* Content Styles */
 .container {
+  text-align: center;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #faf4e9;
-
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
 h1,
 h2,
-h4 {
+h3
+ {
   text-align: center;
   color: #e6ba2a; /* Dark gray for headings */
 }
@@ -272,7 +270,7 @@ button {
   width: 150px;
   border-radius: 20px;
   margin: 10px 0;
-  background-color: #0078d7; /* Blue for buttons */
+  background-color: green; /* Blue for buttons */
   color: white;
   border: none;
   cursor: pointer;
@@ -285,8 +283,9 @@ button:hover {
 
 input,
 textarea {
+  /* background-color: #f0f4f8; */
   height: 30px;
-  width: 100%;
+  width: 90%;
   border-radius: 5px;
   border: 1px solid #cccccc; /* Light gray border */
   padding: 5px 10px;

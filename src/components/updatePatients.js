@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styling/patient.css";
 
 const UpdatePatient = () => {
   const [email, setEmail] = useState("");
@@ -26,8 +27,8 @@ const UpdatePatient = () => {
   };
 
   return (
-    <div className="Update-Patient">
-      <h2>Update Patient Symptoms</h2>
+    <div className="update-patient">
+      <h3>Update Patient Symptoms</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email: </label>

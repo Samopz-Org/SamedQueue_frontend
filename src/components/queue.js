@@ -3,6 +3,7 @@ import axios from "axios";
 import NextPatient from "./next-patient";
 import QueueSize from "./queueSize";
 import EstimateWaitTime from "./estimateWaitTime";
+import "../styling/patient.css";
 
 const Queue = () => {
   const [queue, setQueue] = useState([]);
@@ -38,14 +39,14 @@ const Queue = () => {
   }
 
   return (
-    <div className="Queue">
+    <div className="queue">
       <div>
         <QueueSize />
         <EstimateWaitTime />
         <NextPatient queue={queue} setQueue={setQueue} />
       </div>
-      <h2 className="Current_Queue">Current Queue</h2>
       <div className="queue-box">
+        <h3 className="Current_Queue">Current Queue</h3>
         <ol>
           {queue.map((patient) => (
             <li key={patient._id}>

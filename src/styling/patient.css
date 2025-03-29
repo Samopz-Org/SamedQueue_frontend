@@ -1,0 +1,56 @@
+.patient-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.patient-dashboard {
+  height: 575px;
+  text-align: center;
+  padding: 20px;
+  background-color: #faf4e9;
+}
+
+.patient-dashboard-title {
+  background-color: #ADD8E6;
+  padding: 20px;
+  color: #333; /* Improved contrast */
+  margin-top: 20px;
+}
+
+.estimate-wait-time,
+.queue,
+.queue-size,
+.next-patient,
+.queue-box
+ {
+  background-color: #f0f4f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 300px;
+  text-align: center;
+}
+
+.update-patient,
+.register {
+   /* background-color: #f0f4f8; */
+  padding: 20px;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  margin: 20px auto;
+  max-width: 300px;
+  text-align: center;
+}
+
+.estimate-wait-time,
+.queue-size .next-patient {
+  color: #333;
+}
+
+.estimate-wait-time p,
+.queue-size,
+.next-patient {
+  color: #007bff;
+  font-size: 18px;
+}

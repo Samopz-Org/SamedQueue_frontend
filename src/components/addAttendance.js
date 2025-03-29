@@ -56,7 +56,9 @@ const AddAttendance = ({ onAttendanceAdded }) => {
 
   return (
     <div className="add-attendance">
-      <h1>Add Attendance</h1>
+      <h3>Staff Attendance</h3>
+
+      <h4>Add Attendance</h4>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="add-record">
         <input

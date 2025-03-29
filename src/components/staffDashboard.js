@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import logo from "../logo.svg";
 import "../styling/staffDashboard.css";
 
 const StaffDashboard = ({ username, setAuthenticated }) => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+  const handleNavClick = () => {
+    setIsNavOpen(false);
+  };
   const [tasks, setTasks] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false); // Loading state
@@ -49,31 +58,61 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
 
   return (
     <div className="staff-dashboard">
+      <header className="staff-header">
+        <div>
+          <img
+            src={logo}
+            className="staff-logo"
+            alt="Samopz Clinic Logo - Click to Sign Out"
+            onClick={handleLogout}
+          />
+        </div>
+        <button onClick={handleLogout} className="sign-out-button">
+          Sign Out
+        </button>
+        {/* Navigation Links */}
+        <nav className="navbar">
+          <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
+            <Link
+              to="/add-attendance"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Add Attendance"
+            >
+              Add Attendance
+            </Link>
+            <Link
+              to="/staff-attendance"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="View Attendance"
+            >
+              View Attendance
+            </Link>
+            <Link
+              to="/tasks"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Manage Tasks"
+            >
+              Manage Tasks
+            </Link>
+          </div>
+          <button
+            className="nav-toggle"
+            onClick={toggleNav}
+            aria-label="Toggle Navigation"
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+        </nav>
+      </header>
+      <h2 className="staff-dashboard-title">Staff Dashboard</h2>
       <h1>Welcome, {username}</h1>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       {loading && <div className="spinner"></div>} {/* Loading Indicator */}
-      {/* Navigation Links */}
-      <nav className="dashboard-nav">
-        <div className="nav-links">
-          <Link
-            to="/add-attendance"
-            className="nav-link"
-            aria-label="Add Attendance"
-          >
-            Add Attendance
-          </Link>
-          <Link
-            to="/staff-attendance"
-            className="nav-link"
-            aria-label="View Attendance"
-          >
-            View Attendance
-          </Link>
-          <Link to="/tasks" className="nav-link" aria-label="Manage Tasks">
-            Manage Tasks
-          </Link>
-        </div>
-      </nav>
       {/* Tasks Section */}
       <section className="tasks-section">
         <h2>Your Tasks</h2>
@@ -96,10 +135,6 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
           </ul>
         )}
       </section>
-      {/* Logout Button */}
-      <button className="logout-button" onClick={handleLogout}>
-        Logout
-      </button>
     </div>
   );
 };

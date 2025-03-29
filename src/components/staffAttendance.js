@@ -70,13 +70,13 @@ const StaffAttendance = () => {
 
   return (
     <div className="staff-attendance">
-      <h1>Staff Attendance</h1>
+      <h3>Staff Attendance</h3>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       {loading && <p className="loading-message">Loading...</p>}{" "}
       {/* Loading Indicator */}
       {/* Filter Attendance Records */}
       <div className="filter-records">
-        <h3>Filter Records</h3>
+        <h4>Filter Records</h4>
         <input
           type="date"
           value={filterDate}

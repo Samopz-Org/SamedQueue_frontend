@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logo from "../logo.svg";
+import "../styling/patient.css";
 
 const PatientDashboard = ({ username, setAuthenticated }) => {
   const handleSignOut = () => {
@@ -10,11 +11,15 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
       // Additional sign-out logic if needed
     }
   };
-
-  const toggleNav = () => {
-    // Logic to toggle navigation (if applicable)
-    console.log("Navigation toggled");
-  };
+   const [isNavOpen, setIsNavOpen] = useState(false);
+  
+    const toggleNav = () => {
+      setIsNavOpen(!isNavOpen);
+    };
+  
+    const handleNavClick = () => {
+      setIsNavOpen(false);
+    };
 
   return (
     <div className="patient-dashboard">
@@ -30,45 +35,42 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
         <button onClick={handleSignOut} className="sign-out-button">
           Sign Out
         </button>
-      </header>
-      <main className="patient-main">
-        <h1 className="dashboard-title">Patient Dashboard</h1>
-        <h4>Welcome, {username}!</h4>
-        <div className="component-group">
-          <div className="component">
-            <Link to="/queue" className="nav-link" onClick={toggleNav}>
+        {/* Navigation Links */}
+        <nav className="navbar">
+          <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
+            <Link to="/queue" className="nav-link" onClick={handleNavClick}>
               Queue Size
             </Link>
-          </div>
-          {/* <div className="component">
-            <Link
-              to="/estimate-wait-time"
-              className="nav-link"
-              onClick={toggleNav}
-            >
-              Estimate Wait Time
-            </Link>
-          </div> */}
-          <div className="component">
             <Link
               to="/register-patient"
               className="nav-link"
-              onClick={toggleNav}
+              onClick={handleNavClick}
             >
               Book Appointment
             </Link>
-          </div>
-          <div className="component">
             <Link
               to="/adhd-assessment"
               className="nav-link"
-              onClick={toggleNav}
+              onClick={handleNavClick}
             >
               ADHD Assessment
             </Link>
           </div>
-        </div>
-      </main>
+          <button
+            className="nav-toggle"
+            onClick={toggleNav}
+            aria-label="Toggle Navigation"
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+        </nav>
+        <main className="patient-main">
+          <h2 className="patient-dashboard-title">Patient Dashboard</h2>
+          <h4>Welcome, {username}!</h4>
+        </main>
+      </header>
     </div>
   );
 };

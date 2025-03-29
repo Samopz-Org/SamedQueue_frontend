@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import "../styling/patient.css";
 
 const NextPatient = ({ queue, setQueue }) => {
     const [loading, setLoading] = useState(false);
@@ -31,8 +32,8 @@ const NextPatient = ({ queue, setQueue }) => {
   };
 
   return (
-    <div>
-      <h2>Next Patient</h2>
+    <div className="next-patient">
+      <h3>Next Patient</h3>
       <p>Name: {nextPatient.name}</p>
       <p>Age: {nextPatient.age}</p>
       <p>Condition: {nextPatient.symptoms}</p>

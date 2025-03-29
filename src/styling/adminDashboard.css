@@ -1,13 +1,8 @@
 .admin-dashboard {
+  height: 575px;
   text-align: center;
   padding: 20px;
   background-color: #faf4e9;
-}
-
-.admin-header {
-  background-color: #c1e7ec;
-  padding: 20px;
-  color: #333; /* Improved contrast */
 }
 
 .admin-logo {
@@ -15,8 +10,16 @@
   pointer-events: none;
 }
 
-.dashboard-title {
-  color: #333;
+.admin-dashboard-title {
+  background-color: #f6e2f7;
+  padding: 20px;
+  color: #333; /* Improved contrast */
+  margin-top: 20px;
+}
+.staff-dashboard-title {
+  background-color: #8BC34A;
+  padding: 20px;
+  color: #333; /* Improved contrast */
   margin-top: 20px;
 }
 
