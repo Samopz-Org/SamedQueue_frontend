@@ -109,19 +109,19 @@ const TaskManager = () => {
       <div>
         <input
           type="text"
-          placeholder="Please enter the 'Assigned person Full Name' here"
+          placeholder="Enter the 'Assigned person Full Name'"
           value={newTask.username}
           onChange={(e) => setNewTask({ ...newTask, username: e.target.value })}
         />
         <input
           type="text"
-          placeholder="Please enter your 'Task Title' here"
+          placeholder="Enter your 'Task Title'"
           value={newTask.title}
           onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
         />
         <input
           type="text"
-          placeholder="Please enter your 'Task Description' here"
+          placeholder="Enter your 'Task Description'"
           value={newTask.description}
           onChange={(e) =>
             setNewTask({ ...newTask, description: e.target.value })
