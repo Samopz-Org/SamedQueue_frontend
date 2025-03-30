@@ -74,7 +74,7 @@ const Home = ({ authenticated }) => {
             />
             <h1>Welcome to Samopz' Clinic</h1>
             <p>Your Health, Our Priority. Book Your Appointment Today!</p>
-            <a href="/contact-us" className="cta-button">
+            <a href="/login" className="cta-button">
               Get Started
             </a>
           </div>
