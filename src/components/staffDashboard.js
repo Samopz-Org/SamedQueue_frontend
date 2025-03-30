@@ -46,12 +46,12 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     }
   };
 
-  const handleMarkTaskAsCompleted = (taskId) => {
+  const handleMarkTaskAsCompleted = (id) => {
     setLoading(true);
     axios
       .put(`${API_URL}/api/tasks/${id}`, { completed: true })
       .then(() => {
-        setTasks(tasks.filter((task) => task.id !== taskId));
+        setTasks(tasks.filter((task) => task.id !== id));
         setErrorMessage(""); // Clear any previous error messages
       })
       .catch((error) => {
