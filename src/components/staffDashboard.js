@@ -49,7 +49,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
   const handleMarkTaskAsCompleted = (taskId) => {
     setLoading(true);
     axios
-      .put(`${API_URL}/api/tasks/${taskId}`, { completed: true })
+      .put(`${API_URL}/api/tasks/${id}`, { completed: true })
       .then(() => {
         setTasks(tasks.filter((task) => task.id !== taskId));
         setErrorMessage(""); // Clear any previous error messages
