@@ -19,21 +19,26 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   useEffect(() => {
-    // Fetch tasks on component mount
+    if (!username) return; // Ensure username is available before making the request
+
     setLoading(true);
     axios
-      .get(`${API_URL}/api/tasks`)
+      .get(`${API_URL}/api/tasks/user/${username}`, {
+        params: { username }, // Pass username as a query parameter
+      })
       .then((response) => {
-        setTasks(response.data);
+        setTasks(response.data); // Update tasks state with the fetched data
         setErrorMessage(""); // Clear any previous error messages
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
-        setErrorMessage("Failed to fetch tasks. Please try again.");
+        setErrorMessage(
+          error.response?.data?.message ||
+          "Failed to fetch tasks. Please try again."
+        );
       })
       .finally(() => setLoading(false));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array to run effect only once on mount
+}, [username, API_URL]); // Fetch tasks when username changes or component mounts
 
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to logout?")) {

@@ -6,10 +6,12 @@ const TaskManager = () => {
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
+    username: "",
     status: "pending",
   });
   const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState(null); // Error state
+  const [message, setMessage] = useState("");
 
   const fetchTasks = async () => {
     setLoading(true);
@@ -35,10 +37,12 @@ const TaskManager = () => {
       const response = await axios.post(`${API_URL}/api/tasks`,
         task
       );
+      setMessage(response.data.message);
       setLoading(false);
       return response.data;
     } catch (error) {
       setLoading(false);
+      setMessage(error.response.data.message);
       setError("Error creating task: " + error.message);
       console.error("Error creating task:", error.message);
       throw error;
@@ -105,13 +109,19 @@ const TaskManager = () => {
       <div>
         <input
           type="text"
-          placeholder="Title"
+          placeholder="Please enter the 'Assigned person Full Name' here"
+          value={newTask.username}
+          onChange={(e) => setNewTask({ ...newTask, username: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Please enter your 'Task Title' here"
           value={newTask.title}
           onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
         />
         <input
           type="text"
-          placeholder="Description"
+          placeholder="Please enter your 'Task Description' here"
           value={newTask.description}
           onChange={(e) =>
             setNewTask({ ...newTask, description: e.target.value })
@@ -138,6 +148,7 @@ const TaskManager = () => {
           </li>
         ))}
       </ul>
+      {message && <p>{message}</p>}
     </div>
   );
 };
