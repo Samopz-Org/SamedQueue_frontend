@@ -105,7 +105,7 @@ const TaskManager = () => {
     <div>
       <h1>Task Manager</h1>
       {loading && <p>Loading...</p>}
-      {message && <p>{message}</p>}
+      {message && <p style={{ color: "green" }}>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div>
         <input
@@ -142,6 +142,7 @@ const TaskManager = () => {
               <button
                 onClick={() => handleUpdateTask(task._id)}
                 disabled={loading}
+                style={{ backgroundColor: "red", color: "white" }}
               >
                 Mark as Completed
               </button>

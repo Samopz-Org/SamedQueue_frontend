@@ -67,6 +67,14 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
               Staff Attendance
             </Link>
             <Link
+              to="/requisitions"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Manage Requisitions"
+            >
+              Manage Requisitions
+            </Link>
+            <Link
               to="/tasks"
               className="nav-link"
               onClick={handleNavClick}

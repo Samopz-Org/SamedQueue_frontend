@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import axios from "axios";
 import logo from "../logo.svg";
 import "../styling/staffDashboard.css";
@@ -146,6 +147,11 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
       </section>
     </div>
   );
+};
+
+StaffDashboard.propTypes = {
+  username: PropTypes.string.isRequired,
+  setAuthenticated: PropTypes.func.isRequired,
 };
 
 export default StaffDashboard;

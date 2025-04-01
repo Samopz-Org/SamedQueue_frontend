@@ -17,7 +17,8 @@ import UpdatePatient from "./components/updatePatients";
 import AdminDashboard from "./components/adminDashboard";
 import StaffDashboard from "./components/staffDashboard";
 import PatientDashboard from "./components/patientDashboard";
-import TaskManager from "./components/task";
+import TaskManager from "./components/taskManager";
+import RequisitionManager from "./components/requisitionManager";
 import ADHDAssessment from "./components/ADHDAssessmt";
 import ADHDResults from "./components/ADHDResults";
 import PrivacyPolicy from "./components/ptc/privacypolicy";
@@ -66,7 +67,6 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/contact-us" element={<ContactUs />} />
-
           {/* Admin Routes */}
           <Route
             path="/admin-dashboard"
@@ -82,7 +82,6 @@ function App() {
               />
             }
           />
-
           {/* Staff Routes */}
           <Route
             path="/staff-dashboard"
@@ -98,6 +97,16 @@ function App() {
               />
             }
           />
+          <Route
+            path="/requisitions"
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<RequisitionManager API_URL={API_URL} />}
+              />
+            }
+          />
+          ;
           <Route
             path="/staff-attendance"
             element={
@@ -116,7 +125,6 @@ function App() {
               />
             }
           />
-
           {/* Patient Routes */}
           <Route
             path="/patient-dashboard"
@@ -164,7 +172,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
-                element={<TaskManager />}
+                element={<TaskManager API_URL={API_URL} />}
               />
             }
           />
@@ -186,7 +194,6 @@ function App() {
               />
             }
           />
-
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
