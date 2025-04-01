@@ -24,7 +24,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     setLoading(true);
     axios
       .get(`${API_URL}/api/tasks/user/${username}`, {
-        params: { username }, // Pass username as a query parameter
+        params: { username, status: "pending" }, // Pass username as a query parameter
       })
       .then((response) => {
         setTasks(response.data); // Update tasks state with the fetched data
@@ -46,20 +46,36 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     }
   };
 
-  const handleMarkTaskAsCompleted = (taskId) => {
-    setLoading(true);
-    axios
-      .put(`${API_URL}/api/tasks/${taskId}`, { completed: true })
-      .then(() => {
-        setTasks(tasks.filter((task) => task.id !== taskId));
-        setErrorMessage(""); // Clear any previous error messages
-      })
-      .catch((error) => {
-        console.error("Error marking task as completed:", error);
-        setErrorMessage("Failed to mark task as completed.");
-      })
-      .finally(() => setLoading(false));
-  };
+   const updateTask = async (id, updates) => {
+     setLoading(true);
+     setErrorMessage(null);
+     try {
+        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+       const response = await axios.put(`${API_URL}/api/tasks/${id}`,
+         updates
+       );
+       setLoading(false);
+       return response.data;
+     } catch (error) {
+       setLoading(false);
+       setErrorMessage("Error updating task: " + error.message);
+       console.error("Error updating task:", error.message);
+       throw error;
+     }
+   };
+
+    const handleUpdateTask = async (id) => {
+      try {
+        const updatedTask = await updateTask(id, { status: "completed" });
+        setTasks(
+          tasks.map((task) =>
+            task._id === id ? updatedTask.updatedTask : task
+          )
+        );
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
 
   return (
     <div className="staff-dashboard">
@@ -86,22 +102,6 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
             >
               Add Attendance
             </Link>
-            <Link
-              to="/staff-attendance"
-              className="nav-link"
-              onClick={handleNavClick}
-              aria-label="View Attendance"
-            >
-              View Attendance
-            </Link>
-            <Link
-              to="/tasks"
-              className="nav-link"
-              onClick={handleNavClick}
-              aria-label="Manage Tasks"
-            >
-              Manage Tasks
-            </Link>
           </div>
           <div
             className="nav-toggle"
@@ -125,16 +125,19 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
           <p>No tasks assigned.</p>
         ) : (
           <ul>
-            {tasks.map((task, index) => (
-              <li key={index}>
-                <span>{task.description}</span>
-                <button
-                  onClick={() => handleMarkTaskAsCompleted(task.id)}
-                  aria-label={`Mark task "${task.description}" as completed`}
-                  disabled={loading}
-                >
-                  Mark as Completed
-                </button>
+            {tasks.map((task) => (
+              <li key={task._id}>
+                <h3>{task.title}</h3>
+                <p>{task.description}</p>
+                <p>Status: {task.status}</p>
+                {task.status !== "completed" && (
+                  <button
+                    onClick={() => handleUpdateTask(task._id)}
+                    disabled={loading}
+                  >
+                    Mark as Completed
+                  </button>
+                )}
               </li>
             ))}
           </ul>

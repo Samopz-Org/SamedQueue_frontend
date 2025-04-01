@@ -105,6 +105,7 @@ const TaskManager = () => {
     <div>
       <h1>Task Manager</h1>
       {loading && <p>Loading...</p>}
+      {message && <p>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div>
         <input
@@ -148,7 +149,6 @@ const TaskManager = () => {
           </li>
         ))}
       </ul>
-      {message && <p>{message}</p>}
     </div>
   );
 };

@@ -43,6 +43,38 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
         <nav className="navbar">
           <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
             <Link
+              to="/add-attendance"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Add Attendance"
+            >
+              Add Attendance
+            </Link>
+            <Link
+              to="/staff-attendance"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="View Attendance"
+            >
+              View Attendance
+            </Link>
+            <Link
+              to="/staff-attendance"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Staff Attendance"
+            >
+              Staff Attendance
+            </Link>
+            <Link
+              to="/tasks"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Manage Tasks"
+            >
+              Manage Tasks
+            </Link>
+            <Link
               to="/queue"
               className="nav-link"
               onClick={handleNavClick}
@@ -65,22 +97,6 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
               aria-label="Register Patient"
             >
               Book Appointment
-            </Link>
-            <Link
-              to="/add-attendance"
-              className="nav-link"
-              onClick={handleNavClick}
-              aria-label="Add Attendance"
-            >
-              Add Attendance
-            </Link>
-            <Link
-              to="/staff-attendance"
-              className="nav-link"
-              onClick={handleNavClick}
-              aria-label="Staff Attendance"
-            >
-              Staff Attendance
             </Link>
           </div>
           <div

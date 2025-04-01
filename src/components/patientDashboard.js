@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logo from "../logo.svg";
@@ -11,15 +12,47 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
       // Additional sign-out logic if needed
     }
   };
-   const [isNavOpen, setIsNavOpen] = useState(false);
-  
-    const toggleNav = () => {
-      setIsNavOpen(!isNavOpen);
+
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [waitTime, setWaitTime] = useState({ hours: 0, minutes: 0 });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  const handleNavClick = () => {
+    setIsNavOpen(false);
+  };
+
+  useEffect(() => {
+    const fetchWaitTime = async () => {
+      try {
+        const API_URL =
+          process.env.REACT_APP_API_URL || "http://localhost:5000";
+        const response = await axios.get(
+          `${API_URL}/api/queue/estimate-wait-time`
+        );
+        setWaitTime(response.data.waitTime);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching estimated wait time", error);
+        setError("Failed to fetch estimated wait time");
+        setLoading(false);
+      }
     };
-  
-    const handleNavClick = () => {
-      setIsNavOpen(false);
-    };
+
+    fetchWaitTime();
+  }, []); // Dependency array is intentionally empty to fetch data on mount.
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="patient-dashboard">
@@ -38,9 +71,6 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
         {/* Navigation Links */}
         <nav className="navbar">
           <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
-            <Link to="/queue" className="nav-link" onClick={handleNavClick}>
-              Queue Size
-            </Link>
             <Link
               to="/register-patient"
               className="nav-link"
@@ -69,6 +99,12 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
         <main className="patient-main">
           <h2 className="patient-dashboard-title">Patient Dashboard</h2>
           <h4>Welcome, {username}!</h4>
+          <div className="estimate-wait-time">
+            <h3>Estimated Wait Time</h3>
+            <p>
+              {waitTime.hours} hours, {waitTime.minutes} minutes
+            </p>
+          </div>
         </main>
       </header>
     </div>
