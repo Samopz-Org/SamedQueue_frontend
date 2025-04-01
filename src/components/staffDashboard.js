@@ -46,6 +46,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     }
   };
 
+<<<<<<< HEAD
    const updateTask = async (id, updates) => {
      setLoading(true);
      setErrorMessage(null);
@@ -76,6 +77,22 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
         console.error(error.message);
       }
     };
+=======
+  const handleMarkTaskAsCompleted = (id) => {
+    setLoading(true);
+    axios
+      .put(`${API_URL}/api/tasks/${id}`, { completed: true })
+      .then(() => {
+        setTasks(tasks.filter((task) => task.id !== id));
+        setErrorMessage(""); // Clear any previous error messages
+      })
+      .catch((error) => {
+        console.error("Error marking task as completed:", error);
+        setErrorMessage("Failed to mark task as completed.");
+      })
+      .finally(() => setLoading(false));
+  };
+>>>>>>> 70505f7c380e2c92293d004fb5432cf6a823415d
 
   return (
     <div className="staff-dashboard">

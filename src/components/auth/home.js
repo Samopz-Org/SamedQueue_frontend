@@ -72,9 +72,9 @@ const Home = ({ authenticated }) => {
               className="hero-logo"
               alt="Samopz Clinic Logo - Your Health, Our Priority"
             />
-            <h1>Welcome to Samopz' Clinic</h1>
+            <h1>Samopz' Clinic</h1>
             <p>Your Health, Our Priority. Book Your Appointment Today!</p>
-            <a href="/contact-us" className="cta-button">
+            <a href="/signup" className="cta-button">
               Get Started
             </a>
           </div>
