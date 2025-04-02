@@ -6,7 +6,7 @@ import RequisitionForm from "./requisitionManager/requisitionForm";
 
 const StaffRequisitionForm = ({ API_URL }) => {
   const [formData, setFormData] = useState({
-    requesterName: "",
+    username: "",
     department: "",
     amount: "",
     purpose: "",
@@ -23,7 +23,7 @@ const StaffRequisitionForm = ({ API_URL }) => {
   // Reset form data
   const resetForm = () => {
     setFormData({
-      requesterName: "",
+      username: "",
       department: "",
       amount: "",
       purpose: "",
@@ -34,7 +34,7 @@ const StaffRequisitionForm = ({ API_URL }) => {
   // Validate form inputs
   const validateForm = () => {
     if (
-      !formData.requesterName ||
+      !formData.username ||
       !formData.department ||
       !formData.amount ||
       !formData.purpose

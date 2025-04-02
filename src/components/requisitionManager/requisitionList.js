@@ -21,7 +21,7 @@ const RequisitionList = ({
       {requisitions.map((req, index) => (
         <tr key={req._id}>
           <td>{index + 1}</td>
-          <td>{req.requesterName}</td>
+          <td>{req.username}</td>
           <td>{req.department}</td>
           <td>{req.amount}</td>
           <td>{req.purpose}</td>

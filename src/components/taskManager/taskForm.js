@@ -18,20 +18,19 @@ const TaskForm = ({
     <input
       type="text"
       name="title"
-      placeholder="Enter your 'Task Title'"
+      placeholder="Enter the 'Task Title'"
       value={newTask.title}
       onChange={handleInputChange}
       aria-label="Task title"
     />
     <label htmlFor="message">Description:</label>
-    <input
-      style={{ height: "70px" }}
+    <textarea
       type="text"
       name="description"
       value={newTask.description}
       onChange={handleInputChange}
       aria-label="Task description"
-    />
+    ></textarea>
     <button onClick={handleCreateTask} disabled={loading}>
       Create Task
     </button>

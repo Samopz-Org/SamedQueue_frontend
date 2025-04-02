@@ -10,9 +10,9 @@ const RequisitionForm = ({
 }) => {
   const inputFields = [
     {
-      id: "requesterName",
+      id: "username",
       type: "text",
-      name: "requesterName",
+      name: "username",
       placeholder: "Requester Name",
     },
     {
@@ -81,7 +81,7 @@ const RequisitionForm = ({
 
 RequisitionForm.propTypes = {
   formData: PropTypes.shape({
-    requesterName: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
     department: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
     purpose: PropTypes.string.isRequired,

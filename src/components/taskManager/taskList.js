@@ -5,6 +5,7 @@ const TaskList = ({ tasks, handleUpdateTask, loading }) => (
     <thead >
       <tr style={{ backgroundColor: "#f2f2f2" }}>
         <th>S/N</th>
+        <th>Name</th>
         <th>Title</th>
         <th>Description</th>
         <th>Status</th>
@@ -15,6 +16,7 @@ const TaskList = ({ tasks, handleUpdateTask, loading }) => (
       {tasks.map((task, index) => (
         <tr key={task._id}>
           <td>{index + 1}</td>
+          <td>{task.username}</td>
           <td>{task.title}</td>
           <td>{task.description}</td>
           <td>{task.status}</td>

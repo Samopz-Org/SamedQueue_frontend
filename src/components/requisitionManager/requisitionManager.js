@@ -8,7 +8,7 @@ import RequisitionList from "../requisitionManager/requisitionList";
 const RequisitionManager = ({ API_URL }) => {
   const [requisitions, setRequisitions] = useState([]);
   const [formData, setFormData] = useState({
-    requesterName: "",
+    username: "",
     department: "",
     amount: "",
     purpose: "",
@@ -43,7 +43,7 @@ const RequisitionManager = ({ API_URL }) => {
   // Reset form data
   const resetForm = () => {
     setFormData({
-      requesterName: "",
+      username: "",
       department: "",
       amount: "",
       purpose: "",
@@ -55,7 +55,7 @@ const RequisitionManager = ({ API_URL }) => {
   // Validate form inputs
   const validateForm = () => {
     if (
-      !formData.requesterName ||
+      !formData.username ||
       !formData.department ||
       !formData.amount ||
       !formData.purpose
