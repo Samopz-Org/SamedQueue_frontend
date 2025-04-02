@@ -297,6 +297,12 @@ h3 {
   color: #e6ba2a; /* Dark gray for headings */
 }
 
+.signup-link, .login-link {
+  text-decoration: none;
+  color: #e6ba2a;
+  font-weight: bold;
+}
+
 li {
   margin-bottom: 15px;
 }

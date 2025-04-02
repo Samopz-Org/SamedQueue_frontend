@@ -14,9 +14,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
   const handleNavClick = () => {
     setIsNavOpen(false);
   };
-  useEffect(() => {
-    console.log("AdminDashboard username:", username);
-  }, [username]);
+  useEffect(() => {}, [username]);
 
   const handleSignOut = () => {
     if (window.confirm("Are you sure you want to sign out?")) {
@@ -73,6 +71,14 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
               aria-label="Manage Requisitions"
             >
               Manage Requisitions
+            </Link>
+            <Link
+              to="/staff-requisitions"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Staff Requisitions"
+            >
+              View Requisitions
             </Link>
             <Link
               to="/tasks"

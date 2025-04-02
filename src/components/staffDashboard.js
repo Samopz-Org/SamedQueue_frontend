@@ -27,10 +27,14 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     setLoading(true);
     axios
       .get(`${API_URL}/api/tasks/user/${username}`, {
-        params: { username, status: "pending" },
+        params: { username },
       })
       .then((response) => {
-        setTasks(response.data);
+        // Sort tasks: pending ones first
+        const sortedTasks = response.data.sort((a, b) =>
+          a.status === "pending" && b.status !== "pending" ? -1 : 1
+        );
+        setTasks(sortedTasks);
         setErrorMessage("");
       })
       .catch((error) => {
@@ -106,6 +110,14 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
               aria-label="Staff Requisition Form"
             >
               Add Requisition
+            </Link>
+            <Link
+              to="/staff-requisitions"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Staff Requisitions"
+            >
+              View Requisitions
             </Link>
           </div>
           <div

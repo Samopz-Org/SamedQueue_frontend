@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import Link for navigation
 
-const Login = ({ setAuthenticated, setUserName }) => {
+const Login = ({ setAuthenticated, setUserName, API_URL }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,10 +30,7 @@ const Login = ({ setAuthenticated, setUserName }) => {
     }
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-      const response = await axios.post(
-        `${API_URL}/api/auth/login`,
-        {
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password,
       });
@@ -105,6 +102,13 @@ const Login = ({ setAuthenticated, setUserName }) => {
           {error}
         </p>
       )}
+      <p>
+        Don't have an account?{" "}
+        <Link to="/signup" className="signup-link">
+          Sign up here
+        </Link>
+        .
+      </p>
     </div>
   );
 };

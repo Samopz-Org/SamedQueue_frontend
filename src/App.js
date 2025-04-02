@@ -17,6 +17,7 @@ import UpdatePatient from "./components/updatePatients";
 import AdminDashboard from "./components/adminDashboard";
 import StaffDashboard from "./components/staffDashboard";
 import StaffRequisitionForm from "./components/staffRequisitionForm";
+import StaffRequisitions from "./components/staffRequisitions";
 import PatientDashboard from "./components/patientDashboard";
 import TaskManager from "./components/taskManager/taskManager";
 import RequisitionManager from "./components/requisitionManager/requisitionManager";
@@ -116,6 +117,12 @@ function App() {
                 element={<StaffRequisitionForm API_URL={API_URL} />}
               />
             }
+          />
+          <Route
+            path="/staff-requisitions"
+            element={<ProtectedRoute authenticated={authenticated}element={<StaffRequisitions username={username} />}
+          />
+          }
           />
           <Route
             path="/staff-attendance"

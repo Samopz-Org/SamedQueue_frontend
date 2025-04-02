@@ -1,10 +1,28 @@
-.staff-dashboard {
-  text-align: center;
-  height: 575px;
+
+.requisitions-container {
   padding: 20px;
-  background-color: #faf4e9;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  text-align:center;
+}
+
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.requisitions-container th,
+.requisitions-container td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.requisitions-container th {
+  background-color: #f4f4f4;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
 }
 
 .tasks-section {

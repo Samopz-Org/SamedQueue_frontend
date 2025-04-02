@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
-const Signup = () => {
+const Signup = (API_URL) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +15,6 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
       const response = await axios.post(
         `${API_URL}/api/auth/signup`,
 
@@ -83,6 +83,13 @@ const Signup = () => {
       </form>
       {message && <p>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
+      <p>
+        Already have an account?{" "}
+        <Link to="/login" className="login-link">
+          Log in here
+        </Link>
+        .
+      </p>
     </div>
   );
 };
