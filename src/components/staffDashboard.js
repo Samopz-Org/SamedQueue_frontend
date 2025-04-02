@@ -5,41 +5,43 @@ import axios from "axios";
 import logo from "../logo.svg";
 import "../styling/staffDashboard.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const StaffDashboard = ({ username, setAuthenticated }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [tasks, setTasks] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
+
   const handleNavClick = () => {
     setIsNavOpen(false);
   };
-  const [tasks, setTasks] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false); // Loading state
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   useEffect(() => {
-    if (!username) return; // Ensure username is available before making the request
+    if (!username) return;
 
     setLoading(true);
     axios
       .get(`${API_URL}/api/tasks/user/${username}`, {
-        params: { username, status: "pending" }, // Pass username as a query parameter
+        params: { username, status: "pending" },
       })
       .then((response) => {
-        setTasks(response.data); // Update tasks state with the fetched data
-        setErrorMessage(""); // Clear any previous error messages
+        setTasks(response.data);
+        setErrorMessage("");
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
         setErrorMessage(
           error.response?.data?.message ||
-          "Failed to fetch tasks. Please try again."
+            "Failed to fetch tasks. Please try again."
         );
       })
       .finally(() => setLoading(false));
-}, [username, API_URL]); // Fetch tasks when username changes or component mounts
+  }, [username]);
 
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to logout?")) {
@@ -47,40 +49,34 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     }
   };
 
-  
-   const updateTask = async (id, updates) => {
-     setLoading(true);
-     setErrorMessage(null);
-     try {
-        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-       const response = await axios.put(`${API_URL}/api/tasks/${id}`,
-         updates
-       );
-       setLoading(false);
-       return response.data;
-     } catch (error) {
-       setLoading(false);
-       setErrorMessage("Error updating task: " + error.message);
-       console.error("Error updating task:", error.message);
-       throw error;
-     }
-   };
+  const updateTask = async (id, updates) => {
+    setLoading(true);
+    setErrorMessage(null);
+    try {
+      const response = await axios.put(`${API_URL}/api/tasks/${id}`, updates);
+      setLoading(false);
+      return response.data;
+    } catch (error) {
+      setLoading(false);
+      setErrorMessage("Error updating task: " + error.message);
+      console.error("Error updating task:", error.message);
+      throw error;
+    }
+  };
 
-    const handleUpdateTask = async (id) => {
-      try {
-        const updatedTask = await updateTask(id, { status: "completed" });
-        setTasks(
-          tasks.map((task) =>
-            task._id === id ? updatedTask.updatedTask : task
-          )
-        );
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
+  const handleUpdateTask = async (id) => {
+    try {
+      const updatedTask = await updateTask(id, { status: "completed" });
+      setTasks(
+        tasks.map((task) => (task._id === id ? updatedTask.updatedTask : task))
+      );
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
-    <div className="staff-dashboard">
+    <div className="container">
       <header className="staff-header">
         <div>
           <img
@@ -93,7 +89,6 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
         <button onClick={handleLogout} className="sign-out-button">
           Sign Out
         </button>
-        {/* Navigation Links */}
         <nav className="navbar">
           <div className={`nav-links ${isNavOpen ? "open" : ""}`}>
             <Link
@@ -103,6 +98,14 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
               aria-label="Add Attendance"
             >
               Add Attendance
+            </Link>
+            <Link
+              to="/staffRequisition-form"
+              className="nav-link"
+              onClick={handleNavClick}
+              aria-label="Staff Requisition Form"
+            >
+              Add Requisition
             </Link>
           </div>
           <div
@@ -119,30 +122,46 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
       <h2 className="staff-dashboard-title">Staff Dashboard</h2>
       <h1>Welcome, {username}</h1>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      {loading && <div className="spinner"></div>} {/* Loading Indicator */}
-      {/* Tasks Section */}
+      {loading && <div className="spinner"></div>}
       <section className="tasks-section">
         <h2>Your Tasks</h2>
         {tasks.length === 0 ? (
           <p>No tasks assigned.</p>
         ) : (
-          <ul>
-            {tasks.map((task) => (
-              <li key={task._id}>
-                <h3>{task.title}</h3>
-                <p>{task.description}</p>
-                <p>Status: {task.status}</p>
-                {task.status !== "completed" && (
-                  <button
-                    onClick={() => handleUpdateTask(task._id)}
-                    disabled={loading}
-                  >
-                    Mark as Completed
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
+          <table
+            border="1"
+            style={{ width: "100%", borderCollapse: "collapse" }}
+          >
+            <thead>
+              <tr style={{ backgroundColor: "#f2f2f2" }}>
+                <th>S/N</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.map((task, index) => (
+                <tr key={task._id}>
+                  <td>{index + 1}</td>
+                  <td>{task.title}</td>
+                  <td>{task.description}</td>
+                  <td>{task.status}</td>
+                  <td>
+                    {task.status !== "completed" && (
+                      <button
+                        onClick={() => handleUpdateTask(task._id)}
+                        disabled={loading}
+                      >
+                        Mark as Completed
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
       </section>
     </div>

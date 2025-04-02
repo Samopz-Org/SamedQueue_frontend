@@ -28,11 +28,11 @@ const EstimateWaitTime = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="spinner">Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="spinner">{error}</div>;
   }
 
   return (

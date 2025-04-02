@@ -26,7 +26,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
   };
 
   return (
-    <div className="admin-dashboard">
+    <div className="container">
       <header className="admin-header">
         <div>
           <img

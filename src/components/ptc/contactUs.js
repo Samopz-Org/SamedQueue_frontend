@@ -71,6 +71,7 @@ const ContactUs = () => {
           <input
             type="text"
             id="name"
+            placeholder="Enter Full Name"
             className="form-control"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -83,6 +84,7 @@ const ContactUs = () => {
           <input
             type="email"
             id="email"
+            placeholder="Enter email"
             className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

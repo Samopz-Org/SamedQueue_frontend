@@ -47,15 +47,15 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
   }, []); // Dependency array is intentionally empty to fetch data on mount.
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="spinner">Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="spinner">{error}</div>;
   }
 
   return (
-    <div className="patient-dashboard">
+    <div className="container">
       <header className="patient-header">
         <div>
           <img

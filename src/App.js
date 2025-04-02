@@ -16,9 +16,10 @@ import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
 import AdminDashboard from "./components/adminDashboard";
 import StaffDashboard from "./components/staffDashboard";
+import StaffRequisitionForm from "./components/staffRequisitionForm";
 import PatientDashboard from "./components/patientDashboard";
-import TaskManager from "./components/taskManager";
-import RequisitionManager from "./components/requisitionManager";
+import TaskManager from "./components/taskManager/taskManager";
+import RequisitionManager from "./components/requisitionManager/requisitionManager";
 import ADHDAssessment from "./components/ADHDAssessmt";
 import ADHDResults from "./components/ADHDResults";
 import PrivacyPolicy from "./components/ptc/privacypolicy";
@@ -107,6 +108,15 @@ function App() {
             }
           />
           ;
+          <Route
+            path="/staffRequisition-form"
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<StaffRequisitionForm API_URL={API_URL} />}
+              />
+            }
+          />
           <Route
             path="/staff-attendance"
             element={

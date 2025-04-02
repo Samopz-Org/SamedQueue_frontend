@@ -50,7 +50,7 @@ const UpdatePatient = () => {
             required
           />
         </div>
-        <button type="submit" disabled={loading}>
+        <button className="spinner" type="submit" disabled={loading}>
           {loading ? "Updating..." : "Update"}
         </button>
       </form>

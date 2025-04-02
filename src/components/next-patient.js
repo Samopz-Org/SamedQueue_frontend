@@ -37,7 +37,11 @@ const NextPatient = ({ queue, setQueue }) => {
       <p>Name: {nextPatient.name}</p>
       <p>Age: {nextPatient.age}</p>
       <p>Condition: {nextPatient.symptoms}</p>
-      <button onClick={handleNextPatient} disabled={loading}>
+      <button
+        className="spinner"
+        onClick={handleNextPatient}
+        disabled={loading}
+      >
         {loading ? "Fetching..." : "Next patient"}
       </button>
     </div>
