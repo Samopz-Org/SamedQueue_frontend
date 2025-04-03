@@ -112,7 +112,7 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
 };
 
 PatientDashboard.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
   setAuthenticated: PropTypes.func.isRequired,
 };
 

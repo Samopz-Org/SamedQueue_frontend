@@ -9,6 +9,7 @@ const RequisitionList = ({
     <thead>
       <tr style={{ backgroundColor: "#f2f2f2" }}>
         <th>S/N</th>
+        <th>Date</th>
         <th>Requester Name</th>
         <th>Department</th>
         <th>Amount</th>
@@ -21,6 +22,7 @@ const RequisitionList = ({
       {requisitions.map((req, index) => (
         <tr key={req._id}>
           <td>{index + 1}</td>
+          <td>{new Date(req.createdAt).toLocaleDateString()}</td>
           <td>{req.username}</td>
           <td>{req.department}</td>
           <td>{req.amount}</td>

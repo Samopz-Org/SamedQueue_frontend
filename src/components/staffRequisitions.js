@@ -42,27 +42,28 @@ const StaffRequisitions = ({ username }) => {
       {requisitions.length === 0 ? (
         <p>No requisitions found.</p>
       ) : (
-        <table
-          border="1"
-          style={{ width: "100%", borderCollapse: "collapse" }}
-        >
+        <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ backgroundColor: "#f2f2f2" }}>
               <th>S/N</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Status</th>
               <th>Date</th>
+              <th>Requester Name</th>
+              <th>Department</th>
+              <th>Purpose</th>
+              <th>Amount</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {requisitions.map((req, index) => (
               <tr key={req._id}>
                 <td>{index + 1}</td>
-                <td>{req.title}</td>
-                <td>{req.description}</td>
-                <td>{req.status}</td>
                 <td>{new Date(req.createdAt).toLocaleDateString()}</td>
+                <td>{req.username}</td>
+                <td>{req.department}</td>
+                <td>{req.purpose}</td>
+                <td>{req.amount}</td>
+                <td>{req.status}</td>
               </tr>
             ))}
           </tbody>
@@ -73,7 +74,7 @@ const StaffRequisitions = ({ username }) => {
 };
 
 StaffRequisitions.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
 };
 
 export default StaffRequisitions;

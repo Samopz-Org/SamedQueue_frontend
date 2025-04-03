@@ -133,7 +133,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
 };
 
 AdminDashboard.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
   setAuthenticated: PropTypes.func.isRequired,
 };
 

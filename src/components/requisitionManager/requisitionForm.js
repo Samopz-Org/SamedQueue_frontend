@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const RequisitionForm = ({
@@ -8,6 +8,20 @@ const RequisitionForm = ({
   handleCancelEdit,
   editingRequisition,
 }) => {
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    handleSubmit(e);
+    setSuccessMessage(
+      editingRequisition
+        ? "Requisition updated successfully!"
+        : "Requisition created successfully!"
+    );
+    // Optionally clear the success message after a delay
+    setTimeout(() => setSuccessMessage(""), 3000);
+  };
+
   const inputFields = [
     {
       id: "username",
@@ -26,7 +40,7 @@ const RequisitionForm = ({
   ];
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
       <div className="form-group">
         {inputFields.map((field) => (
           <input
@@ -75,6 +89,7 @@ const RequisitionForm = ({
           </button>
         )}
       </div>
+      {successMessage && <p className="success-message">{successMessage}</p>}
     </form>
   );
 };

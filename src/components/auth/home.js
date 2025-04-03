@@ -151,7 +151,7 @@ const Home = ({ authenticated }) => {
         <p>
           &copy; {new Date().getFullYear()} Samopz' Clinic. All rights reserved.
         </p>
-        {/* <div className="social-media">
+        <div className="social-media">
           <a
             href="https://facebook.com"
             target="_blank"
@@ -176,7 +176,7 @@ const Home = ({ authenticated }) => {
           >
             <i className="fab fa-instagram"></i>
           </a>
-        </div> */}
+        </div>
       </footer>
     </div>
   );
