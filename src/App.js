@@ -9,7 +9,7 @@ import {
 import { jwtDecode } from "jwt-decode";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
-import Home from "./components/auth/home";
+import Home from "./components/landingpage/homePage";
 import StaffAttendance from "./components/staffAttendance";
 import AddAttendance from "./components/addAttendance";
 import RegisterPatient from "./components/registerPatients";
@@ -31,13 +31,16 @@ import ContactUs from "./components/ptc/contactUs";
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const NotFound = () => (
-  <div className="container">
+  <div className="not-found">
     <h1>404 - Page Not Found</h1>
-    <Link to="/">Go Back to Home</Link>
+    <p>Sorry, the page you are looking for does not exist.</p>
+    <Link to="/" className="btn">
+      Go Back to Home
+    </Link>
   </div>
 );
 
-const ProtectedRoute = ({ element, authenticated }) => {
+const ProtectedRoute = ({ element, authenticated, allowedRoles }) => {
   const token = localStorage.getItem("authToken");
 
   if (!token) {
@@ -46,11 +49,15 @@ const ProtectedRoute = ({ element, authenticated }) => {
 
   try {
     const decoded = jwtDecode(token);
-    console.log("Decoded token:", decoded); // Log the decoded token for debugging
     const currentTime = Date.now() / 1000; // Current time in seconds
     if (decoded.exp < currentTime) {
       localStorage.removeItem("authToken"); // Remove expired token
       return <Navigate to="/login" />;
+    }
+
+    // Check if the user's role is allowed
+    if (allowedRoles && !allowedRoles.includes(decoded.role)) {
+      return <Navigate to="/" />; // Redirect to home if role is not allowed
     }
   } catch (error) {
     console.error("Invalid token:", error);
@@ -64,6 +71,7 @@ const ProtectedRoute = ({ element, authenticated }) => {
 function App() {
   const [username, setUserName] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true); // Add a loading state
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -82,7 +90,13 @@ function App() {
         localStorage.removeItem("authToken");
       }
     }
+    setLoading(false); // Set loading to false after the check
   }, []);
+
+  if (loading) {
+    // Show a loading spinner or placeholder while checking authentication
+    return <div>Loading...</div>;
+  }
 
   return (
     <Router>
@@ -93,13 +107,13 @@ function App() {
           <Route
             path="/login"
             element={
-              !authenticated ? (
+              authenticated ? (
                 <Login
                   setAuthenticated={setAuthenticated}
                   setUserName={setUserName}
                 />
               ) : (
-                <Navigate to="/" />
+                <Navigate to="/login" />
               )
             }
           />
@@ -114,6 +128,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["admin"]}
                 element={
                   <AdminDashboard
                     username={username}
@@ -130,6 +145,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["staff"]}
                 element={
                   <StaffDashboard
                     username={username}
@@ -144,6 +160,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["staff"]}
                 element={<RequisitionManager API_URL={API_URL} />}
               />
             }
@@ -153,6 +170,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["staff"]}
                 element={<StaffRequisitionForm API_URL={API_URL} />}
               />
             }
@@ -162,6 +180,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["staff"]}
                 element={<StaffRequisitions username={username} />}
               />
             }
@@ -171,6 +190,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["staff"]}
                 element={<StaffAttendance />}
               />
             }
@@ -180,6 +200,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["staff"]}
                 element={<AddAttendance API_URL={API_URL} />}
               />
             }
@@ -191,6 +212,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["patient"]}
                 element={
                   <PatientDashboard
                     username={username}
@@ -205,6 +227,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["patient"]}
                 element={<RegisterPatient />}
               />
             }
@@ -214,6 +237,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["patient"]}
                 element={<Queue />}
               />
             }
@@ -223,6 +247,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["patient"]}
                 element={<UpdatePatient />}
               />
             }
@@ -232,6 +257,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["patient"]}
                 element={<TaskManager API_URL={API_URL} />}
               />
             }
@@ -241,6 +267,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["patient"]}
                 element={<ADHDAssessment />}
               />
             }
@@ -250,6 +277,7 @@ function App() {
             element={
               <ProtectedRoute
                 authenticated={authenticated}
+                allowedRoles={["patient"]}
                 element={<ADHDResults />}
               />
             }

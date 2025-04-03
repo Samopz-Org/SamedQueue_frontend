@@ -139,7 +139,7 @@ const RequisitionManager = ({ API_URL }) => {
   };
 
   return (
-    <div className="container">
+    <div>
       <h1>Account Requisition Manager</h1>
 
       {loading && <div className="spinner"></div>}

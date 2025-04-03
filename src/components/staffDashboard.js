@@ -181,7 +181,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
 };
 
 StaffDashboard.propTypes = {
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
   setAuthenticated: PropTypes.func.isRequired,
 };
 

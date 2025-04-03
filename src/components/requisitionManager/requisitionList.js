@@ -12,8 +12,8 @@ const RequisitionList = ({
         <th>Date</th>
         <th>Requester Name</th>
         <th>Department</th>
-        <th>Amount</th>
         <th>Purpose</th>
+        <th>Amount</th>
         <th>Status</th>
         <th>Actions</th>
       </tr>
@@ -25,8 +25,8 @@ const RequisitionList = ({
           <td>{new Date(req.createdAt).toLocaleDateString()}</td>
           <td>{req.username}</td>
           <td>{req.department}</td>
-          <td>{req.amount}</td>
           <td>{req.purpose}</td>
+          <td>{req.amount}</td>
           <td>{req.status}</td>
           <td>
             <button

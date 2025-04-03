@@ -74,7 +74,7 @@ const StaffRequisitions = ({ username }) => {
 };
 
 StaffRequisitions.propTypes = {
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
 };
 
 export default StaffRequisitions;
