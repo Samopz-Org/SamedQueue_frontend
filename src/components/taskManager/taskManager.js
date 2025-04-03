@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import apiClient from "../../utils/apiClient"; // Import the apiClient
 import TaskForm from "./taskForm";
 import TaskList from "./taskList";
 import { toast } from "react-toastify";
@@ -23,7 +23,7 @@ const TaskManager = ({ API_URL }) => {
   const fetchTasks = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${API_URL}/api/tasks`);
+      const response = await apiClient.get(`${API_URL}/api/tasks`);
       setTasks(response.data);
     } catch (error) {
       toast.error("Failed to fetch tasks.");
@@ -39,7 +39,7 @@ const TaskManager = ({ API_URL }) => {
     }
     setLoading(true);
     try {
-      const response = await axios.post(`${API_URL}/api/tasks`, newTask);
+      const response = await apiClient.post(`${API_URL}/api/tasks`, newTask);
       setTasks([...tasks, response.data.task]);
       setNewTask({
         title: "",
@@ -58,7 +58,7 @@ const TaskManager = ({ API_URL }) => {
   const handleUpdateTask = async (id) => {
     setLoading(true);
     try {
-      const response = await axios.put(`${API_URL}/api/tasks/${id}`, {
+      const response = await apiClient.put(`${API_URL}/api/tasks/${id}`, {
         status: "completed",
       });
       setTasks(

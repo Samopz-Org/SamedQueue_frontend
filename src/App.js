@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Routes,
   Navigate,
+  Link,
 } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
 import Home from "./components/auth/home";
@@ -27,21 +28,61 @@ import PrivacyPolicy from "./components/ptc/privacypolicy";
 import TermsOfService from "./components/ptc/terms";
 import ContactUs from "./components/ptc/contactUs";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const NotFound = () => (
-  <div>
+  <div className="container">
     <h1>404 - Page Not Found</h1>
     <Link to="/">Go Back to Home</Link>
   </div>
 );
 
 const ProtectedRoute = ({ element, authenticated }) => {
+  const token = localStorage.getItem("authToken");
+
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
+
+  try {
+    const decoded = jwtDecode(token);
+    console.log("Decoded token:", decoded); // Log the decoded token for debugging
+    const currentTime = Date.now() / 1000; // Current time in seconds
+    if (decoded.exp < currentTime) {
+      localStorage.removeItem("authToken"); // Remove expired token
+      return <Navigate to="/login" />;
+    }
+  } catch (error) {
+    console.error("Invalid token:", error);
+    localStorage.removeItem("authToken");
+    return <Navigate to="/login" />;
+  }
+
   return authenticated ? element : <Navigate to="/login" />;
 };
 
 function App() {
   const [username, setUserName] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        const currentTime = Date.now() / 1000; // Current time in seconds
+        if (decoded.exp > currentTime) {
+          setAuthenticated(true);
+          setUserName(decoded.username); // Assuming the token contains the username
+        } else {
+          localStorage.removeItem("authToken");
+        }
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        localStorage.removeItem("authToken");
+      }
+    }
+  }, []);
 
   return (
     <Router>
@@ -49,10 +90,6 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
-          <Route
-            path="/signup"
-            element={!authenticated ? <Signup /> : <Navigate to="/" />}
-          />
           <Route
             path="/login"
             element={
@@ -66,9 +103,11 @@ function App() {
               )
             }
           />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/contact-us" element={<ContactUs />} />
+
           {/* Admin Routes */}
           <Route
             path="/admin-dashboard"
@@ -84,6 +123,7 @@ function App() {
               />
             }
           />
+
           {/* Staff Routes */}
           <Route
             path="/staff-dashboard"
@@ -108,7 +148,6 @@ function App() {
               />
             }
           />
-          ;
           <Route
             path="/staffRequisition-form"
             element={
@@ -120,9 +159,12 @@ function App() {
           />
           <Route
             path="/staff-requisitions"
-            element={<ProtectedRoute authenticated={authenticated}element={<StaffRequisitions username={username} />}
-          />
-          }
+            element={
+              <ProtectedRoute
+                authenticated={authenticated}
+                element={<StaffRequisitions username={username} />}
+              />
+            }
           />
           <Route
             path="/staff-attendance"
@@ -142,6 +184,7 @@ function App() {
               />
             }
           />
+
           {/* Patient Routes */}
           <Route
             path="/patient-dashboard"
@@ -211,6 +254,7 @@ function App() {
               />
             }
           />
+
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../../utils/apiClient"; // Import the apiClient
 import { Link } from "react-router-dom"; // Import Link for navigation
 
-const Signup = (API_URL) => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +15,8 @@ const Signup = (API_URL) => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      const response = await apiClient.post(
         `${API_URL}/api/auth/signup`,
 
         {

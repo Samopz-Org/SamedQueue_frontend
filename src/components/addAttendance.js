@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../utils/apiClient"; // Import the apiClient
 import "../styling/staffAttendance.css";
 
 const AddAttendance = ({ onAttendanceAdded }) => {
@@ -29,7 +29,7 @@ const AddAttendance = ({ onAttendanceAdded }) => {
 
     // Add a new attendance record using Axios
     setLoading(true);
-    axios
+    apiClient
       .post(`${API_URL}/api/attendance`, newRecord)
       .then((response) => {
         setNewRecord({

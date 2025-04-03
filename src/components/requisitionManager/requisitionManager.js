@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import apiClient from "../../utils/apiClient"; // Import the apiClient
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RequisitionForm from "../requisitionManager/requisitionForm";
@@ -22,7 +22,7 @@ const RequisitionManager = ({ API_URL }) => {
     const fetchRequisitions = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`${API_URL}/api/requisitions`);
+        const response = await apiClient.get(`${API_URL}/api/requisitions`);
         setRequisitions(response.data);
       } catch (err) {
         toast.error("Failed to fetch requisitions.");
@@ -73,7 +73,7 @@ const RequisitionManager = ({ API_URL }) => {
 
     setLoading(true);
     try {
-      const response = await axios.post(
+      const response = await apiClient.post(
         `${API_URL}/api/requisitions`,
         formData
       );
@@ -95,7 +95,7 @@ const RequisitionManager = ({ API_URL }) => {
 
     setLoading(true);
     try {
-      const response = await axios.put(
+      const response = await apiClient.put(
         `${API_URL}/api/requisitions/${editingRequisition._id}`,
         formData
       );
@@ -122,7 +122,7 @@ const RequisitionManager = ({ API_URL }) => {
 
     setLoading(true);
     try {
-      await axios.delete(`${API_URL}/api/requisitions/${id}`);
+      await apiClient.delete(`${API_URL}/api/requisitions/${id}`);
       setRequisitions(requisitions.filter((req) => req._id !== id));
       toast.success("Requisition deleted successfully!");
     } catch (err) {

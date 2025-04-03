@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import axios from "axios";
+import apiClient from "../utils/apiClient"; // Import the apiClient
 import logo from "../logo.svg";
 import "../styling/staffDashboard.css";
 
@@ -25,7 +25,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     if (!username) return;
 
     setLoading(true);
-    axios
+    apiClient
       .get(`${API_URL}/api/tasks/user/${username}`, {
         params: { username },
       })
@@ -57,7 +57,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     setLoading(true);
     setErrorMessage(null);
     try {
-      const response = await axios.put(`${API_URL}/api/tasks/${id}`, updates);
+      const response = await apiClient.put(`${API_URL}/api/tasks/${id}`, updates);
       setLoading(false);
       return response.data;
     } catch (error) {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate, Link } from "react-router-dom"; // Import Link for navigation
+import { useNavigate, Link } from "react-router-dom";
+import apiClient from "../../utils/apiClient"; // Import the apiClient
 
-const Login = ({ setAuthenticated, setUserName, API_URL }) => {
+const Login = ({ setAuthenticated, setUserName }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,13 +30,19 @@ const Login = ({ setAuthenticated, setUserName, API_URL }) => {
     }
 
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, {
+      const response = await apiClient.post("/api/auth/login", {
         email,
         password,
       });
 
-      // Extract user data
-      const { role, username } = response.data.user;
+      // Extract token and user data
+      const { token, user } = response.data;
+      const { role, username } = user;
+
+      // Store token in localStorage
+      localStorage.setItem("authToken", token);
+
+      // Set user state
       setUserName(username);
       setAuthenticated(true);
 

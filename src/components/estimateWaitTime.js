@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import apiClient from "../utils/apiClient"; // Import the apiClient
 import "../styling/patient.css";
 
 const EstimateWaitTime = () => {
@@ -12,7 +12,7 @@ const EstimateWaitTime = () => {
       try {
         const API_URL =
           process.env.REACT_APP_API_URL || "http://localhost:5000";
-        const response = await axios.get(
+        const response = await apiClient.get(
           `${API_URL}/api/queue/estimate-wait-time`
         );
         setWaitTime(response.data.waitTime);

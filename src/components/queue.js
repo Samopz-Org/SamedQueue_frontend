@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import apiClient from "../utils/apiClient"; // Import the apiClient
 import NextPatient from "./next-patient";
 import QueueSize from "./queueSize";
 import EstimateWaitTime from "./estimateWaitTime";
@@ -15,7 +15,7 @@ const Queue = () => {
       try {
         const API_URL =
           process.env.REACT_APP_API_URL || "http://localhost:5000";
-        const response = await axios.get(
+        const response = await apiClient.get(
           `${API_URL}/api/queue/current-queue`
         );
         setQueue(response.data);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import apiClient from "../utils/apiClient"; // Import the apiClient
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logo from "../logo.svg";
@@ -31,7 +31,7 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
       try {
         const API_URL =
           process.env.REACT_APP_API_URL || "http://localhost:5000";
-        const response = await axios.get(
+        const response = await apiClient.get(
           `${API_URL}/api/queue/estimate-wait-time`
         );
         setWaitTime(response.data.waitTime);
@@ -47,7 +47,7 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
   }, []); // Dependency array is intentionally empty to fetch data on mount.
 
   if (loading) {
-    return <div className="spinner">Loading...</div>;
+    return <div className="spinner"></div>;
   }
 
   if (error) {

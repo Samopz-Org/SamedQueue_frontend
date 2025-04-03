@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../utils/apiClient"; // Import the apiClient
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RequisitionForm from "./requisitionManager/requisitionForm";
@@ -52,7 +52,7 @@ const StaffRequisitionForm = ({ API_URL }) => {
 
     setLoading(true);
     try {
-      await axios.post(`${API_URL}/api/requisitions`, formData);
+      await apiClient.post(`${API_URL}/api/requisitions`, formData);
       resetForm();
       toast.success("Requisition created successfully!");
     } catch (err) {

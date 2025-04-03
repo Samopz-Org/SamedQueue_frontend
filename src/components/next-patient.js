@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axios from "axios";
+import apiClient from "../utils/apiClient"; // Import the apiClient
 import "../styling/patient.css";
 
 const NextPatient = ({ queue, setQueue }) => {
@@ -16,7 +16,7 @@ const NextPatient = ({ queue, setQueue }) => {
    try {
         const API_URL =
           process.env.REACT_APP_API_URL || "http://localhost:5000";
-        const response = await axios.post(
+        const response = await apiClient.post(
           `${API_URL}/api/queue/next-patient`,
         { id: nextPatient.id }
       );

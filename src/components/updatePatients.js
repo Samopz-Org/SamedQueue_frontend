@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "../utils/apiClient";
 import "../styling/patient.css";
 
 const UpdatePatient = () => {
@@ -15,7 +15,7 @@ const UpdatePatient = () => {
 
     try {
       const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-      const response = await axios.put(`${API_URL}/api/patients/:${email}`, {
+      const response = await apiClient.put(`${API_URL}/api/patients/:${email}`, {
         symptoms,
       });
       setMessage(response.data.message);
