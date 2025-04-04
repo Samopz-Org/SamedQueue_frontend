@@ -50,7 +50,7 @@ const Queue = () => {
         <ol>
           {queue.map((patient) => (
             <li key={patient._id}>
-              {patient.name} - {patient.age"yrs"} - {patient.symptoms}
+              {patient.name} - {patient.age "yrs"} - {patient.symptoms}
             </li>
           ))}
         </ol>
