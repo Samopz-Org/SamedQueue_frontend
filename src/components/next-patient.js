@@ -35,7 +35,7 @@ const NextPatient = ({ queue, setQueue }) => {
     <div className="next-patient">
       <h3>Next Patient</h3>
       <p>Name: {nextPatient.name}</p>
-      <p>Age: {nextPatient.age + "" "yrs"}</p>
+      <p>Age: {nextPatient.age}</p>
       <p>Condition: {nextPatient.symptoms}</p>
       <button
         onClick={handleNextPatient}
