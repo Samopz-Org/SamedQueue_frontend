@@ -38,7 +38,6 @@ const NextPatient = ({ queue, setQueue }) => {
       <p>Age: {nextPatient.age}</p>
       <p>Condition: {nextPatient.symptoms}</p>
       <button
-        className="spinner"
         onClick={handleNextPatient}
         disabled={loading}
       >
