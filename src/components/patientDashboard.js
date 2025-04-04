@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import apiClient from "../utils/apiClient"; // Import the apiClient
+import axios from "axios";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../logo.svg";
 import "../styling/patient.css";
 
-const PatientDashboard = ({ username, setAuthenticated }) => {
-  const handleSignOut = () => {
-    if (window.confirm("Are you sure you want to sign out?")) {
-      setAuthenticated(false);
-      // Additional sign-out logic if needed
-    }
-  };
-
+const PatientDashboard = ({ username }) => {
+  const navigate = useNavigate();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [waitTime, setWaitTime] = useState({ hours: 0, minutes: 0 });
   const [loading, setLoading] = useState(true);
@@ -26,32 +20,41 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
     setIsNavOpen(false);
   };
 
+  const handleSignOut = () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      navigate("/"); // Redirect to login page after sign-out
+    }
+  };
+
   useEffect(() => {
+    if (!username) return;
+    setLoading(true);
+
     const fetchWaitTime = async () => {
       try {
         const API_URL =
           process.env.REACT_APP_API_URL || "http://localhost:5000";
-        const response = await apiClient.get(
+        const response = await axios.get(
           `${API_URL}/api/queue/estimate-wait-time`
         );
         setWaitTime(response.data.waitTime);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching estimated wait time", error);
-        setError("Failed to fetch estimated wait time");
+        setError("Failed to fetch estimated wait time. Please try again.");
+      } finally {
         setLoading(false);
       }
     };
 
     fetchWaitTime();
-  }, []); // Dependency array is intentionally empty to fetch data on mount.
+  }, [username]);
 
   if (loading) {
-    return <div className="spinner"></div>;
+    return <div className="spinner">Loading...</div>;
   }
 
   if (error) {
-    return <div className="spinner">{error}</div>;
+    return <div className="error-message">{error}</div>;
   }
 
   return (
@@ -113,7 +116,8 @@ const PatientDashboard = ({ username, setAuthenticated }) => {
 
 PatientDashboard.propTypes = {
   username: PropTypes.string.isRequired,
-  setAuthenticated: PropTypes.func.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  setRole: PropTypes.func.isRequired,
 };
 
 export default PatientDashboard;

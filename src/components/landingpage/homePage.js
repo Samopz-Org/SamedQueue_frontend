@@ -6,7 +6,7 @@ import TestimonialsSection from "./testimonialSection";
 import Footer from "../landingpage/footer";
 import "../../styling/home.css";
 
-const Home = ({ authenticated }) => {
+const Home = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {
@@ -24,7 +24,6 @@ const Home = ({ authenticated }) => {
           isNavOpen={isNavOpen}
           toggleNav={toggleNav}
           handleNavClick={handleNavClick}
-          authenticated={authenticated}
         />
         <HeroSection />
       </div>

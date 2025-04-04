@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import apiClient from "../utils/apiClient"; // Import the apiClient
+import React, { useState } from "react";
+import axios from "axios";
 import "../styling/staffAttendance.css";
 
 const StaffAttendance = () => {
@@ -18,7 +18,7 @@ const StaffAttendance = () => {
     }
 
     setLoading(true);
-    apiClient
+    axios
       .get(`${API_URL}/api/attendance/by-date`, {
         params: { date: filterDate },
       })
@@ -39,7 +39,7 @@ const StaffAttendance = () => {
 
   const handleGetAttendanceByStaff = (staffId) => {
     setLoading(true);
-    apiClient
+    axios
       .get(`${API_URL}/api/attendance/by-staff/${staffId}`)
       .then((response) => {
         setAttendanceRecords(response.data);

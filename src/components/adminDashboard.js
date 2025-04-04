@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import logo from "../logo.svg";
 import "../styling/adminDashboard.css";
 
-const AdminDashboard = ({ username, setAuthenticated }) => {
+const AdminDashboard = ({ username }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -14,14 +15,18 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
   const handleNavClick = () => {
     setIsNavOpen(false);
   };
-  useEffect(() => {}, [username]);
 
   const handleSignOut = () => {
     if (window.confirm("Are you sure you want to sign out?")) {
-      setAuthenticated(false);
-      // Additional sign-out logic if needed
+      navigate("/"); // Redirect to login page after sign-out
     }
   };
+
+  useEffect(() => {
+    if (!username) {
+      navigate("/login"); // Redirect to login if username is not set
+    }
+  }, [username, navigate]);
 
   return (
     <div className="container">
@@ -55,14 +60,6 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
               aria-label="View Attendance"
             >
               View Attendance
-            </Link>
-            <Link
-              to="/staff-attendance"
-              className="nav-link"
-              onClick={handleNavClick}
-              aria-label="Staff Attendance"
-            >
-              Staff Attendance
             </Link>
             <Link
               to="/requisitions"
@@ -126,7 +123,7 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
       </header>
       <main className="admin-main">
         <h2 className="admin-dashboard-title">Admin Dashboard</h2>
-        <h4>Welcome, Admin! {username}!</h4>
+        <h4>Welcome, {username}!</h4>
       </main>
     </div>
   );
@@ -134,7 +131,8 @@ const AdminDashboard = ({ username, setAuthenticated }) => {
 
 AdminDashboard.propTypes = {
   username: PropTypes.string.isRequired,
-  setAuthenticated: PropTypes.func.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  setRole: PropTypes.func.isRequired,
 };
 
 export default AdminDashboard;

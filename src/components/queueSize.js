@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import apiClient from "../utils/apiClient"; // Import the apiClient
+import axios from "axios";
 import "../styling/patient.css";
 
 const QueueSize = () => {
@@ -11,7 +11,7 @@ const QueueSize = () => {
     const fetchQueueSize = async () => {
      try {
        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-       const response = await apiClient.get(
+       const response = await axios.get(
          `${API_URL}/api/queue/queue-size`
        );
        setQueueSize(response.data.queueSize);
@@ -27,7 +27,7 @@ const QueueSize = () => {
   }, []);
 
   if (loading) {
-    return <div className="spinner">Loading...</div>;
+    return <div className="spinner"></div>;
   }
 
   if (error) {

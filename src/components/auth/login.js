@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import apiClient from "../../utils/apiClient"; // Import the apiClient
 
-const Login = ({ setAuthenticated, setUserName }) => {
+const Login = ({ setUsername, setRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -19,44 +21,67 @@ const Login = ({ setAuthenticated, setUserName }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address.");
+      setEmailError(true);
       setLoading(false);
       return;
+    } else {
+      setEmailError(false);
     }
 
     if (password.trim().length < 6) {
       setError("Password must be at least 6 characters long.");
+      setPasswordError(true);
       setLoading(false);
       return;
+    } else {
+      setPasswordError(false);
     }
 
     try {
-      const response = await apiClient.post("/api/auth/login", {
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password,
       });
 
-      // Extract token and user data
-      const { token, user } = response.data;
+      console.log("Response Data:", response.data); // Debugging response
+
+      // Extract user data
+      const { user } = response.data;
+      if (!user || !user.role || !user.username) {
+        setError("Invalid response from server.");
+        setLoading(false);
+        return;
+      }
+
       const { role, username } = user;
 
-      // Store token in localStorage
-      localStorage.setItem("authToken", token);
+      // Debugging props
+      console.log("setUsername:", setUsername);
+      console.log("setRole:", setRole);
+      console.log("navigate:", navigate);
 
-      // Set user state
-      setUserName(username);
-      setAuthenticated(true);
+      // Update App state
+      setUsername(username);
+      console.log("Username set:", username);
+      setRole(role);
+      console.log("Role set:", role);
 
       // Navigate based on role
       if (role === "admin") {
+        console.log("Navigating to admin dashboard");
         navigate("/admin-dashboard");
       } else if (role === "patient") {
+        console.log("Navigating to patient dashboard");
         navigate("/patient-dashboard");
       } else if (role === "staff") {
+        console.log("Navigating to staff dashboard");
         navigate("/staff-dashboard");
       } else {
         setError("Invalid user role.");
       }
     } catch (error) {
+      console.error("Login error:", error); // Log error details
       setError(
         error.response?.data?.message ||
           (error.request
@@ -84,6 +109,7 @@ const Login = ({ setAuthenticated, setUserName }) => {
             onChange={(e) => setEmail(e.target.value)}
             disabled={loading}
             required
+            className={emailError ? "input-error" : ""}
           />
         </div>
         <div className="form-group">
@@ -97,6 +123,7 @@ const Login = ({ setAuthenticated, setUserName }) => {
             onChange={(e) => setPassword(e.target.value)}
             disabled={loading}
             required
+            className={passwordError ? "input-error" : ""}
           />
         </div>
         <button type="submit" disabled={loading}>
@@ -104,7 +131,7 @@ const Login = ({ setAuthenticated, setUserName }) => {
         </button>
       </form>
       {error && (
-        <p className="error-message" aria-live="polite">
+        <p className="error-message" aria-live="assertive">
           {error}
         </p>
       )}

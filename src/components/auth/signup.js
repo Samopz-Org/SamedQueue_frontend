@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import apiClient from "../../utils/apiClient"; // Import the apiClient
+import axios from "axios";
 import { Link } from "react-router-dom"; // Import Link for navigation
 
 const Signup = () => {
@@ -16,7 +16,7 @@ const Signup = () => {
 
     try {
     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-      const response = await apiClient.post(
+      const response = await axios.post(
         `${API_URL}/api/auth/signup`,
 
         {

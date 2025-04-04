@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import apiClient from "../utils/apiClient"; // Import the apiClient
 import logo from "../logo.svg";
 import "../styling/staffDashboard.css";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
-const StaffDashboard = ({ username, setAuthenticated }) => {
+const StaffDashboard = ({ username }) => {
+  const navigate = useNavigate();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
@@ -21,11 +22,17 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
     setIsNavOpen(false);
   };
 
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      navigate("/"); // Redirect to login page after logout
+    }
+  };
+
   useEffect(() => {
     if (!username) return;
 
     setLoading(true);
-    apiClient
+    axios
       .get(`${API_URL}/api/tasks/user/${username}`, {
         params: { username },
       })
@@ -47,17 +54,11 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
       .finally(() => setLoading(false));
   }, [username]);
 
-  const handleLogout = () => {
-    if (window.confirm("Are you sure you want to logout?")) {
-      setAuthenticated(false);
-    }
-  };
-
   const updateTask = async (id, updates) => {
     setLoading(true);
     setErrorMessage(null);
     try {
-      const response = await apiClient.put(`${API_URL}/api/tasks/${id}`, updates);
+      const response = await axios.put(`${API_URL}/api/tasks/${id}`, updates);
       setLoading(false);
       return response.data;
     } catch (error) {
@@ -147,6 +148,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
             <thead>
               <tr style={{ backgroundColor: "#f2f2f2" }}>
                 <th>S/N</th>
+                <th>Date</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Status</th>
@@ -157,6 +159,7 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
               {tasks.map((task, index) => (
                 <tr key={task._id}>
                   <td>{index + 1}</td>
+                  <td>{task.createdAt}</td>
                   <td>{task.title}</td>
                   <td>{task.description}</td>
                   <td>{task.status}</td>
@@ -182,7 +185,8 @@ const StaffDashboard = ({ username, setAuthenticated }) => {
 
 StaffDashboard.propTypes = {
   username: PropTypes.string.isRequired,
-  setAuthenticated: PropTypes.func.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  setRole: PropTypes.func.isRequired,
 };
 
 export default StaffDashboard;

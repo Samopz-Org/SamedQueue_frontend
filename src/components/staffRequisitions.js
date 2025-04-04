@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
-import apiClient from "../utils/apiClient"; // Import the apiClient
 import "../styling/staffDashboard.css";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
@@ -14,7 +14,7 @@ const StaffRequisitions = ({ username }) => {
     if (!username) return;
 
     setLoading(true);
-    apiClient
+    axios
       .get(`${API_URL}/api/requisitions/user/${username}`)
       .then((response) => {
         // Sort requisitions: pending ones first

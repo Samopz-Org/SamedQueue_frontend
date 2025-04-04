@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import apiClient from "../utils/apiClient";
+import axios from "axios"
 import "../styling/patient.css";
 
 const UpdatePatient = () => {
@@ -15,7 +15,7 @@ const UpdatePatient = () => {
 
     try {
       const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-      const response = await apiClient.put(`${API_URL}/api/patients/:${email}`, {
+      const response = await axios.put(`${API_URL}/api/patients/:${email}`, {
         symptoms,
       });
       setMessage(response.data.message);
@@ -50,7 +50,7 @@ const UpdatePatient = () => {
             required
           />
         </div>
-        <button className="spinner" type="submit" disabled={loading}>
+        <button type="submit" disabled={loading}>
           {loading ? "Updating..." : "Update"}
         </button>
       </form>

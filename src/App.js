@@ -6,7 +6,6 @@ import {
   Navigate,
   Link,
 } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
 import Home from "./components/landingpage/homePage";
@@ -17,9 +16,9 @@ import Queue from "./components/queue";
 import UpdatePatient from "./components/updatePatients";
 import AdminDashboard from "./components/adminDashboard";
 import StaffDashboard from "./components/staffDashboard";
+import PatientDashboard from "./components/patientDashboard";
 import StaffRequisitionForm from "./components/staffRequisitionForm";
 import StaffRequisitions from "./components/staffRequisitions";
-import PatientDashboard from "./components/patientDashboard";
 import TaskManager from "./components/taskManager/taskManager";
 import RequisitionManager from "./components/requisitionManager/requisitionManager";
 import ADHDAssessment from "./components/ADHDAssessmt";
@@ -40,62 +39,46 @@ const NotFound = () => (
   </div>
 );
 
-const ProtectedRoute = ({ element, authenticated, allowedRoles }) => {
-  const token = localStorage.getItem("authToken");
-
-  if (!token) {
-    return <Navigate to="/login" />;
-  }
-
-  try {
-    const decoded = jwtDecode(token);
-    const currentTime = Date.now() / 1000; // Current time in seconds
-    if (decoded.exp < currentTime) {
-      localStorage.removeItem("authToken"); // Remove expired token
-      return <Navigate to="/login" />;
-    }
-
-    // Check if the user's role is allowed
-    if (allowedRoles && !allowedRoles.includes(decoded.role)) {
-      return <Navigate to="/" />; // Redirect to home if role is not allowed
-    }
-  } catch (error) {
-    console.error("Invalid token:", error);
-    localStorage.removeItem("authToken");
-    return <Navigate to="/login" />;
-  }
-
-  return authenticated ? element : <Navigate to="/login" />;
-};
-
 function App() {
-  const [username, setUserName] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true); // Add a loading state
+  const [username, setUsername] = useState(null); // State for username
+  const [role, setRole] = useState(null); // State for user role
+  const [loading, setLoading] = useState(true); // State for loading
+  const [error, setError] = useState(null); // State for error handling
+
+  console.log("setUsername:", setUsername);
+  console.log("setRole:", setRole);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    if (token) {
+    // Simulate fetching user data (e.g., from an API or localStorage)
+    const fetchUserData = async () => {
+      setLoading(true);
       try {
-        const decoded = jwtDecode(token);
-        const currentTime = Date.now() / 1000; // Current time in seconds
-        if (decoded.exp > currentTime) {
-          setAuthenticated(true);
-          setUserName(decoded.username); // Assuming the token contains the username
-        } else {
-          localStorage.removeItem("authToken");
-        }
+        // Simulate API call
+        const user = await new Promise((resolve) =>
+          setTimeout(
+            () => resolve({ username: "to Samopz' Clinic", role: "admin" }),
+            1000
+          )
+        );
+        setUsername(user.username);
+        setRole(user.role);
       } catch (error) {
-        console.error("Error decoding token:", error);
-        localStorage.removeItem("authToken");
+        console.error("Failed to fetch user data:", error);
+        setError("Failed to load user data. Please try again.");
+      } finally {
+        setLoading(false);
       }
-    }
-    setLoading(false); // Set loading to false after the check
+    };
+
+    fetchUserData();
   }, []);
 
   if (loading) {
-    // Show a loading spinner or placeholder while checking authentication
-    return <div>Loading...</div>;
+    return <div className="loading"></div>; // Show loading spinner
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>; // Show error message
   }
 
   return (
@@ -103,185 +86,100 @@ function App() {
       <div>
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={<Home />} />
           <Route
             path="/login"
-            element={
-              authenticated ? (
-                <Login
-                  setAuthenticated={setAuthenticated}
-                  setUserName={setUserName}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
+            element={<Login setUsername={setUsername} setRole={setRole} />}
           />
+          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/contact-us" element={<ContactUs />} />
 
           {/* Admin Routes */}
-          <Route
-            path="/admin-dashboard"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["admin"]}
-                element={
-                  <AdminDashboard
-                    username={username}
-                    setAuthenticated={setAuthenticated}
-                  />
-                }
+          {role === "admin" && (
+            <>
+              <Route
+                path="/admin-dashboard"
+                element={<AdminDashboard username={username} />}
               />
-            }
-          />
-
-          {/* Staff Routes */}
-          <Route
-            path="/staff-dashboard"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["staff"]}
-                element={
-                  <StaffDashboard
-                    username={username}
-                    setAuthenticated={setAuthenticated}
-                  />
-                }
-              />
-            }
-          />
-          <Route
-            path="/requisitions"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["staff"]}
+              <Route
+                path="/requisitions"
                 element={<RequisitionManager API_URL={API_URL} />}
               />
-            }
-          />
-          <Route
-            path="/staffRequisition-form"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["staff"]}
+              <Route
+                path="/staffRequisition-form"
                 element={<StaffRequisitionForm API_URL={API_URL} />}
               />
-            }
-          />
-          <Route
-            path="/staff-requisitions"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["staff"]}
-                element={<StaffRequisitions username={username} />}
+              <Route
+                path="/staff-requisitions"
+                element={<StaffRequisitions />}
               />
-            }
-          />
-          <Route
-            path="/staff-attendance"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["staff"]}
-                element={<StaffAttendance />}
-              />
-            }
-          />
-          <Route
-            path="/add-attendance"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["staff"]}
+              <Route path="/staff-attendance" element={<StaffAttendance />} />
+              <Route
+                path="/add-attendance"
                 element={<AddAttendance API_URL={API_URL} />}
               />
-            }
-          />
-
-          {/* Patient Routes */}
-          <Route
-            path="/patient-dashboard"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["patient"]}
-                element={
-                  <PatientDashboard
-                    username={username}
-                    setAuthenticated={setAuthenticated}
-                  />
-                }
-              />
-            }
-          />
-          <Route
-            path="/register-patient"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["patient"]}
-                element={<RegisterPatient />}
-              />
-            }
-          />
-          <Route
-            path="/queue"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["patient"]}
-                element={<Queue />}
-              />
-            }
-          />
-          <Route
-            path="/update-patient"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["patient"]}
-                element={<UpdatePatient />}
-              />
-            }
-          />
-          <Route
-            path="/tasks"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["patient"]}
+              <Route
+                path="/tasks"
                 element={<TaskManager API_URL={API_URL} />}
               />
-            }
-          />
-          <Route
-            path="/adhd-assessment"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["patient"]}
-                element={<ADHDAssessment />}
+              <Route path="/register-patient" element={<RegisterPatient />} />
+              <Route path="/queue" element={<Queue />} />
+              <Route path="/update-patient" element={<UpdatePatient />} />
+              <Route path="/adhd-assessment" element={<ADHDAssessment />} />
+              <Route path="/adhd-results" element={<ADHDResults />} />
+              <Route path="/" element={<Navigate to="/admin-dashboard" />} />
+            </>
+          )}
+
+          {/* Staff Routes */}
+          {role === "staff" && (
+            <>
+              <Route
+                path="/staff-dashboard"
+                element={<StaffDashboard username={username} />}
               />
-            }
-          />
-          <Route
-            path="/adhd-results"
-            element={
-              <ProtectedRoute
-                authenticated={authenticated}
-                allowedRoles={["patient"]}
-                element={<ADHDResults />}
+              <Route
+                path="/requisitions"
+                element={<RequisitionManager API_URL={API_URL} />}
               />
-            }
-          />
+              <Route
+                path="/staffRequisition-form"
+                element={<StaffRequisitionForm API_URL={API_URL} />}
+              />
+              <Route
+                path="/staff-requisitions"
+                element={<StaffRequisitions />}
+              />
+              <Route path="/staff-attendance" element={<StaffAttendance />} />
+              <Route
+                path="/add-attendance"
+                element={<AddAttendance API_URL={API_URL} />}
+              />
+              <Route
+                path="/tasks"
+                element={<TaskManager API_URL={API_URL} />}
+              />
+              <Route path="/" element={<Navigate to="/staff-dashboard" />} />
+            </>
+          )}
+
+          {/* Patient Routes */}
+          {role === "patient" && (
+            <>
+              <Route
+                path="/patient-dashboard"
+                element={<PatientDashboard username={username} />}
+              />
+              <Route path="/register-patient" element={<RegisterPatient />} />
+              <Route path="/queue" element={<Queue />} />
+              <Route path="/update-patient" element={<UpdatePatient />} />
+              <Route path="/adhd-assessment" element={<ADHDAssessment />} />
+              <Route path="/adhd-results" element={<ADHDResults />} />
+              <Route path="/" element={<Navigate to="/patient-dashboard" />} />
+            </>
+          )}
 
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
