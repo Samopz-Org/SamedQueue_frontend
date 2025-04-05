@@ -237,12 +237,12 @@ a {
   margin: 10px;
 }
 .fab.fa-twitter {
-  color: #000000 rgb(0, 0, 0);
+  color: #000000; 
   font-size: 24px;
   margin: 10px;
 }
 .fab.fa-instagram {
-  color: #E4405F rgb(228, 64, 95);
+  color: #E4405F;
   font-size: 24px;
   margin: 10px;
 }
