@@ -26,7 +26,7 @@ const Footer = ({ handleNavClick }) => {
           <i className="fab fa-facebook"></i>
         </a>
         <a
-          href="https://twitter.com"
+          href="https://x.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter"
