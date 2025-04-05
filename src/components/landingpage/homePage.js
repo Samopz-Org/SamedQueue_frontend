@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fortawesome/fontawesome-free";
 import Navbar from "../landingpage/navbar";
 import HeroSection from "../landingpage/heroSection";
 import FeaturesSection from "../landingpage/featuresSection";
