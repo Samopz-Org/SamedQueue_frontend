@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "@fortawesome/fontawesome-free";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const Footer = ({ handleNavClick }) => {
   return (

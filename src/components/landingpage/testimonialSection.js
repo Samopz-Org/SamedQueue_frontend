@@ -1,5 +1,5 @@
 import React from "react";
-import "@fortawesome/fontawesome-free";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const TestimonialsSection = ({ testimonials }) => {
   return (
