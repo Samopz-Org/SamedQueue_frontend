@@ -36,9 +36,8 @@ const NextPatient = ({ queue, setQueue }) => {
       <h3>Next Patient</h3>
       <p>Name: {nextPatient.name}</p>
       <p>Age: {nextPatient.age}</p>
-      <p>Condition: {nextPatient.symptoms}</p>
+      <p>Condition:{nextPatient.symptoms}</p>
       <button
-        className="spinner"
         onClick={handleNextPatient}
         disabled={loading}
       >
