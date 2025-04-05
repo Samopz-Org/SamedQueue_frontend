@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Navbar = ({ isNavOpen, toggleNav, handleNavClick }) => {
   return (

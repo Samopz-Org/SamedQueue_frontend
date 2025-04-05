@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Footer = ({ handleNavClick }) => {
   return (
     <footer className="home-footer">
-      <div className="privacy-terms">
-        <Link to="/privacy-policy" onClick={handleNavClick}>
+      <div>
+        <Link to="/privacy-policy" className="privacy" onClick={handleNavClick}>
           Privacy Policy
         </Link>
-        <Link to="/terms-of-service" onClick={handleNavClick}>
+        <Link to="/terms-of-service" className="terms" onClick={handleNavClick}>
           Terms of Service
         </Link>
       </div>

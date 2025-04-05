@@ -81,17 +81,6 @@
   gap: 15px;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-  color: #0056b3;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .attendance-records table {
@@ -128,10 +117,6 @@
   .dashboard-nav {
     flex-direction: column;
     gap: 10px;
-  }
-
-  .nav-link {
-    text-align: center;
   }
 
   .filter-records input,

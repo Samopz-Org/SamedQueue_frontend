@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../logo.svg";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const HeroSection = () => {
   return (
